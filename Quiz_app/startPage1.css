@@ -1,0 +1,115 @@
+*{
+    background-color: rgb(106, 123, 220);
+    margin: 0px;
+    padding: 0px;
+}
+:root{
+    --bg-cl:2px solid;
+}
+/* menubar code */
+
+/* nav bar code */
+.topic h1{
+    width: fit-content;
+    background-color: aqua;
+    padding: 0px 12px 0px 12px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border:2px solid ;
+    height: fit-content;
+    font-size: 26px;
+    margin: 3px;
+    border-radius: 8px;
+    position: relative;
+  z-index: 4;
+}
+.topic .menu{
+    position: absolute;
+    background-position: center;
+    left: 10px;
+    border-radius: 7px;
+    margin-top: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 2px;
+    font-size: clamp(24px, 5vw, 25px);
+    background-color: aliceblue;
+    display: inline;
+    height: clamp(30px,3vh,35px);
+    border: 2px solid blueviolet;
+    cursor: pointer;
+}
+.topic{
+    margin: 4px;
+    height:fit-content;
+    background-color: rgb(87, 106, 210);
+    display: flex;
+    justify-content: center;
+    border: var(--bg-cl);
+    border-radius: 10px;
+}
+/* From here status bar css code */
+.status{
+    height: clamp(120px,35vh,140px);
+        width: clamp(100px,90vw,700px);
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    position: relative;
+    background-color: rgb(60, 81, 155);
+}
+.status h2{
+    text-decoration: underline blueviolet;
+    background-color: rgb(20, 19, 17);
+    width: fit-content;
+    padding: 4px;
+    border: var(--bg-cl);
+    border-radius: 10px;
+    font-size: clamp(15px,4vw,20px);
+    position: relative;
+    left: 10%;
+    height: 20px;
+    color: orangered;
+}
+
+.per{
+    background-color:  rgb(60, 81, 155);
+}
+.stats .bar{
+    background-color: white;
+    border-radius: 30px;
+    position: relative;
+    width: clamp(100px,25vw,180px);
+    height: 5px;
+    margin-top: 15px;
+} 
+.stats{
+    background-color: rgb(60, 81, 155);
+    position: absolute;
+    right: 40px;
+    display: flex;
+    gap: 10px;
+    bottom: 29px;
+
+}
+.stats .statsnames p{
+background-color:  rgb(60, 81, 155);
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size:14px;
+color: orange;
+}
+.stats .statsnames {
+    margin-top: 15px;
+    background-color:  rgb(60, 81, 155);
+    }
+.stats .percent{
+   background-color: aqua;
+   /* width: 10%;here you should dynamilically add the percenatge based on the data */
+   height: 100%;
+   display: inline;
+   position: absolute;
+} 
+
+
