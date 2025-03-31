@@ -396,6 +396,7 @@ font-family:cursive,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 .topics_maindiv{
     margin-top: 20px;
 }
+
 #endfooter{
     padding: 5px;
     border-radius: 6px;
@@ -403,5 +404,6 @@ font-family:cursive,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 1px solid blueviolet;
     font-size: 13px;
     text-align: center;
-    background-color: #faf3f3;
+    width: 95vw;
+    background-color: white;
 }

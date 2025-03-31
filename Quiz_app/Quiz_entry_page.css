@@ -30,9 +30,8 @@ display: none;
     height: 80%;
     position: absolute;
     top: 5%;
-    left: 11%;
-    margin: auto;
-    width: 76%;
+    left: 7%;
+    width: 83%;
     margin-top: 6%;
     background-color: white;
     border: 2px solid gray;
@@ -52,16 +51,17 @@ display: none;
     border-radius: 10px;
 }
 /* this is where you should insert image of that specific paper of that image that has been downloaded from either google or any other browser */
-.Quiz_begin_main_img>img{
-width: clamp(100px,50%,170px);
-border: 2px solid black;
-aspect-ratio:10/9;
-background-color: white;  
-margin-left: 16vw; 
-margin-top: 10px;
-}
 .Quiz_begin_main_img{
+width: clamp(100px,50%,170px);
+background-image: url('anime.png');
+border: 1px solid wheat;
+aspect-ratio:10/9;
+background-size: cover;
+background-repeat: no-repeat;
+margin-top: 10px;
+     height: fit-content;
     background-color:white;
+background-color: white;  
 }
 .Quiz_begin_main_paragraph>p{
     border-radius: 9px;
@@ -161,4 +161,29 @@ border-radius: 20px;
     border-radius: 20px;
 }
 }
+p>a{
+    color: blue;
+    background-color: transparent;
+}
+p>a:hover{
+    cursor: pointer;
+}
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ff7eb3, #ff758c); /* Gradient color */
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ff5370, #ff3d61); /* Darker on hover */
+  }
+
 
