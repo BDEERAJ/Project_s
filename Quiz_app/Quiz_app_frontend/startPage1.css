@@ -1,0 +1,446 @@
+*{
+    margin: 0px;
+}
+#main{
+    background-color: rgb(211, 214, 230);
+    margin: 0px;
+    height: fit-content;
+    padding: 0px;
+}
+:root{
+    --bg-cl:2px solid;
+}
+/* menubar code */
+
+.menu_list{
+    position:fixed;
+    z-index: 10;
+    background-color: rgb(227, 200, 165);
+    height: 95vh;
+    left: -100%;
+    width: clamp(160px,40vw,270px);
+    border: 2px solid rgb(148, 163, 48);
+    display: flex;
+    border-radius:5px;
+    box-shadow: -9px 1px 20px 0px black;   
+    flex-direction: column;
+    transition: all;
+    transition-duration: 1s;
+    justify-content: space-between;
+}
+.activate{
+    left: 0px;
+    transition: all;
+    transition-duration: 1s;
+}
+.menu_list h2{
+    position: relative;
+    margin-bottom: 10px;
+    height: fit-content;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    padding: 0px 8px 0px 7px ;
+    text-decoration: underline  black;
+}
+.menu_list ul {
+    background-color: rgb(227, 200, 165);
+
+    display: flex;
+    z-index: 3;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    margin-left: 10%;
+    font-weight: bold;
+    font-family: sans-serif;   
+ }
+.menu_list ul li:hover{
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:blue;
+    cursor: pointer;
+}
+
+.menu_list footer{
+    bottom: 20vw;
+    width: 92%;
+    background-color: rgb(237, 233, 228);
+
+    margin-bottom: 2px;
+    padding: 4%;
+    text-align: center;
+    display: inline-block;
+}
+.menu_list button{
+    font-weight: bolder;
+    padding: 2px 10px 2px 10px;
+    background-color: rgb(227, 200, 165);
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+    margin-left: 35%;
+}
+.menu_topics{
+width: 85%;
+background-color: rgb(227, 200, 165);
+height: 50vh;
+border: 2px solid rgb(117, 105, 82);
+display: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+/* nav bar code */
+.topic h1{
+    width: fit-content;
+    background-color: rgb(157, 206, 206);
+    padding: 0px 12px 0px 12px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border:2px solid ;
+    height: fit-content;
+    font-size: 26px;
+    margin: 3px;
+    border-radius: 8px;
+    position: relative;
+  z-index: 4;
+}
+.topic .menu{
+    position: absolute;
+    background-position: center;
+    left: 10px;
+    border-radius: 7px;
+    margin-top: 4px;
+    margin-left: 4px;
+    padding-left: 8px;
+    padding-right: 4px;
+    padding-bottom: 2px;
+    width: 25px;
+    font-size: clamp(24px, 5vw, 25px);
+    background-color: aliceblue;
+    display: inline;
+    height: clamp(30px,3vh,35px);
+    border: 2px solid blueviolet;
+    cursor: pointer;
+    
+}
+.topic .menu:hover{
+    box-shadow: -1px 0px 9px 4px #5e6ed2;}
+.topic{
+    margin: 4px;
+    height:fit-content;
+    background-color: rgb(188, 71, 71);
+    display: flex;
+    justify-content: center;
+    border: var(--bg-cl);
+    border-radius: 10px;
+    position: sticky;
+    top: -1px;
+    z-index: 10;
+}
+/* From here status bar css code */
+.status{
+    height: clamp(120px,25vh,140px);
+    width: clamp(100px,60vw,400px);
+    margin: auto;
+    margin-top: 10px;
+    border: 2px solid rgb(218, 94, 218);
+    padding: 5px;
+    display: flex;
+    border-radius: 6px;
+    justify-content: space-between;
+    position: relative;
+    background-color: rgb(220, 223, 233);
+    box-shadow:0px 0px 5px 6px darkgray;
+}
+.status h2{
+    text-decoration: underline blueviolet;
+    background-color: rgb(20, 19, 17);
+    width: fit-content;
+    padding: 4px;
+    border: var(--bg-cl);
+    border-radius: 10px;
+    font-size: clamp(15px,4vw,20px);
+    position: relative;
+    left: 10%;
+    height: 20px;
+    color: orangered;
+}
+
+.per{
+    background-color: transparent;
+}
+.bar{
+    margin-right: 20vw;
+    font-family: serif;
+    font-weight: bolder;
+  display: flex;
+  gap: 9px;
+} 
+
+.stats{
+    background-color: transparent;
+    position: absolute;
+left: 1vw;
+    display: flex;
+    gap: 10px;
+    bottom: 20px;
+
+}
+.stats .statsnames p{
+background-color: transparent;
+font-size:19px;
+color: orange;
+}
+.stats .statsnames {
+    margin-top: 15px;
+    background-color: transparent;
+    }
+.menubar{
+    height: 43px;
+}
+/* ---------from here the responsive css code for the topics content----- */
+    
+.Topic_all{
+    display: grid;
+    grid-template-columns: 30vw 30vw 30vw;
+    grid-template-rows: 29vh 29vh 29vh 29vh  29vh ;
+    justify-content: center;
+    align-items: center;
+    gap: 27px;
+}
+
+.img_t1{
+    padding: 3px;
+    width: 98%;
+    height: 55%;
+    margin: auto;
+    margin-left: 2%;
+    border-radius: 12px;
+    background-size: cover;
+}
+.Topic_info{
+    border: 1px solid rgb(194, 194, 207);
+    width: 160%;
+    height: 70%;
+    margin: auto;
+    padding: 3px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 12px;
+    background-color: lavender;
+}
+.Topic_info h3{
+ font-family:monospace, 'Arial Narrow', Arial, sans-serif;
+ text-align: center;
+ text-transform: uppercase;
+ background-color: lavender;
+
+}
+.Topic_info p{
+font-weight: 500;
+background-color: lavender;
+
+font-size: 12px;
+font-family:cursive,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.Topic_all .topics{
+    display: flex;
+    border: 4px solid rosybrown;
+    width: 98%;
+    background-color: #E3F2FD;
+    border-radius: 10px;
+    height: 70%;
+    box-shadow: 2px 1px 14px 0px olivedrab;
+}
+.Topic_all .topics:hover{
+    box-shadow: 2px 1px 14px 0px black;
+    font-size: 16.5px;
+}
+@media only screen and (max-width:800px){
+    .Topic_all{
+    display: grid;
+    grid-template-columns: 33vw 33vw;
+    grid-template-rows: 40vh 40vh 40vh 40vh 40vh 40vh 40vh;
+    justify-content: center;
+    gap: 2vw;
+}
+.Topics:hover{
+        box-shadow: 2px 2px 5px 10px solid black;
+      } 
+
+.img_t1{
+    padding: 3px;
+    background-image: url("anime.png");
+    width: 90%;
+    height: 50%;
+    margin: auto;
+    background-size: cover;
+}
+.Topic_info{
+    width: 90%;
+    height: 40%;
+    margin-bottom: 1px;
+    margin: auto;
+    background-color: lavender;
+}
+.Topic_info h3{
+ font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ text-align: center;
+ background-color: lavender;
+
+}
+.Topic_info p{
+background-color: lavender;
+font-weight: 500;
+font-size: 12px;
+font-family: sans-serif;
+}
+.Topic_all .topics{
+        display: flex;
+        flex-direction: column;
+        width:80%;
+        background-color: #E3F2FD;
+        border: 4px solid rosybrown;
+        border-radius: 10px;
+        height: 85%;
+        box-shadow: 2px 1px 14px 0px olivedrab;
+}
+.Topic_all .topics:hover{
+    box-shadow: 2px 1px 14px 0px black;
+}
+}
+@media only screen and (max-width:600px){
+    .Topic_all{
+        display: flex;
+        flex-direction: column;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    gap: 27px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.img_t1{
+    padding: 3px;
+    background-image: url("anime.png");
+    width: 100px;
+    height: 70%;
+    margin: auto;
+    margin-left: 2%;
+    border-radius: 12px;
+    background-size:cover;
+}
+.Topic_info{
+    border: 1px solid rgb(194, 194, 207);
+    width: 100%;
+    height: 70px;
+    margin: auto;
+    padding: 3px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 12px;
+    background-color: lavender;
+}
+.Topic_info h3{
+ font-family:monospace, 'Arial Narrow', Arial, sans-serif;
+ text-align: center;
+ background-color: lavender;
+}
+.Topic_info p{
+font-weight: 500;
+background-color: lavender;
+
+font-size: 12px;
+font-family:'cursive','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.Topic_all .topics{
+          display: flex;
+            border: 4px solid rosybrown;
+            width: 80%;
+            padding: 2%;
+            background-color: #E3F2FD;
+            border-radius: 10px;
+            height: 100px;
+            box-shadow: 2px 1px 14px 0px olivedrab;
+            flex-direction: row;
+}
+.Topic_all .topics:hover{
+    box-shadow: 2px 1px 14px 0px black;
+}
+}
+.topics_maindiv{
+    margin-top: 20px;
+}
+
+#endfooter{
+    padding: 5px;
+    border-radius: 6px;
+    margin: 2px;
+    border: 1px solid blueviolet;
+    font-size: 13px;
+    text-align: center;
+    width: 95vw;
+    background-color: white;
+}
+.science{
+    background-image: url('https://t3.ftcdn.net/jpg/01/66/70/32/360_F_166703275_YTHITBVnHD3tWS3q8RPvH0nFWmyrgAr5.jpg');
+}
+.history{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYiNErLtGpdyyAwCQxZ8kwAajCSApmGKCJQ&s');
+}
+.geography{
+    background-image: url('https://t4.ftcdn.net/jpg/02/43/47/67/360_F_243476769_d15WIB1ERQTzvRW51NTMOi5guTvoBOrf.jpg');
+}
+.technology{
+    background-image: url('https://www.shutterstock.com/shutterstock/photos/2284126663/display_1500/stock-photo-data-science-and-big-data-technology-scientist-computing-analysing-and-visualizing-complex-data-2284126663.jpg');
+}
+.sports{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhgiFEKivNft5JXIaJ2jUzd4Qnra9vWV4YxA&s');
+}
+.literature{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQfxcpsegmELIALb1mnmv6R0snMJx-YguCDw&s');
+}
+.math{
+    background-image: url('https://media.istockphoto.com/id/1219382595/vector/math-equations-written-on-a-blackboard.jpg?s=612x612&w=0&k=20&c=ShVWsMm2SNCNcIjuWGtpft0kYh5iokCzu0aHPC2fV4A=');
+}
+.music{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv08Ua-IhYY1AF42Jr9bVJ_sC7oZWJYSlyng&s');
+}
+.english{
+    background-image: url('https://t3.ftcdn.net/jpg/03/70/42/66/360_F_370426690_Pejt9KxjWTHPklsKwripaxr0iA17zupF.jpg');
+}
+.coding{
+    background-image: url('https://media.istockphoto.com/id/537331500/photo/programming-code-abstract-technology-background-of-software-deve.jpg?s=612x612&w=0&k=20&c=jlYes8ZfnCmD0lLn-vKvzQoKXrWaEcVypHnB5MuO-g8=');
+}
+.space{
+    background-image: url('https://t4.ftcdn.net/jpg/02/81/85/27/360_F_281852727_A4ThCn8oRJaq4l4YsAMBl28P3psm5iE5.jpg');
+}
+.computers{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqHJGygmrbVBsvocU0SykH93jO0tTuPpSEg&s');
+}
+.current_affairs{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtd3v3rF5yAzSDqJEe75nmLl0wslm-vRdxtA&s');
+}
+.environment{
+    background-image: url('https://t3.ftcdn.net/jpg/03/23/82/94/360_F_323829465_RIB5fhIFOv5G2CAlBJ5lpsabhQlRVBbn.jpg');
+}
+.health{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqHJGygmrbVBsvocU0SykH93jO0tTuPpSEg&s');
+}

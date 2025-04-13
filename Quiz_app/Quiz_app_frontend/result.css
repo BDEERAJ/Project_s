@@ -1,0 +1,66 @@
+*{
+ margin: 0px;
+ padding: 0px;
+}
+.main{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.contents{
+    width: 80vw;
+    height: 80vh;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 0px 12px 7px darkseagreen;
+    gap: 11%;
+}
+.marks{
+    padding: 20px;
+    width: 50%;
+    max-width: 220px;
+    max-height: 158px;
+    height: fit-content;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 30px;
+    background-color: aqua;
+    box-shadow: 0px 0px 12px 7px darkseagreen;
+}
+h2{
+    text-decoration: underline rgb(17, 38, 226);
+    font-size: clamp(18px, 20%, 25px);
+    color: blue;
+    max-height: 15px;
+}
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: clamp(55px, 6vw, 68px);
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 300px;
+    padding: 2vw;
+    margin: 10px;
+}
+.info{
+    width: 90%;
+    max-width: 600px;
+    height: 40%; 
+}
+button{
+    padding: 2px 10px 1px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+button:after{
+    background-color: rgb(23, 105, 105);
+}
+button:hover{
+    background-color: aquamarine;
+}
