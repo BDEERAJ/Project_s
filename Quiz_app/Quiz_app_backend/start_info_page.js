@@ -7,13 +7,22 @@ const dbs = mongoose.connect('mongodb://localhost:27017/trymongo').then(() => {
 });
 const db = mongoose.model('db', { topic: String, content: String }, 'content_dbs');
 const moreinfos = mongoose.model('moreinfos',{ topic: String, content: String },'moreinfos');
+const fd = mongoose.model('fd',{ rev: String },'feedback');
 express.listen(3000,(error)=>{
     console.log('connected');
 
 })
 express.use(cors());
 express.use(a.json());
-
+express.put('/feedback',(req,res)=>{
+   let str= req.body;
+   let con=str['rev'];
+   async function c() {
+    let fd2= new fd({'rev':`${con}`});
+   await  fd2.save();
+   }
+   c();
+})
 express.get('/:slug', (req, res) => {
 
     const tpc = req.params.slug;

@@ -15,7 +15,6 @@ document.querySelector('.menu_list').classList.toggle('activate');
 }
 function infoFetcher(topic){
         window.localStorage.setItem("topic",topic)
-        console.log(window.localStorage.getItem('topic'));
         window.location.href='Quiz_entry_page.html'
        }
 

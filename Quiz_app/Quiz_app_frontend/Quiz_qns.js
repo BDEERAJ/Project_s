@@ -10,7 +10,6 @@ document.querySelectorAll(".ans").forEach(e=>{
   selans(`${e.textContent}`)
 })});
 const topic=window.localStorage.getItem('topic');
-console.log(topic);
 setTimeout(async () => {
     await fetch(`http://localhost:3000/quiz/${topic}Questions`,
         {method:'GET',
