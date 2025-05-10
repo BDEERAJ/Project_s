@@ -1,7 +1,7 @@
 
-if(window.localStorage.getItem('totalcrt')==0){
-    window.localStorage.setItem('totalqns',0);
-    window.localStorage.setItem('totalcrt',0);
+if(window.localStorage.getItem('totalcrt')==null){
+    window.localStorage.setItem('totalqns','0');
+    window.localStorage.setItem('totalcrt','0');
 }
 else{
     let tq=parseInt(window.localStorage.getItem('totalqns'));
@@ -17,5 +17,5 @@ document.querySelector('.menu_list').classList.toggle('activate');
 function infoFetcher(topic){
         window.localStorage.setItem("topic",topic)
         console.log(window.localStorage.getItem('topic'));
-        window.location.href='Quiz_entry_page.html'
+        window.location.href='../QuizBeginPage/Quiz_entry_page.html'
        }
