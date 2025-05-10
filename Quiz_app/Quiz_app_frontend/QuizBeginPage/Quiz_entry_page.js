@@ -28,7 +28,7 @@ function timerStr(){
         clearInterval(ab);
         b=0;
        document.querySelector(".timerstr").classList.add("Quiz_begin_page_hidder");
-        window.location.href='Quiz_qns.html';
+        window.location.href='../QuizMainPage/Quiz_qns.html';
     }
     document.querySelector(".timerstr1").innerHTML=`${b}`
     }, 700);

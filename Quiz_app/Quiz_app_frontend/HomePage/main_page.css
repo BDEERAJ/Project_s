@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.active {
+    display: block;
+}
+
+.inactive {
+    display: none;
+}
+
+.main {
+    background-color: #f4e4d0;
+    height: 100vh;
+}
+
+.nav {
+    background-color: aliceblue;
+    width: 90%;
+    margin: 4px auto 0;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+}
+
+.nav_link {
+    background-color: #eff4f7;
+    border: 2px solid black;
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 5px;
+    font-family: 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
+    box-shadow: 1px 1px 1px gray;
+}
+
+.nav_link:hover {
+    background-color: bisque;
+    cursor: pointer;
+}
+
+.logo {
+    display: flex;
+    gap: 10px;
+    background-color: white;
+}
+
+.logo a {
+    padding: 3px;
+    background-color: white;
+    color: blue;
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.logo a:hover {
+    box-shadow: 1px 2px 1px gray;
+}
+
+.svg {
+    width: 30px;
+    aspect-ratio: 1;
+    background-color: #f4eeee;
+    color: black !important;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px gray;
+}
+
+.box {
+    margin-top: clamp(10px, 10vh, 100px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.img {
+    width: clamp(80px, 80%, 500px);
+    aspect-ratio: 10/6;
+    background-image: url("https://media.istockphoto.com/id/1210308970/photo/question-and-answer-bubble-chat.webp?s=2048x2048&w=is&k=20&c=IOVUC1rnFTGV0saetfCBwJyxKjpgA54XSpzOLO-fwYQ=");
+    background-size: cover;
+    border-radius: 30px;
+    box-shadow: 2px 2px 10px 5px gray;
+}
+
+.m1 {
+    background-color: aqua;
+    padding: 15px;
+    border-radius: 18px;
+    box-shadow: 1px 2px 8px 3px gray;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    width: fit-content;
+}
+
+.m1 h1 {
+    background-color: #f8f3ed;
+    padding: 5px 10px;
+    font-size: clamp(20px, 7vw, 40px);
+    border: 1.8px solid grey;
+    border-radius: 18px;
+    box-shadow: 1px 2px 8px 3px gray;
+}
+
+.m1 button {
+    margin: 10px 25%;
+    padding: 0 22px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 2px 8px 3px gray;
+}
+
+.m1 button:hover {
+    background-color: wheat;
+    box-shadow: 2px 2px 7px 5px #119cc6;
+    cursor: pointer;
+}
+
+.menu:hover {
+    cursor: pointer;
+}
+
+.info {
+    position: absolute;
+    left: -100%;
+    top: 1vh;
+    background-color: #f3ebeb;
+    width: clamp(130px, 45vw, 350px);
+    height: 90vh;
+    padding: 3px;
+    border: 2px solid black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 1px 0 8px 8px gray;
+    transition: all 1s;
+}
+
+.info_class {
+    left: 0%;
+    transition: all 1s;
+}
+
+.info .ol {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 25%;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+}
+
+.info .ol li {
+    font-size: clamp(12px, 3vw, 17px);
+}
+
+.info .ol li:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+.info h2 {
+    margin-bottom: 20px;
+    color: brown;
+    background-color: white;
+    text-decoration: underline;
+}
+
+.info button {
+    position: absolute;
+    bottom: 20vw;
+    padding: 5px;
+    width: fit-content;
+    border: 2px solid gray;
+}
+
+.info button:hover {
+    box-shadow: 1px 1px 2px 2px black;
+}
+
+.information {
+    background-color: aliceblue;
+    height: 100vh;
+    padding: clamp(2px, 2vh, 10px);
+}
+
+.paragraph {
+    width: clamp(80px, 80vw, 650px);
+    height: clamp(200px, 80vh, 400px);
+    margin: auto;
+    padding: 5px;
+    font-weight: 700;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    background-color: aliceblue;
+    overflow: auto;
+    border: 2px solid #16161a;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 1px 2px 8px 3px gray;
+    position: relative;
+}
+
+.paragraph p {
+    background-color: aliceblue;
+}
+
+.paragraph h2 {
+    color: brown;
+}
+
+.information button {
+    margin-top: 4%;
+    margin-left: 40%;
+    padding: 5px;
+    background-color: blanchedalmond;
+    font-size: clamp(6px, 5vw, 15px);
+    border: 2px solid black;
+    border-radius: 4px;
+    position: relative;
+}
+
+.information button:hover {
+    box-shadow: 1px 2px 3px 3px gray;
+}

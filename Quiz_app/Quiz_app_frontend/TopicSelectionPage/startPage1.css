@@ -128,7 +128,7 @@ a{
 .topic{
     margin: 4px;
     height:fit-content;
-    background-color: rgb(188, 71, 71);
+    background-color: rgb(128, 100, 100);
     display: flex;
     justify-content: center;
     border: var(--bg-cl);
@@ -307,6 +307,8 @@ font-family: sans-serif;
 }
 .Topic_all .topics:hover{
     box-shadow: 2px 1px 14px 0px black;
+    font-size: 16.5px;
+    transform:translateY(-5px) !important;
 }
 }
 @media only screen and (max-width:600px){
@@ -400,47 +402,52 @@ font-family:'cursive','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-seri
     background-color: white;
 }
 .science{
-    background-image: url('https://t3.ftcdn.net/jpg/01/66/70/32/360_F_166703275_YTHITBVnHD3tWS3q8RPvH0nFWmyrgAr5.jpg');
+    background-image: url('../assests/science.jpg');
 }
 .history{
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYiNErLtGpdyyAwCQxZ8kwAajCSApmGKCJQ&s');
+    background-image: url('../assests/history.jpg');
 }
 .geography{
-    background-image: url('https://t4.ftcdn.net/jpg/02/43/47/67/360_F_243476769_d15WIB1ERQTzvRW51NTMOi5guTvoBOrf.jpg');
+    background-image: url('../assests/geography.jpg');
 }
 .technology{
-    background-image: url('https://www.shutterstock.com/shutterstock/photos/2284126663/display_1500/stock-photo-data-science-and-big-data-technology-scientist-computing-analysing-and-visualizing-complex-data-2284126663.jpg');
+    background-image: url('../assests/technology.jpg');
 }
 .sports{
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhgiFEKivNft5JXIaJ2jUzd4Qnra9vWV4YxA&s');
+    background-image: url('../assests/sports.jpg');
 }
 .literature{
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQfxcpsegmELIALb1mnmv6R0snMJx-YguCDw&s');
+    background-image: url('../assests/literature.jpg');
 }
 .math{
-    background-image: url('https://media.istockphoto.com/id/1219382595/vector/math-equations-written-on-a-blackboard.jpg?s=612x612&w=0&k=20&c=ShVWsMm2SNCNcIjuWGtpft0kYh5iokCzu0aHPC2fV4A=');
+    background-image: url('../assests/math.jpg');
 }
 .music{
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv08Ua-IhYY1AF42Jr9bVJ_sC7oZWJYSlyng&s');
+    background-image: url('../assests/music.jpg');
 }
 .english{
-    background-image: url('https://t3.ftcdn.net/jpg/03/70/42/66/360_F_370426690_Pejt9KxjWTHPklsKwripaxr0iA17zupF.jpg');
+    background-image: url('../assests/english.jpg');
 }
 .coding{
-    background-image: url('https://media.istockphoto.com/id/537331500/photo/programming-code-abstract-technology-background-of-software-deve.jpg?s=612x612&w=0&k=20&c=jlYes8ZfnCmD0lLn-vKvzQoKXrWaEcVypHnB5MuO-g8=');
+    background-image: url('../assests/coding.jpg');
 }
 .space{
-    background-image: url('https://t4.ftcdn.net/jpg/02/81/85/27/360_F_281852727_A4ThCn8oRJaq4l4YsAMBl28P3psm5iE5.jpg');
+    background-image: url('../assests/space.jpg');
 }
 .computers{
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqHJGygmrbVBsvocU0SykH93jO0tTuPpSEg&s');
+    background-image: url('../assests/computers.jpg');
 }
 .current_affairs{
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtd3v3rF5yAzSDqJEe75nmLl0wslm-vRdxtA&s');
+    background-image: url('../assests/currentaffairs.jpg');
 }
 .environment{
-    background-image: url('https://t3.ftcdn.net/jpg/03/23/82/94/360_F_323829465_RIB5fhIFOv5G2CAlBJ5lpsabhQlRVBbn.jpg');
+    background-image: url('../assests/environment.jpg');
 }
 .health{
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqHJGygmrbVBsvocU0SykH93jO0tTuPpSEg&s');
+    background-image: url('../assests/health.jpg');
+}
+.topics{
+    border-left: 4px solid rgb(12, 89, 107) !important;
+    transition: all;
+    transition-duration: 0.3s;
 }
