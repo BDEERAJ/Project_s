@@ -4,12 +4,13 @@ if (window.localStorage.getItem('totalcrt') == 0) {
 } else {
     let tq = parseInt(window.localStorage.getItem('totalqns'));
     let tc = parseInt(window.localStorage.getItem('totalcrt'));
-
     let percentage = (tq == 0) ? 0 : Math.floor((tc * 100) / tq);
+if(tc!==NaN){
 
     document.querySelector('.totalqns').innerHTML =(tq!=NaN)?`${tq}`:'0';
     document.querySelector('.totalqnscrt').innerHTML = (tc!==NaN)?`${tc}`:'0';
-    document.querySelector('.totalqnswarg').innerHTML = (percentage!=NaN)?`${percentage}%`:'0';
+    document.querySelector('.totalqnswarg').innerHTML = (percentage!=NaN)?`${percentage}`:'0';
+}
 }
 
 function menuHider() {

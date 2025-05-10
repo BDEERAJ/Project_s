@@ -82,7 +82,7 @@
 .img {
     width: clamp(80px, 80%, 500px);
     aspect-ratio: 10/6;
-    background-image: url("https://media.istockphoto.com/id/1210308970/photo/question-and-answer-bubble-chat.webp?s=2048x2048&w=is&k=20&c=IOVUC1rnFTGV0saetfCBwJyxKjpgA54XSpzOLO-fwYQ=");
+    background-image: url('../assests/main.jpg');
     background-size: cover;
     border-radius: 30px;
     box-shadow: 2px 2px 10px 5px gray;

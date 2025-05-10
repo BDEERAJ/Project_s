@@ -44,6 +44,9 @@
         width: 66vw;
         margin-left: 5vw;
         height: 70vh;
+        border-radius:8px ;
+        border-left: 9px 
+        solid rgb(21, 78, 152);
         background-color: rgb(254, 251, 251);
         padding: 10px;
 }

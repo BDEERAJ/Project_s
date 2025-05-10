@@ -1,46 +1,52 @@
-*{
+* {
     margin: 0px;
 }
-#main{
+
+#main {
     background-color: rgb(211, 214, 230);
     margin: 0px;
     height: fit-content;
     padding: 0px;
 }
-:root{
-    --bg-cl:2px solid;
+
+:root {
+    --bg-cl: 2px solid;
 }
+
 /* menubar code */
 
-.menu_list{
-    position:fixed;
+.menu_list {
+    position: fixed;
     z-index: 10;
     background-color: rgb(227, 200, 165);
     height: 95vh;
     left: -100%;
-    width: clamp(160px,40vw,270px);
+    width: clamp(160px, 40vw, 270px);
     border: 2px solid rgb(148, 163, 48);
     display: flex;
-    border-radius:5px;
-    box-shadow: -9px 1px 20px 0px black;   
+    border-radius: 5px;
+    box-shadow: -9px 1px 20px 0px black;
     flex-direction: column;
     transition: all;
     transition-duration: 1s;
     justify-content: space-between;
 }
-.activate{
+
+.activate {
     left: 0px;
     transition: all;
     transition-duration: 1s;
 }
-.menu_list h2{
+
+.menu_list h2 {
     position: relative;
     margin-bottom: 10px;
     height: fit-content;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
-    padding: 0px 8px 0px 7px ;
-    text-decoration: underline  black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0px 8px 0px 7px;
+    text-decoration: underline black;
 }
+
 .menu_list ul {
     background-color: rgb(227, 200, 165);
 
@@ -51,16 +57,17 @@
     justify-content: center;
     margin-left: 10%;
     font-weight: bold;
-    font-family: sans-serif;   
- }
-.menu_list ul li:hover{
+    font-family: sans-serif;
+}
+
+.menu_list ul li:hover {
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color:blue;
+    color: blue;
     cursor: pointer;
 }
 
-.menu_list footer{
+.menu_list footer {
     bottom: 20vw;
     width: 92%;
     background-color: rgb(237, 233, 228);
@@ -70,7 +77,8 @@
     text-align: center;
     display: inline-block;
 }
-.menu_list button{
+
+.menu_list button {
     font-weight: bolder;
     padding: 2px 10px 2px 10px;
     background-color: rgb(227, 200, 165);
@@ -79,32 +87,36 @@
     margin-bottom: 10px;
     margin-left: 35%;
 }
-.menu_topics{
-width: 85%;
-background-color: rgb(227, 200, 165);
-height: 50vh;
-border: 2px solid rgb(117, 105, 82);
-display: none;
+
+.menu_topics {
+    width: 85%;
+    background-color: rgb(227, 200, 165);
+    height: 50vh;
+    border: 2px solid rgb(117, 105, 82);
+    display: none;
 }
-a{
+
+a {
     text-decoration: none;
     color: black;
 }
+
 /* nav bar code */
-.topic h1{
+.topic h1 {
     width: fit-content;
     background-color: rgb(157, 206, 206);
     padding: 0px 12px 0px 12px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border:2px solid ;
+    border: 2px solid;
     height: fit-content;
     font-size: 26px;
     margin: 3px;
     border-radius: 8px;
     position: relative;
-  z-index: 4;
+    z-index: 4;
 }
-.topic .menu{
+
+.topic .menu {
     position: absolute;
     background-position: center;
     left: 10px;
@@ -118,16 +130,19 @@ a{
     font-size: clamp(24px, 5vw, 25px);
     background-color: aliceblue;
     display: inline;
-    height: clamp(30px,3vh,35px);
+    height: clamp(30px, 3vh, 35px);
     border: 2px solid blueviolet;
     cursor: pointer;
-    
+
 }
-.topic .menu:hover{
-    box-shadow: -1px 0px 9px 4px #5e6ed2;}
-.topic{
+
+.topic .menu:hover {
+    box-shadow: -1px 0px 9px 4px #5e6ed2;
+}
+
+.topic {
     margin: 4px;
-    height:fit-content;
+    height: fit-content;
     background-color: rgb(128, 100, 100);
     display: flex;
     justify-content: center;
@@ -137,10 +152,11 @@ a{
     top: -1px;
     z-index: 10;
 }
+
 /* From here status bar css code */
-.status{
-    height: clamp(120px,25vh,140px);
-    width: clamp(100px,60vw,400px);
+.status {
+    height: clamp(120px, 25vh, 140px);
+    width: clamp(100px, 60vw, 400px);
     margin: auto;
     margin-top: 10px;
     border: 2px solid rgb(218, 94, 218);
@@ -150,66 +166,72 @@ a{
     justify-content: space-between;
     position: relative;
     background-color: rgb(220, 223, 233);
-    box-shadow:0px 0px 5px 6px darkgray;
+    box-shadow: 0px 0px 5px 6px darkgray;
 }
-.status h2{
+
+.status h2 {
     text-decoration: underline blueviolet;
     background-color: rgb(20, 19, 17);
     width: fit-content;
     padding: 4px;
     border: var(--bg-cl);
     border-radius: 10px;
-    font-size: clamp(15px,4vw,20px);
+    font-size: clamp(15px, 4vw, 20px);
     position: relative;
     left: 10%;
     height: 20px;
     color: orangered;
 }
 
-.per{
+.per {
     background-color: transparent;
 }
-.bar{
+
+.bar {
     margin-right: 20vw;
     font-family: serif;
     font-weight: bolder;
-  display: flex;
-  gap: 9px;
-} 
+    display: flex;
+    gap: 9px;
+}
 
-.stats{
+.stats {
     background-color: transparent;
     position: absolute;
-left: 1vw;
+    left: 1vw;
     display: flex;
     gap: 10px;
     bottom: 20px;
 
 }
-.stats .statsnames p{
-background-color: transparent;
-font-size:19px;
-color: orange;
+
+.stats .statsnames p {
+    background-color: transparent;
+    font-size: 19px;
+    color: orange;
 }
+
 .stats .statsnames {
     margin-top: 15px;
     background-color: transparent;
-    }
-.menubar{
+}
+
+.menubar {
     height: 43px;
 }
+
 /* ---------from here the responsive css code for the topics content----- */
-    
-.Topic_all{
+
+.Topic_all {
     display: grid;
     grid-template-columns: 30vw 30vw 30vw;
-    grid-template-rows: 29vh 29vh 29vh 29vh  29vh ;
+    grid-template-rows: 29vh 29vh 29vh 29vh 29vh;
     justify-content: center;
     align-items: center;
     gap: 27px;
 }
 
-.img_t1{
+.img_t1 {
     padding: 3px;
     width: 98%;
     height: 55%;
@@ -218,7 +240,8 @@ color: orange;
     border-radius: 12px;
     background-size: cover;
 }
-.Topic_info{
+
+.Topic_info {
     border: 1px solid rgb(194, 194, 207);
     width: 160%;
     height: 70%;
@@ -229,21 +252,24 @@ color: orange;
     border-radius: 12px;
     background-color: lavender;
 }
-.Topic_info h3{
- font-family:monospace, 'Arial Narrow', Arial, sans-serif;
- text-align: center;
- text-transform: uppercase;
- background-color: lavender;
+
+.Topic_info h3 {
+    font-family: monospace, 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: lavender;
 
 }
-.Topic_info p{
-font-weight: 500;
-background-color: lavender;
 
-font-size: 12px;
-font-family:cursive,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.Topic_info p {
+    font-weight: 500;
+    background-color: lavender;
+
+    font-size: 12px;
+    font-family: cursive, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.Topic_all .topics{
+
+.Topic_all .topics {
     display: flex;
     border: 4px solid rosybrown;
     width: 98%;
@@ -252,146 +278,161 @@ font-family:cursive,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     height: 70%;
     box-shadow: 2px 1px 14px 0px olivedrab;
 }
-.Topic_all .topics:hover{
+
+.Topic_all .topics:hover {
     box-shadow: 2px 1px 14px 0px black;
     font-size: 16.5px;
 }
-@media only screen and (max-width:800px){
-    .Topic_all{
-    display: grid;
-    grid-template-columns: 33vw 33vw;
-    grid-template-rows: 40vh 40vh 40vh 40vh 40vh 40vh 40vh;
-    justify-content: center;
-    gap: 2vw;
-}
-.Topics:hover{
+
+@media only screen and (max-width:800px) {
+    .Topic_all {
+        display: grid;
+        grid-template-columns: 33vw 33vw;
+        grid-template-rows: 40vh 40vh 40vh 40vh 40vh 40vh 40vh;
+        justify-content: center;
+        gap: 2vw;
+    }
+
+    .Topics:hover {
         box-shadow: 2px 2px 5px 10px solid black;
-      } 
+    }
 
-.img_t1{
-    padding: 3px;
-    background-image: url("anime.png");
-    width: 90%;
-    height: 50%;
-    margin: auto;
-    background-size: cover;
-}
-.Topic_info{
-    width: 90%;
-    height: 40%;
-    margin-bottom: 1px;
-    margin: auto;
-    background-color: lavender;
-}
-.Topic_info h3{
- font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
- text-align: center;
- background-color: lavender;
+    .img_t1 {
+        padding: 3px;
+        background-image: url("anime.png");
+        width: 90%;
+        height: 50%;
+        margin: auto;
+        background-size: cover;
+    }
 
-}
-.Topic_info p{
-background-color: lavender;
-font-weight: 500;
-font-size: 12px;
-font-family: sans-serif;
-}
-.Topic_all .topics{
+    .Topic_info {
+        width: 90%;
+        height: 40%;
+        margin-bottom: 1px;
+        margin: auto;
+        background-color: lavender;
+    }
+
+    .Topic_info h3 {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: center;
+        background-color: lavender;
+
+    }
+
+    .Topic_info p {
+        background-color: lavender;
+        font-weight: 500;
+        font-size: 12px;
+        font-family: sans-serif;
+    }
+
+    .Topic_all .topics {
         display: flex;
         flex-direction: column;
-        width:80%;
+        width: 80%;
         background-color: #E3F2FD;
         border: 4px solid rosybrown;
         border-radius: 10px;
         height: 85%;
         box-shadow: 2px 1px 14px 0px olivedrab;
+    }
+
+    .Topic_all .topics:hover {
+        box-shadow: 2px 1px 14px 0px black;
+        font-size: 16.5px;
+        transform: translateY(-5px) !important;
+    }
 }
-.Topic_all .topics:hover{
-    box-shadow: 2px 1px 14px 0px black;
-    font-size: 16.5px;
-    transform:translateY(-5px) !important;
-}
-}
-@media only screen and (max-width:600px){
-    .Topic_all{
+
+@media only screen and (max-width:600px) {
+    .Topic_all {
         display: flex;
         flex-direction: column;
-    height: fit-content;
-    justify-content: center;
-    align-items: center;
-    gap: 27px;
+        height: fit-content;
+        justify-content: center;
+        align-items: center;
+        gap: 27px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+    }
+
+    .img_t1 {
+        padding: 3px;
+        background-image: url("anime.png");
+        width: 100px;
+        height: 70%;
+        margin: auto;
+        margin-left: 2%;
+        border-radius: 12px;
+        background-size: cover;
+    }
+
+    .Topic_info {
+        border: 1px solid rgb(194, 194, 207);
+        width: 100%;
+        height: 70px;
+        margin: auto;
+        padding: 3px;
+        margin-left: 2%;
+        margin-right: 2%;
+        border-radius: 12px;
+        background-color: lavender;
+    }
+
+    .Topic_info h3 {
+        font-family: monospace, 'Arial Narrow', Arial, sans-serif;
+        text-align: center;
+        background-color: lavender;
+    }
+
+    .Topic_info p {
+        font-weight: 500;
+        background-color: lavender;
+
+        font-size: 12px;
+        font-family: 'cursive', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .Topic_all .topics {
+        display: flex;
+        border: 4px solid rosybrown;
+        width: 80%;
+        padding: 2%;
+        background-color: #E3F2FD;
+        border-radius: 10px;
+        height: 100px;
+        box-shadow: 2px 1px 14px 0px olivedrab;
+        flex-direction: row;
+    }
+
+    .Topic_all .topics:hover {
+        box-shadow: 2px 1px 14px 0px black;
+    }
 }
 
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
-}
-
-.img_t1{
-    padding: 3px;
-    background-image: url("anime.png");
-    width: 100px;
-    height: 70%;
-    margin: auto;
-    margin-left: 2%;
-    border-radius: 12px;
-    background-size:cover;
-}
-.Topic_info{
-    border: 1px solid rgb(194, 194, 207);
-    width: 100%;
-    height: 70px;
-    margin: auto;
-    padding: 3px;
-    margin-left: 2%;
-    margin-right: 2%;
-    border-radius: 12px;
-    background-color: lavender;
-}
-.Topic_info h3{
- font-family:monospace, 'Arial Narrow', Arial, sans-serif;
- text-align: center;
- background-color: lavender;
-}
-.Topic_info p{
-font-weight: 500;
-background-color: lavender;
-
-font-size: 12px;
-font-family:'cursive','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.Topic_all .topics{
-          display: flex;
-            border: 4px solid rosybrown;
-            width: 80%;
-            padding: 2%;
-            background-color: #E3F2FD;
-            border-radius: 10px;
-            height: 100px;
-            box-shadow: 2px 1px 14px 0px olivedrab;
-            flex-direction: row;
-}
-.Topic_all .topics:hover{
-    box-shadow: 2px 1px 14px 0px black;
-}
-}
-.topics_maindiv{
+.topics_maindiv {
     margin-top: 20px;
 }
 
-#endfooter{
+#endfooter {
     padding: 5px;
     border-radius: 6px;
     margin: 2px;
@@ -401,52 +442,116 @@ font-family:'cursive','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-seri
     width: 95vw;
     background-color: white;
 }
-.science{
+
+.science {
     background-image: url('../assests/science.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.history{
+
+.history {
     background-image: url('../assests/history.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.geography{
+
+.geography {
     background-image: url('../assests/geography.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.technology{
+
+.technology {
     background-image: url('../assests/technology.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.sports{
+
+.sports {
     background-image: url('../assests/sports.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.literature{
+
+.literature {
     background-image: url('../assests/literature.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.math{
+
+.math {
     background-image: url('../assests/math.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.music{
+
+.music {
     background-image: url('../assests/music.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.english{
+
+.english {
     background-image: url('../assests/english.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.coding{
+
+.coding {
     background-image: url('../assests/coding.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.space{
+
+.space {
     background-image: url('../assests/space.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.computers{
-    background-image: url('../assests/computers.jpg');
+
+.computers {
+    background-image: url('../assests/computer.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.current_affairs{
+
+.current_affairs {
     background-image: url('../assests/currentaffairs.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.environment{
+
+.environment {
     background-image: url('../assests/environment.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.health{
+
+.health {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     background-image: url('../assests/health.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.topics{
+
+.topics {
     border-left: 4px solid rgb(12, 89, 107) !important;
     transition: all;
     transition-duration: 0.3s;
