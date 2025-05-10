@@ -35,10 +35,10 @@ function exiter(a=0){
     window.localStorage.setItem('totalqns',tpt);  
     window.localStorage.setItem('totalcrt',totcrt);
     if(a==1){
-        window.location.href='startPage1.html';
+        window.location.href='../TopicSelectionPage/startPage1.html';
     }   
     else{ 
-       window.location.href='result.html';
+       window.location.href='../ResultPage/result.html';
     }
        alert('stop the game')
 }
