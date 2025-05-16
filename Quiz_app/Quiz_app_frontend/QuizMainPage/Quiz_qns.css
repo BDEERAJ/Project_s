@@ -61,7 +61,9 @@
     margin-top: 10px;
     position: relative;
     overflow-y: scroll;
-    height: 8vh;
+    height: fit-content;
+    margin-bottom: 5px;
+    max-height: 10vh;
 }
 .main2>.answr .ans{
     border: 2px solid black;
