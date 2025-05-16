@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 express.use(cors());
 express.use(a.json());
 
-const dbs = mongoose.connect('mongodb://localhost:27017/trymongo').then(() => {
+const dbs = mongoose.connect('mongodb+srv://bdeeraj082:Deeraj12345@quizcluster.azzkheg.mongodb.net/Quiz?retryWrites=true&w=majority').then(() => {
     console.log("MongoDB connected");
 }).catch((err) => {
     console.error("MongoDB connection error:", err);

@@ -28,20 +28,37 @@ setTimeout(async () => {
     }).catch((e)=>{
     })
 }, 0);
-function exiter(a=0){
-    window.localStorage.setItem('points',totpoints)
-    let tpt=parseInt(window.localStorage.getItem('totalqns'))+attemptedqns;
-    let totcrt=parseInt(window.localStorage.getItem('totalcrt'))+totpoints;
-    window.localStorage.setItem('totalqns',tpt);  
-    window.localStorage.setItem('totalcrt',totcrt);
-    if(a==1){
-        window.location.href='../TopicSelectionPage/startPage1.html';
-    }   
-    else{ 
-       window.location.href='../ResultPage/result.html';
+function exiter(a = 0) {
+    window.localStorage.setItem('points', totpoints);
+
+    // Parse the stored values and handle NaN properly
+    let storedTotalQns = parseInt(window.localStorage.getItem('totalqns'));
+    let storedTotalCrt = parseInt(window.localStorage.getItem('totalcrt'));
+
+    if (isNaN(storedTotalQns)) {
+        storedTotalQns = 0;
     }
-       alert('stop the game')
+    if (isNaN(storedTotalCrt)) {
+        storedTotalCrt = 0;
+    }
+
+    let tpt = storedTotalQns + attemptedqns;
+    let totcrt = storedTotalCrt + totpoints;
+
+    window.localStorage.setItem('totalqns', tpt);
+    window.localStorage.setItem('totalcrt', totcrt);
+
+    console.log(window.localStorage.getItem('totalqns') + " / " + window.localStorage.getItem('totalcrt'));
+
+    if (a == 1) {
+        window.location.href = '../TopicSelectionPage/startPage1.html';
+    } else {
+        window.location.href = '../ResultPage/result.html';
+    }
+
+    alert('stop the game');
 }
+
 const timer=()=>{
     let s=0
     let m=15;
