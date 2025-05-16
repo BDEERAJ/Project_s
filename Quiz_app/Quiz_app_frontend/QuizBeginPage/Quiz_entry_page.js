@@ -1,17 +1,18 @@
  function loader(){
  const top=window.localStorage.getItem('topic')
  console.log(top);
- fetch(`https://quiz-web-ujwh.onrender.com/quiz/${top}`,{
+ fetch(`https://quiz-web-ujwh.onrender.com/${top}`,{
     method:"GET",
     headers:{
     'content-type':"application/json"
     }
 }).then((e)=>{
-  return e.json()
+  return e.json();
   }).then((e)=>{
  const context=e.content;
  const link =e.url;
  document.querySelector('.info').innerHTML=`${context}`;
+ console.log(link+"linkkk");
  document.querySelector('.Quiz_begin_main_img').style.backgroundImage = `url('${link}')`;
 }).catch((e) => {
   document.querySelector('.info').innerHTML=`Error`;
