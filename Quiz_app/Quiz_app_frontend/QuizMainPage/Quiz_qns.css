@@ -150,7 +150,8 @@ background-color:aqua;
     color: blueviolet;
     font-weight: bolder;
     cursor: pointer;
-    font-size: 18px;
+    border: 2px solid blueviolet;
+    background-color: linear-gradient(to right, #4f1325, #1d2b64) !important;
 }
 .more_info:active{
     background-color: #f1f1f1;
