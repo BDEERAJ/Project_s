@@ -2,7 +2,8 @@
   if (!topic) {
     topic='technology'
   }
-
+   
+   document.querySelector('.header').innerHTML=`${topic}:`;
   function data() {
     fetch(`https://quiz-web-ujwh.onrender.com/content:${topic}`, {
       method: 'GET',
