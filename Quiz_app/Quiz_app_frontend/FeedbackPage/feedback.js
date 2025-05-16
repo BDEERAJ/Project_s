@@ -2,7 +2,7 @@ function submit() {
     const a = document.querySelector('#rev').value;
     
     if (a !== null && a.trim() !== "") {
-      fetch('http://localhost:3000/feedback', {
+      fetch('https://quiz-web-ujwh.onrender.com/feedback', {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'

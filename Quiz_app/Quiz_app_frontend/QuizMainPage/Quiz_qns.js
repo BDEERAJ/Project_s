@@ -12,7 +12,7 @@ document.querySelectorAll(".ans").forEach(e=>{
 const topic=window.localStorage.getItem('topic');
 console.log(topic);
 setTimeout(async () => {
-    await fetch(`http://localhost:3000/quiz/${topic}Questions`,
+    await fetch(`https://quiz-web-ujwh.onrender.com/quiz/${topic}Questions`,
         {method:'GET',
              headers:{
             'content-type':'application/json'
@@ -95,7 +95,7 @@ function updater(){
     if(attemptedqns>=10){
 exiter();
     }
-    let questionNumber=Math.floor((Math.random()*30)+1);
+    let questionNumber=Math.floor((Math.random()*29)+1);
     let answerArray=[];
     currentquestion=question[questionNumber];
     currentanswer=answer[questionNumber];

@@ -1,7 +1,7 @@
  function loader(){
  const top=window.localStorage.getItem('topic')
  console.log(top);
- fetch(`http://localhost:3000/${top}`,{
+ fetch(`https://quiz-web-ujwh.onrender.com/quiz/${top}`,{
     method:"GET",
     headers:{
     'content-type':"application/json"

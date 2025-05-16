@@ -1,7 +1,7 @@
 let topic=window.localStorage.getItem('topic');
 
 function data(){
-fetch(`http://localhost:3000/content:${topic}`,{
+fetch(`https://quiz-web-ujwh.onrender.com/content:${topic}`,{
     method:'GET',
     headers:{
     'content-type':'application/json'
