@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import GoalSelector from "./components/GoalSelector";
 import Plan from "./components/plan";
 import Workout from "./components/workout";
-import '../App.css';
+import './App.css';
 
 function App() {
   return (
