@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import "../styles/Plan.css";
+import "../styles/plan.css";
 
 const allPlans = {
   "Weight Loss": {
