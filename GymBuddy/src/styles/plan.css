@@ -1,0 +1,66 @@
+.plan-page {
+    padding: 2rem;
+    min-height: 100vh;
+    background: linear-gradient(to right, #1b0303, #2c3e50);
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .plan-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 2rem;
+  }
+  
+  .plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  @media (min-width: 900px) {
+.plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 1.5rem;
+  }
+      }
+    
+  .plan-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(6px);
+  }
+  
+  .plan-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .day-name {
+    font-size: 1.4rem;
+    color: #f7c948;
+    margin-bottom: 1rem;
+  }
+  
+  .exercise-name {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .exercise-info {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  @media (max-width: 600px) {
+    .plan-card {
+      padding: 1rem;
+    }
+    .day-name {
+      font-size: 1.2rem;
+    }
+  }
+  
