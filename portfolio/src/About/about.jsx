@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css';
+import './about.css';
 
 const achievements = [
   { title: 'Solved 100+ Problems on Leetcode in DSA', year: '2025' },
