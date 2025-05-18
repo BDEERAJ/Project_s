@@ -16,21 +16,20 @@ padding: clamp(10px,4vw,20px);
   }
   
   .contact-section p {
-    font-size: 1.2rem;
-    color: #555;
+    font-size: clamp(12px,2vw,15px);
+    color: #0f0c0c;
     margin-bottom: 2rem;
   }
   
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-  }
+  
   
   .contact-link {
-    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(12px,3vw,15px);
     color: #0077cc;
     text-decoration: none;
+    gap: 8px;
     font-weight: bold;
   }
   

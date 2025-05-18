@@ -13,7 +13,7 @@ const About = () => {
       <p>
         Hello! I’m a passionate developer with experience in web development, 
         including the MERN stack (MongoDB, Express, Node.js, and React). I’ve worked on 
-        several projects, including QuizPlay, where I implemented various technologies like 
+        few projects, including QuizPlay, where I implemented various technologies like 
         HTML, CSS, and JavaScript. I love solving problems and constantly strive to improve my coding skills.
       </p>
       

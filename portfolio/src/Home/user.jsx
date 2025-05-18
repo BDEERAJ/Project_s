@@ -1,10 +1,8 @@
 import './user.css'
-import Navbar from './nav.jsx';
 
 function User() {
     return (
         <>
-            <Navbar/>
             <div className="main">
                 <div className="info">
                     <h2>Deeraj</h2>

@@ -1,7 +1,7 @@
 .about-section {
   width: 80vw;
   padding: clamp(10px,4vw,20px);
-margin: auto;
+  margin: auto;
   background-color: #f7f7f7;
   text-align: center;
 }
