@@ -26,10 +26,6 @@ const About = () => {
           </li>
         ))}
       </ul>
-
-      <a href="/path/to/your/resume.pdf" target="_blank" rel="noopener noreferrer">
-        <button className="resume-button">View My Resume</button>
-      </a>
     </section>
   );
 };
