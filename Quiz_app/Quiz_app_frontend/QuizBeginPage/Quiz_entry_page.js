@@ -12,7 +12,6 @@
  const context=e.content;
  const link =e.url;
  document.querySelector('.info').innerHTML=`${context}`;
- console.log(link+"linkkk");
  document.querySelector('.Quiz_begin_main_img').style.backgroundImage = `url('${link}')`;
 }).catch((e) => {
   document.querySelector('.info').innerHTML=`Error`;

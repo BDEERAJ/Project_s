@@ -109,6 +109,6 @@ exiter();
     document.querySelectorAll('.ans').forEach((e)=>{        
         e.innerHTML=`${answerArray[num++]}`;
     },num)
-    document.querySelector(".selansbox").innerHTML=`Choose One`;
+    document.querySelector(".selansbox").innerHTML=`Selected Answer`;
     attemptedqns++;
 }

@@ -137,7 +137,7 @@ a {
 }
 
 .topic .menu:hover {
-    box-shadow: -1px 0px 9px 4px #5e6ed2;
+    border: 2px solid violet;
 }
 
 .topic {
