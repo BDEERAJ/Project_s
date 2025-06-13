@@ -13,14 +13,12 @@ if(token){
             }
         }).then(e=>e.json()).then(e=>{  
             document.querySelector('.name').innerHTML=`${e.username}`;
-                window.localStorage.setItem('email',e.email);
-               if(e.correct!=0){
+            window.localStorage.setItem('email',e.email);
             window.localStorage.setItem('totalqns',e.total);
            window.localStorage.setItem('totalcrt',e.correct);
-           document.querySelector('.totalqns').innerHTML=`${e.total}` ;
+          document.querySelector('.totalqns').innerHTML=`${e.total}` ;
           document.querySelector('.totalqnscrt').innerHTML=`${e.correct}`;
           document.querySelector('.totalqnswarg').innerHTML=`${(e.correct==0)?0:Math.floor(((e.correct*100)/e.total))}%`
-               }
             }
     )}
     catch{

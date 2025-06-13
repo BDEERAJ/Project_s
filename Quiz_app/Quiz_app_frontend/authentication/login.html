@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="auth.css" />
 </head>
 <body>
+  
   <div class="Login_main">
     <div class="Login">
       <h1>Login</h1>
@@ -15,15 +16,22 @@
       <label for="pswd">Password:</label>
       <input type="text" id="pswd" placeholder="Enter your Password" />
       <button class="Login_Submit" id="submitBtn">Submit</button>
+      <div id="spinner" class="spinner" style="display: none;"></div>
     </div>
   </div>
 
   <script>
-    document.getElementById('submitBtn').addEventListener('click', () => {
+    const submitBtn = document.getElementById('submitBtn');
+    const spinner = document.getElementById('spinner');
+
+    submitBtn.addEventListener('click', () => {
       const emailValue = document.getElementById('Email').value;
       const pswdValue = document.getElementById('pswd').value;
 
       if (emailValue && pswdValue) {
+        spinner.style.display = 'block';
+        submitBtn.disabled = true;
+
         fetch('https://quiz-web-ujwh.onrender.com/api/login', {
           method: 'POST',
           headers: {
@@ -36,9 +44,7 @@
         })
         .then(res => res.json())
         .then(data => {
-          if (data.message) {
-            alert(data.message);
-          }
+          alert(data.message || 'Login successful!');
           if (data.token && data.token !== '') {
             localStorage.setItem('token', data.token);
             window.location.href='../TopicSelectionPage/startPage1.html';
@@ -47,6 +53,10 @@
         .catch(err => {
           console.error(err);
           alert('Login failed.');
+        })
+        .finally(() => {
+          spinner.style.display = 'none';
+          submitBtn.disabled = false;
         });
       } else {
         alert("Please fill all fields");

@@ -23,35 +23,40 @@
       <input type="text" id="pswd2" placeholder="Re-enter your Password"/>
 
       <button class="Login_Submit" id="submitBtn">Submit</button>
+      <div id="spinner" class="spinner" style="display: none;"></div>
     </div>
   </div>
 
   <script>
-    document.getElementById('submitBtn').addEventListener('click', () => {
+    const submitBtn = document.getElementById('submitBtn');
+    const spinner = document.getElementById('spinner');
+
+    submitBtn.addEventListener('click', () => {
       const email = document.getElementById('Email').value.trim();
       const pswd = document.getElementById('pswd').value.trim();
       const pswd2 = document.getElementById('pswd2').value.trim();
-      const UN = document.getElementById('UN').value;
+      const UN = document.getElementById('UN').value.trim();
 
       if (pswd !== pswd2) {
         alert('Password does not match re-entered password');
         return;
       }
 
-      if (!email || !pswd ||!UN) {
+      if (!email || !pswd || !UN) {
         alert("Please fill all fields");
         return;
       }
 
-      console.log(email, pswd);
-    
-      fetch('https://quiz-web-ujwh.onrender.com/api/register', {
+      submitBtn.disabled = true;
+      spinner.style.display = 'block';
+
+      fetch('http://localhost:3000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          username:UN, 
+          username: UN,
           email: email,
           password: pswd
         })
@@ -60,9 +65,9 @@
       .then(data => {
         console.log(data);
         if (data.message) {
-          if(data.token){
-            window.localStorage.setItem('token',data.token)
-            window.location.href='../TopicSelectionPage/startPage1.html';
+          if (data.token) {
+            localStorage.setItem('token', data.token);
+            window.location.href = '../TopicSelectionPage/startPage1.html';
           }
           alert(data.message);
         }
@@ -70,6 +75,10 @@
       .catch(err => {
         console.error(err);
         alert("Registration failed.");
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        spinner.style.display = 'none';
       });
     });
   </script>
