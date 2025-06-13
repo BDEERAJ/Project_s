@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +16,9 @@
                         <ul>
                             <li onclick="window.location.href='../index.html'">Home</li>
                             <li> <a href="#topicspage" onclick="menuHider()"> Topics</a></li>
-                            <div class="menu_topics">
-                                <ol>
-                                    <!-- <li>here you should use java script</li> -->
-                                </ol>
-                            </div>
                             <li onclick="window.location.href='../FeedbackPage/feedback.html'">Feedback</li>
+                            <li onclick="logout()">Logout</li>
+                            <li onclick="darkmode()">Dark_Mode</li>
                         </ul>
                     </div>
                     <div>
@@ -39,9 +35,8 @@
         </div>
 
         <div class="status">
-
             <h2>StatusBoard:</h2>
-            <!-- <h2>im leaving this beacuse you should dynamically use this to say welcome username</h2> -->
+            <h3 class="name">Unknown user</h3>
             <div class="stats">
                 <div class="statsnames">
                     <div class="per">

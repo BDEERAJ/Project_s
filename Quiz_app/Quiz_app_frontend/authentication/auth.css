@@ -1,0 +1,75 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+.Login_main{
+    background-color: rgb(253, 253, 253);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Login{
+    padding: 6vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 35vw;
+    height: fit-content;
+    border: 1px solid white;
+    border-left: 5px solid rgb(112, 112, 128);
+    border-radius: 10px;
+    box-shadow: 0px 1px 8px 8px rgb(183, 171, 151);
+    background-color: white;
+}
+.Login>label{
+    margin: 0px 20% ;
+    color: black;
+}
+.Login>h1{
+    border-bottom: 1px solid rgb(30, 8, 232);
+    margin: auto;
+    padding: 2px;
+    border-radius: 5px;
+    margin-bottom: 1vh;
+    font-size: clamp(2px,3vw,25px);
+    color: rgb(30, 8, 232);
+}
+.Login>input{
+    padding: 5px;
+    border-radius: 3px;
+    background-color: rgb(251, 249, 249);
+    border: 1px solid black;
+    font-size: clamp(10px,2vw,15px);
+        margin: 0px auto ;
+    color: black;
+    font-weight: bold;
+    width: 60%;
+}
+.Login>button{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: rgb(197, 194, 189);
+    color: rgb(22, 18, 18);
+    font-size: clamp(10px,2vw,15px);
+    cursor: pointer;
+     width: 40%;
+     margin:  0px auto;
+     margin-top: 2vh;
+
+}
+.Login>button:hover{
+    background-color: rgb(30, 8, 232);
+    color: white;
+}
+.Login>button:active{
+    background-color: rgb(22, 18, 18);
+    color: white;
+}
+.Login>input:hover{
+    background-color:rgb(237, 235, 235);
+    cursor:text;
+}

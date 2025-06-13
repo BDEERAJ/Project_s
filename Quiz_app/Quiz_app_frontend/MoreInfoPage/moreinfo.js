@@ -3,7 +3,7 @@
     topic='technology'
   }
    
-   document.querySelector('.header').innerHTML=`${topic}:`;
+   document.querySelector('.header').innerHTML=`Topic :${topic}`;
   function data() {
     fetch(`https://quiz-web-ujwh.onrender.com/content:${topic}`, {
       method: 'GET',
@@ -28,3 +28,15 @@
   document.addEventListener('DOMContentLoaded', () => {
     data();
   });
+if(window.localStorage.getItem('darkmode')=='on'){
+const style = document.createElement('style');
+style.innerHTML = `
+  * {
+    background-color: rgb(12, 12, 12) !important;
+    color: white !important;
+    border-color: orange !important;
+    box-shadow: 0px 0px 0px 0px black !important;
+  }
+`;
+document.head.insertAdjacentElement('beforeend', style);
+}

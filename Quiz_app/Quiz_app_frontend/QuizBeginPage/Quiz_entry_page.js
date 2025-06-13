@@ -1,22 +1,28 @@
- function loader(){
- const top=window.localStorage.getItem('topic')
- console.log(top);
- fetch(`https://quiz-web-ujwh.onrender.com/${top}`,{
-    method:"GET",
-    headers:{
-    'content-type':"application/json"
+function loader() {
+  const top = window.localStorage.getItem('topic');
+  console.log(top);
+
+  fetch(`https://quiz-web-ujwh.onrender.com/${top}`, {
+    method: "GET",
+    headers: {
+      'content-type': "application/json"
     }
-}).then((e)=>{
-  return e.json();
-  }).then((e)=>{
- const context=e.content;
- const link =e.url;
- document.querySelector('.info').innerHTML=`${context}`;
- document.querySelector('.Quiz_begin_main_img').style.backgroundImage = `url('${link}')`;
-}).catch((e) => {
-  document.querySelector('.info').innerHTML=`Error`;
-});
- }
+  }).then((e) => {
+    return e.json();
+  }).then((e) => {
+    const context = e.content;
+    const link = e.url;
+    document.querySelector('.info').innerHTML = `${context}`;
+    document.querySelector('.Quiz_begin_main_img').style.backgroundImage = `url('${link}')`;
+
+    document.getElementById("loader").style.display = "none";
+    document.querySelector(".Quiz_begin_page").style.display = "block";
+  }).catch((e) => {
+    document.querySelector('.info').innerHTML = `Error`;
+    document.getElementById("loader").innerText = "Failed to load.";
+  });
+}
+
  loader();
 function timerStr(){
     document.querySelector(".timerstr").classList.remove("Quiz_begin_page_hidder");
@@ -34,4 +40,15 @@ function timerStr(){
     }, 700);
     }
 
-    
+    if(window.localStorage.getItem('darkmode')=='on'){
+const style = document.createElement('style');
+style.innerHTML = `
+  * {
+    background-color: rgb(12, 12, 12) !important;
+    color: white !important;
+    border-color: orange !important;
+    box-shadow: 0px 0px 0px 0px black !important;
+  }
+`;
+document.head.insertAdjacentElement('beforeend', style);
+}

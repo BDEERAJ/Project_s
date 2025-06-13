@@ -1,106 +1,193 @@
-let a = require('express');
-const express = a();
+const express = require('express');
+const app = express();
 const cors = require('cors');
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-express.use(cors());
-express.use(a.json());
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-const dbs = mongoose.connect('mongodb+srv://bdeeraj082:Deeraj12345@quizcluster.azzkheg.mongodb.net/Quiz?retryWrites=true&w=majority').then(() => {
-    console.log("MongoDB connected");
-}).catch((err) => {
-    console.error("MongoDB connection error:", err);
-});
+mongoose.connect('mongodb+srv://bdeeraj082:Deeraj12345@quizcluster.azzkheg.mongodb.net/Quiz?retryWrites=true&w=majority');
 
+const User = mongoose.model('User', new mongoose.Schema({
+  username: String,
+  email: { type: String, unique: true },
+  password: String
+}));
+const points = mongoose.model('points', new mongoose.Schema({ email: String, total: Number, correct: Number }));
 const db = mongoose.model('db', { topic: String, content: String }, 'content_dbs');
 const moreinfos = mongoose.model('moreinfos', { topic: String, content: String }, 'moreinfos');
 const fd = mongoose.model('fd', { rev: String }, 'feedback');
 
-express.listen(3000, (error) => {
-    if (error) console.error("Server error:", error);
-    else console.log('Server running on port 3000');
+// JWT Helper
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET || 'secret', { expiresIn: '1d' });
+};
+
+// Auth Middleware
+const authMiddleware = (req, res, next) => {
+  const token = req.headers['authorization'];
+  if (!token) return res.status(401).json({ message: 'No token provided' });
+
+  jwt.verify(token, process.env.JWT_SECRET || 'secret', (err, decoded) => {
+    if (err) return res.status(401).json({ message: 'Invalid token' });
+    req.userId = decoded.id;
+    next();
+  });
+};
+
+// Routes
+
+// Register
+app.post('/api/register', async (req, res) => {
+  const { username, email, password } = req.body;
+  if (!username || !email || !password)
+    return res.status(400).json({ message: 'All fields are required' });
+
+  if (!/@gmail\.com$/.test(email))
+    return res.status(400).json({ message: 'Email must be a valid Gmail address' });
+
+  try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser)
+      return res.status(400).json({ message: 'User already exists' });
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = await User.create({ username, email, password: hashedPassword });
+    const token = generateToken(newUser._id);
+
+    res.status(201).json({ message: 'User registered successfully', token, userId: newUser._id });
+  } catch {
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
-// Feedback Route
-express.put('/feedback', (req, res) => {
-    let str = req.body;
-    let con = str['rev'];
+// Login
+app.post('/api/login', async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password)
+    return res.status(400).json({ message: 'Email and password are required' });
 
-    async function c() {
-        try {
-            let fd2 = new fd({ 'rev': `${con}` });
-            await fd2.save();
-            res.status(200).send({ message: "Feedback saved" });
-        } catch (err) {
-            console.error("Feedback error:", err);
-            res.status(500).send({ error: "Failed to save feedback" });
-        }
+  try {
+    const user = await User.findOne({ email });
+    if (!user || !(await bcrypt.compare(password, user.password)))
+      return res.status(400).json({ message: 'Invalid credentials' });
+
+    const token = generateToken(user._id);
+    res.status(200).json({ message: 'Login successful', token, userId: user._id });
+  } catch {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Update Points
+app.put('/result/points', async (req, res) => {
+  try {
+    const { email, tot, crt } = req.body;
+
+    if (!email || tot == null || crt == null) {
+      return res.status(400).json({ message: 'Missing required fields' });
     }
-    c();
-});
 
-// Content & MoreInfo Route
-express.get('/:slug', (req, res) => {
-    const tpc = req.params.slug;
-    let arr = tpc.split(':');
+    let user = await points.findOne({ email });
 
-    if (arr[0] == 'content' && arr.length > 1) {
-        const fun2 = async function () {
-            try {
-                const obj = await moreinfos.findOne({ 'topic': `${arr[1]}` });
-                if (obj != null) {
-                    res.send(obj);
-                } else {
-                    res.status(404).send({ message: "Moreinfo not found" });
-                }
-            } catch (err) {
-                console.error(err);
-                res.status(500).send({ error: "Error retrieving moreinfo" });
-            }
-        };
-        fun2();
+    if (user) {
+      await points.updateOne(
+        { email },
+        { $set: { total: parseInt(user.total) + parseInt(tot), correct: parseInt(user.correct) + parseInt(crt) } }
+      );
     } else {
-        const fun = async function () {
-            try {
-                const obj = await db.findOne({ 'topic': `${tpc}` });
-                if (obj != null) {
-                    res.send(obj);
-                } else {
-                    res.status(404).send({ message: "Content not found" });
-                }
-            } catch (err) {
-                console.error(err);
-                res.status(500).send({ error: "Error retrieving content" });
-            }
-        };
-        fun();
+      await points.create({ email, total: tot, correct: crt });
     }
+
+    res.status(200).json({ message: "Points updated successfully" });
+  } catch {
+    res.status(500).json({ error: "Server Error" });
+  }
 });
 
-// Quiz Data Route
-express.get('/quiz/:slug', (req, res) => {
-    console.log(req.params.slug);
-    const collectionName = req.params.slug;
+// Profile
+app.get('/api/profile', authMiddleware, async (req, res) => {
+  try {
+    const u = await User.findById(req.userId);
+    if (!u) return res.status(404).json({ message: 'User not found' });
 
-    const fun = async function () {
-        try {
-            const quiz =
-                mongoose.models[`${collectionName}`] ||
-                mongoose.model(`${collectionName}`, {
-                    question: String,
-                    answer: String
-                }, `${collectionName}`);
+    const email = u.email;
+    let user = await points.findOne({ email });
 
-            const data = await quiz.find({});
-            if (data != null) {
-                res.json(data);
-            } else {
-                res.status(404).send({ message: "No quiz data found" });
-            }
-        } catch (err) {
-            console.error(err);
-            res.status(500).send({ error: "Error fetching quiz data" });
-        }
-    };
-    fun();
+    if (user) {
+      return res.json({
+        message: `Welcome user ${req.userId}`,
+        email,
+        username: u.username,
+        total: parseInt(user.total),
+        correct: parseInt(user.correct)
+      });
+    } else {
+      await points.create({ email, total: 0, correct: 0 });
+      return res.json({
+        message: `Welcome user ${req.userId}`,
+        username: u.username,
+        total: 0,
+        correct: 0
+      });
+    }
+  } catch {
+    res.status(500).json({ message: 'Server error' });
+  }
 });
+
+// Feedback
+app.put('/feedback', async (req, res) => {
+  const { rev } = req.body;
+  try {
+    const newFeedback = new fd({ rev });
+    await newFeedback.save();
+    res.status(200).send({ message: 'Feedback saved' });
+  } catch {
+    res.status(500).send({ error: 'Failed to save feedback' });
+  }
+});
+
+// Content & MoreInfo
+app.get('/:slug', async (req, res) => {
+  const tpc = req.params.slug;
+  let arr = tpc.split(':');
+
+  try {
+    if (arr[0] === 'content' && arr.length > 1) {
+      const obj = await moreinfos.findOne({ topic: arr[1] });
+      if (obj) return res.send(obj);
+      else return res.status(404).send({ message: 'Moreinfo not found' });
+    } else {
+      const obj = await db.findOne({ topic: tpc });
+      if (obj) return res.send(obj);
+      else return res.status(404).send({ message: 'Content not found' });
+    }
+  } catch {
+    res.status(500).send({ error: 'Error retrieving content' });
+  }
+});
+
+// Quiz Data
+app.get('/quiz/:slug', async (req, res) => {
+  const collectionName = req.params.slug;
+  try {
+    const QuizModel = mongoose.models[collectionName] || mongoose.model(collectionName, {
+      question: String,
+      answer: String
+    }, collectionName);
+
+    const data = await QuizModel.find({});
+    if (data) res.json(data);
+    else res.status(404).send({ message: 'No quiz data found' });
+  } catch {
+    res.status(500).send({ error: 'Error fetching quiz data' });
+  }
+});
+
+// Start Server
+app.listen(3000);

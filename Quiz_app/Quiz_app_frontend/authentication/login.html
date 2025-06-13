@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+  <div class="Login_main">
+    <div class="Login">
+      <h1>Login</h1>
+      <label for="Email">Email ID:</label>
+      <input type="text" id="Email" placeholder="Enter your Email" />
+      <label for="pswd">Password:</label>
+      <input type="text" id="pswd" placeholder="Enter your Password" />
+      <button class="Login_Submit" id="submitBtn">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      const emailValue = document.getElementById('Email').value;
+      const pswdValue = document.getElementById('pswd').value;
+
+      if (emailValue && pswdValue) {
+        fetch('https://quiz-web-ujwh.onrender.com/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: emailValue,
+            password: pswdValue
+          })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.message) {
+            
+            if(data.token){
+            window.localStorage.setItem('token',data.token)
+            window.location.href='../TopicSelectionPage/startPage1.html';
+          }
+            alert(data.message);
+          }
+
+          console.log(data.token);
+
+          if (data.token && data.token !== '') {
+            // Redirect to profile with token (plain HTML can't pass state like React)
+            // Use query params or localStorage
+            localStorage.setItem('token', data.token);
+            window.location.href = './Profile.html'; // Adjust this if your profile file is different
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Login failed.');
+        });
+      } else {
+        alert("Please fill all fields");
+      }
+    });
+  </script>
+</body>
+</html>

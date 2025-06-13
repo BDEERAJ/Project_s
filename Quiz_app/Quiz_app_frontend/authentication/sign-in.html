@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign-Up</title>
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+  <div class="Login_main">
+    <div class="Login">
+      <h1>Sign-Up</h1>
+       <label for="UN">Username:</label>
+      <input type="text" id="UN" placeholder="Enter your username" />
+
+      <label for="Email">Email ID:</label>
+      <input type="text" id="Email" placeholder="Enter your Email"/>
+
+      <label for="pswd">Password:</label>
+      <input type="text" id="pswd" placeholder="Enter your Password"/>
+
+      <label for="pswd2">Re-enter Password:</label>
+      <input type="text" id="pswd2" placeholder="Re-enter your Password"/>
+
+      <button class="Login_Submit" id="submitBtn">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      const email = document.getElementById('Email').value.trim();
+      const pswd = document.getElementById('pswd').value.trim();
+      const pswd2 = document.getElementById('pswd2').value.trim();
+      const UN = document.getElementById('UN').value;
+
+      if (pswd !== pswd2) {
+        alert('Password does not match re-entered password');
+        return;
+      }
+
+      if (!email || !pswd ||!UN) {
+        alert("Please fill all fields");
+        return;
+      }
+
+      console.log(email, pswd);
+    
+      fetch('https://quiz-web-ujwh.onrender.com/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username:UN, 
+          email: email,
+          password: pswd
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.message) {
+          if(data.token){
+            window.localStorage.setItem('token',data.token)
+            window.location.href='../TopicSelectionPage/startPage1.html';
+          }
+          alert(data.message);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Registration failed.");
+      });
+    });
+  </script>
+</body>
+</html>

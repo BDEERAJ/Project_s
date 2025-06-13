@@ -1,12 +1,18 @@
 * {
     margin: 0px;
 }
+.Darkmode{
+    background-color: rgb(12, 12, 12) !important;
+    color: white !important;
+    border-color:orange !important;
+    box-shadow: 0px 0px 0px 0px black !important;
+}
 
 #main {
-    background-color: rgb(211, 214, 230);
     margin: 0px;
-    height: fit-content;
     padding: 0px;
+    height: fit-content;
+    background-color: rgb(249, 237, 226);
 }
 
 :root {
@@ -111,7 +117,7 @@ a {
     height: fit-content;
     font-size: 26px;
     margin: 3px;
-    border-radius: 8px;
+    border-radius: 4px;
     position: relative;
     z-index: 4;
 }
@@ -143,11 +149,11 @@ a {
 .topic {
     margin: 4px;
     height: fit-content;
-    background-color: rgb(128, 100, 100);
+    background-color: rgb(190, 35, 35);
     display: flex;
     justify-content: center;
     border: var(--bg-cl);
-    border-radius: 10px;
+    border-radius: 5px;
     position: sticky;
     top: -1px;
     z-index: 10;
@@ -155,8 +161,8 @@ a {
 
 /* From here status bar css code */
 .status {
-    height: clamp(120px, 25vh, 140px);
-    width: clamp(100px, 60vw, 400px);
+    height: clamp(120px, 36vh, 140px);
+    width: clamp(100px, 65vw, 400px);
     margin: auto;
     margin-top: 10px;
     border: 2px solid rgb(218, 94, 218);
@@ -225,7 +231,7 @@ a {
 .Topic_all {
     display: grid;
     grid-template-columns: 30vw 30vw 30vw;
-    grid-template-rows: 29vh 29vh 29vh 29vh 29vh;
+    grid-auto-rows: 40vh;
     justify-content: center;
     align-items: center;
     gap: 27px;
@@ -288,7 +294,7 @@ a {
     .Topic_all {
         display: grid;
         grid-template-columns: 33vw 33vw;
-        grid-template-rows: 40vh 40vh 40vh 40vh 40vh 40vh 40vh;
+    grid-auto-rows: 40vh;
         justify-content: center;
         gap: 2vw;
     }
@@ -555,4 +561,12 @@ a {
     border-left: 4px solid rgb(12, 89, 107) !important;
     transition: all;
     transition-duration: 0.3s;
+}
+.status h3{
+    position: absolute;
+    top:55%;
+    font-size: 1.4rem;
+     width: fit-content;
+     height: fit-content;
+    left: 60%;
 }

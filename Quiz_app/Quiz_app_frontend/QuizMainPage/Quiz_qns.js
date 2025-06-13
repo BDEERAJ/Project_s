@@ -1,3 +1,15 @@
+if(window.localStorage.getItem('darkmode')=='on'){
+const style = document.createElement('style');
+style.innerHTML = `
+  * {
+    background-color: rgb(12, 12, 12) !important;
+    color: white !important;
+    border-color: orange !important;
+    box-shadow: 0px 0px 0px 0px black !important;
+  }
+`;
+document.head.insertAdjacentElement('beforeend', style);
+}
 let question=[];
 let answer=[];
 let attemptedqns=0;

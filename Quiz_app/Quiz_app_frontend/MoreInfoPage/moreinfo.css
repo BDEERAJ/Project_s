@@ -12,8 +12,9 @@
     margin: auto;
     margin-top: 4vh;
     background-color: azure;
-    border: 4px solid brown;
+    border: 2px solid rgb(87, 54, 54);
     width: 95vw;
+    border-radius: 5px;
     height: 85vh;
 }
 .paracontent{
@@ -52,8 +53,8 @@
 } 
   
   h2{
+    margin-top: 5px;
     text-align: center;
-    display: inline;
     text-decoration: underline black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
