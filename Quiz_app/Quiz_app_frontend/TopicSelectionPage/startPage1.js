@@ -12,7 +12,8 @@ if(token){
              'authorization':token
             }
         }).then(e=>e.json()).then(e=>{  
-            document.querySelector('.name').innerHTML=`${e.username}`;
+            console.log(e.username);
+                        document.querySelector('.name').innerHTML=`${e.username}`;
             window.localStorage.setItem('email',e.email);
             window.localStorage.setItem('totalqns',e.total);
            window.localStorage.setItem('totalcrt',e.correct);
@@ -47,7 +48,6 @@ function logout(){
     document.querySelector('.totalqnscrt').innerHTML=`0`;
     document.querySelector('.totalqnswarg').innerHTML=`0`
     localStorage.clear();
-    window.location.reload();
     alert('Logged out successfully')
 }
 function darkmodeToggle(){
