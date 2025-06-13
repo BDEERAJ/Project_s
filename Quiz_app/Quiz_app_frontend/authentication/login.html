@@ -37,21 +37,11 @@
         .then(res => res.json())
         .then(data => {
           if (data.message) {
-            
-            if(data.token){
-            window.localStorage.setItem('token',data.token)
-            window.location.href='../TopicSelectionPage/startPage1.html';
-          }
             alert(data.message);
           }
-
-          console.log(data.token);
-
           if (data.token && data.token !== '') {
-            // Redirect to profile with token (plain HTML can't pass state like React)
-            // Use query params or localStorage
             localStorage.setItem('token', data.token);
-            window.location.href = './Profile.html'; // Adjust this if your profile file is different
+            window.location.href='../TopicSelectionPage/startPage1.html';
           }
         })
         .catch(err => {

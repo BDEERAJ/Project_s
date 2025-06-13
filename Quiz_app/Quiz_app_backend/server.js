@@ -119,7 +119,7 @@ app.get('/api/profile', authMiddleware, async (req, res) => {
     if (user) {
       return res.json({
         message: `Welcome user ${req.userId}`,
-        email,
+        email: email,
         username: u.username,
         total: parseInt(user.total),
         correct: parseInt(user.correct)

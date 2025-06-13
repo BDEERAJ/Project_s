@@ -12,7 +12,7 @@ if(token){
              'authorization':token
             }
         }).then(e=>e.json()).then(e=>{  
-                        document.querySelector('.name').innerHTML=`${e.username}`;
+            document.querySelector('.name').innerHTML=`${e.username}`;
             window.localStorage.setItem('email',e.email);
             window.localStorage.setItem('totalqns',e.total);
            window.localStorage.setItem('totalcrt',e.correct);
@@ -48,6 +48,7 @@ function logout(){
     document.querySelector('.totalqnswarg').innerHTML=`0`
     localStorage.clear();
     alert('Logged out successfully')
+    window.location.reload();
 }
 function darkmodeToggle(){
      window.localStorage.setItem('darkmode','on');
