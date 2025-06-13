@@ -12,7 +12,6 @@ if(token){
              'authorization':token
             }
         }).then(e=>e.json()).then(e=>{  
-            console.log(e.username);
                         document.querySelector('.name').innerHTML=`${e.username}`;
             window.localStorage.setItem('email',e.email);
             window.localStorage.setItem('totalqns',e.total);
