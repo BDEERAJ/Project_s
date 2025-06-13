@@ -9,7 +9,7 @@ require('dotenv').config();
 // Middleware
 app.use(cors());
 app.use(express.json());
-mongoose.connect(process.env.Mongo_url);
+mongoose.connect(`${process.env.MONGO_URL}`);
 const User = mongoose.model('User', new mongoose.Schema({
   username: String,
   email: { type: String, unique: true },
@@ -22,7 +22,7 @@ const fd = mongoose.model('fd', { rev: String }, 'feedback');
 
 // JWT Helper
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET || 'secret', { expiresIn: '1d' });
+  return jwt.sign({ id },  `${process.env.JWT_SECRET}` || 'secret', { expiresIn: '1d' });
 };
 
 // Auth Middleware
