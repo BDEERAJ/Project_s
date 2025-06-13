@@ -9,9 +9,7 @@ require('dotenv').config();
 // Middleware
 app.use(cors());
 app.use(express.json());
-
-mongoose.connect('mongodb+srv://bdeeraj082:Deeraj12345@quizcluster.azzkheg.mongodb.net/Quiz?retryWrites=true&w=majority');
-
+mongoose.connect(process.env.Mongo_url);
 const User = mongoose.model('User', new mongoose.Schema({
   username: String,
   email: { type: String, unique: true },
