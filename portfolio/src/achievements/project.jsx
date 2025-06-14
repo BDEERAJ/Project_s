@@ -16,7 +16,7 @@ const projects = [
     'A personalized fitness plan generator built using React and Vite. It allows users to select their fitness goals and generates a detailed weekly workout and diet plan tailored to their needs, with a clean and responsive UI.',
   technologies: 'React, Vite, JavaScript, CSS',
   link: 'https://github.com/BDEERAJ/Quiz_web/tree/e5861010094c364617312d203176ed9e0d3083ae/GymBuddy',
-  weblink:'https://gymbuddy12.netlify.app'
+  weblink:'https://deerajportfolio12.netlify.app'
 }
 
 ];
