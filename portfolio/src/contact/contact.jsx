@@ -13,6 +13,8 @@ const Contact = () => {
         </a>
         <a href="bdeeraj082@gmail.com" className="contact-link">
           bdeeraj082@gmail.com     </a>
+           <a href="bdeeraj082@gmail.com" className="contact-link">
+          phone no:7995626943  </a>
       </div>
     </section>
   );

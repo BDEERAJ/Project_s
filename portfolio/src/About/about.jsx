@@ -15,6 +15,10 @@ const About = () => {
         including the MERN stack (MongoDB, Express, Node.js, and React). I’ve worked on 
         few projects, including QuizPlay, where I implemented various technologies like 
         HTML, CSS, and JavaScript. I love solving problems and constantly strive to improve my coding skills.
+<a href="/files/deeraj_resume.pdf" download target="_blank" rel="noopener noreferrer">
+  Download Resume
+</a>
+
       </p>
       
       <h3>Achievements</h3>

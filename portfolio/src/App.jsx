@@ -12,11 +12,17 @@ function App() {
     <div className="App-main">
     <div className="home">  
      <User/>
+     <hr />
      <About/>
+     <hr />
      <Skills/>
+     <hr />
      <Certifications/>
+     <hr />
      <ProjectCard/>
+     <hr />
      <Contact/>
+     <hr />
      </div>
      </div>
     </>

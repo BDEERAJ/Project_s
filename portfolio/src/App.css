@@ -1,5 +1,5 @@
 .App-main{
-    width: 100vw;
+    width: 95vw;
     overflow:hidden;
     margin: 0px;
     padding: 0px;
@@ -14,9 +14,9 @@
     
   }
 .home{
+  margin-top: -4vh;
     width: 100vw;
-    background: rgb(31, 2, 31);
-    padding: 15px;
+    padding: 0px;
 }
 .loader {
     font-size: 1.2rem;
