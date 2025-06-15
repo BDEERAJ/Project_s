@@ -5,7 +5,7 @@ const projects = [
   {
     title: 'QuizPlay',
     description:
-      'A quiz application built using the MERN stack (excluding React) and vanilla JavaScript. It supports multiple topics, stores data in MongoDB, and has an intuitive user interface.',
+    'A full-stack quiz application built using the MERN stack (excluding React) and vanilla JavaScript. It features multiple quiz topics, JWT-based user authentication, dynamic content rendering, and MongoDB integration for storing questions, user data, and feedback. The interface is intuitive and responsive, built with HTML and CSS.',
     technologies: 'HTML, CSS, MongoDB, Express, Node.js, Vanilla JavaScript',
     link: 'https://github.com/BDEERAJ/Quiz_web/tree/9f8a66a2719cd634e7c1ab6741b64c064fa3afbb/Quiz_app',
     weblink: 'https://quiz-web-1-4z18.onrender.com'
