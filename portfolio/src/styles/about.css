@@ -26,7 +26,7 @@
   border-radius: 5px;
   font-size: clamp(13px,2vw,18px);
   border: 1px solid #555;
-  margin: 0 10px;
+  margin: 0 1vw;
   background-color: #181818;
   color: #ccc;
 }
