@@ -221,7 +221,7 @@ app.put('/contact/sendmessage', async (req, res) => {
   }
 
   try {
-    const data = new messgaefromportdolio({ name, email, message });
+    const data = new MessageFromPortfolio({ name, email, message });
     await data.save();
     res.status(200).json({ success: true, message: 'Message sent successfully!' });
   } catch (err) {
