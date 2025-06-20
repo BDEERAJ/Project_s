@@ -1,32 +1,23 @@
-import User from './Home/user.jsx'
-import './App.css';
-import React from 'react';
-import About from './About/about.jsx'
-import Skills from './About/skills.jsx'
-import Certifications from './achievements/certificates.jsx';
-import ProjectCard  from './achievements/project.jsx';
-import Contact from './contact/contact.jsx';
-function App() {
+import About from './components/about.jsx';
+import './App.css'
+import { BrowserRouter,Route, Routes} from 'react-router-dom';
+import Certifications from './components/certificates.jsx';
+import Projects from './components/project.jsx';
+import Achievements from './components/achievements.jsx';
+import Contact from './components/contact.jsx'; 
+const App = () => {
   return (
     <>
-    <div className="App-main">
-    <div className="home">  
-     <User/>
-     <hr />
-     <About/>
-     <hr />
-     <Skills/>
-     <hr />
-     <Certifications/>
-     <hr />
-     <ProjectCard/>
-     <hr />
-     <Contact/>
-     <hr />
-     </div>
-     </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<About/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+        <Route path="/certifications" element={<Certifications />} />
+        <Route path="/skills-and-projects" element={<Projects/>} />
+        <Route path="/achievements" element={<Achievements />} />
+      </Routes>
+    </BrowserRouter>
     </>
   );
 }
-
 export default App;
