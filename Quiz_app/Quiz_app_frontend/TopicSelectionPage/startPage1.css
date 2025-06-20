@@ -340,11 +340,7 @@ a {
         box-shadow: 2px 1px 14px 0px olivedrab;
     }
 
-    .Topic_all .topics:hover {
-        box-shadow: 2px 1px 14px 0px black;
-        font-size: 16.5px;
-        transform: translateY(-5px) !important;
-    }
+    
 }
 
 @media only screen and (max-width:600px) {
@@ -565,3 +561,9 @@ a {
      height: fit-content;
     left: 60%;
 }
+.Topic_all .topics:hover {
+        box-shadow: 2px 1px 14px 0px black ;
+        font-size: 16.5px;
+        transform: translateY(-7px) !important;
+        transition: all 0.2s ease-in !important;
+    }

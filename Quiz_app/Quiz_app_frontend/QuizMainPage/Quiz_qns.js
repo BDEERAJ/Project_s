@@ -15,7 +15,7 @@ let answer=[];
 let attemptedqns=0;
 let totpoints=0;
 function selans(s){
-    document.querySelector(".selansbox").innerHTML=`${s}`;
+    document.querySelector(".selansbox").innerHTML=`-->${s}`;
 }
 document.querySelectorAll(".ans").forEach(e=>{
     e.addEventListener("click",()=>{

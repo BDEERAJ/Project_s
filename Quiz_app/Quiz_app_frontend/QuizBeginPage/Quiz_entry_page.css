@@ -3,6 +3,10 @@
     margin: 0px;
     background-color: beige;
 }
+.info::-webkit-scrollbar {
+  display: none; 
+}
+
 #loader {
   position: fixed;
   top: 0;

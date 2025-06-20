@@ -1,237 +1,246 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 .active {
-    display: block;
+  display: block;
 }
 
 .inactive {
-    display: none;
+  display: none;
 }
 
 .main {
-    background-color: #f4e4d0;
-    height: 100vh;
+  background-color: #111;
+  height: 100vh;
 }
 
 .nav {
-    background-color: aliceblue;
-    width: 90%;
-    margin: 4px auto 0;
-    padding: 4px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    border: 1.4px solid black;
+  background-color: #1e1e1e;
+  width: 90%;
+  margin: 4px auto 0;
+  padding: 4px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  border: 1.5px solid #8f00ff;
+  box-shadow: 0 0 12px rgba(143, 0, 255, 0.4);
 }
 
 .nav_link {
-    background-color: #eff4f7;
-    border: 1px solid rgb(232, 227, 227);
-    color: black;
-    font-size: clamp(10px,2vw,18px);
-    height: fit-content;
-    margin-top: 5px;
-    padding: 4px 6px 4px 6px ;
-    list-style-type: none;
-    font-weight: bolder;
-    font-family: 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
-    box-shadow: 1px 1px 1px gray;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #e0e0e0;
+  font-size: clamp(10px, 2vw, 18px);
+  padding: 4px 6px;
+  list-style-type: none;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: all 0.3s;
 }
 
 .nav_link:hover:nth-child(1) {
-    background-color: rgb(250, 86, 4);
-    cursor: pointer;
+  background-color: #ff5722;
+  color: #fff;
+  cursor: pointer;
 }
 .nav_link:hover:nth-child(2) {
-    background-color: rgb(4, 209, 250);
-    cursor: pointer;
+  background-color: #03a9f4;
+  color: #fff;
+  cursor: pointer;
 }
 
 .logo {
-    display: flex;
-    gap: 10px;
-    background-color: white;
+  display: flex;
+  gap: 10px;
+  background-color: #1c1c1c;
 }
 
 .logo a {
-    padding: 3px;
-    background-color: white;
-    color: blue;
-    border: 1px solid black;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 5px;
+  padding: 3px 10px;
+  background-color: transparent;
+  color: #8f00ff;
+  border: 1.5px solid #8f00ff;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
 .logo a:hover {
-    background-color: rgb(17, 116, 128);
-     border-color: rgb(37, 36, 33);
-     color: white;
+  background-color: #8f00ff;
+  color: #fff;
+  border-color: #fff;
 }
 
 .svg {
-    width: 30px;
-    aspect-ratio: 1;
-    background-color: #f4eeee;
-    color: black !important;
-    overflow: hidden;
-    box-shadow: 1px 1px 1px gray;
+  width: 30px;
+  aspect-ratio: 1;
+  background-color: #222;
+  color: white !important;
+  box-shadow: 1px 1px 6px rgba(143, 0, 255, 0.4);
+  border-radius: 4px;
 }
 
 .box {
-    margin-top: clamp(10px, 10vh, 100px);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+  margin-top: clamp(10px, 10vh, 100px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
 
 .img {
-    width: clamp(80px, 80%, 500px);
-    aspect-ratio: 10/6;
-    background-image: url('assests/main.jpg');
-    background-size: cover;
-    border-radius: 30px;
-    box-shadow: 2px 2px 10px 5px gray;
+  width: clamp(80px, 80%, 500px);
+  aspect-ratio: 10/6;
+  background-image: url('assests/main.jpg');
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(143, 0, 255, 0.4);
 }
 
 .m1 {
-    background-color: aqua;
-    padding: 15px;
-    border-radius: 18px;
-    box-shadow: 1px 2px 8px 3px gray;
-    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
-    width: fit-content;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 18px;
+  box-shadow: 0 0 12px rgba(143, 0, 255, 0.2);
+  width: fit-content;
+  color: #eaeaea;
 }
 
 .m1 h1 {
-    background-color: #f8f3ed;
-    padding: 5px 10px;
-    font-size: clamp(20px, 7vw, 40px);
-    border: 1.8px solid grey;
-    border-radius: 18px;
-    box-shadow: 1px 2px 8px 3px gray;
+  background-color: #111;
+  padding: 5px 10px;
+  border: 2px solid #8f00ff;
+  border-radius: 18px;
+  box-shadow: 0 0 10px rgba(143, 0, 255, 0.3);
+  color: #fff;
 }
 
 .m1 button {
-    display: block;
-    margin: auto;
-        font-size: clamp(10px, 7vw, 20px);
-    padding:1px 10px 1px 10px;
-    margin-top: 10%;
-    border-radius: 5px;
+  display: block;
+  margin: auto;
+  padding: 4px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #8f00ff;
+  color: #fff;
+  transition: background-color 0.3s;
 }
 
 .m1 button:hover {
-    background-color: rgb(212, 8, 8);
-    cursor: pointer;
+  background-color: #d20f0f;
+  cursor: pointer;
 }
 
 .menu:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .info {
-    position: absolute;
-    left: -100%;
-    top: 1vh;
-    background-color: #f3ebeb;
-    width: clamp(130px, 45vw, 350px);
-    height: 90vh;
-    padding: 3px;
-    border: 2px solid black;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 15px;
-    box-shadow: 1px 0 8px 8px gray;
-    transition: all 1s;
+  position: absolute;
+  left: -100%;
+  top: 1vh;
+  background-color: #222;
+  width: clamp(130px, 45vw, 350px);
+  height: 90vh;
+  padding: 10px;
+  border: 2px solid #8f00ff;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 15px;
+  box-shadow: 0 0 16px rgba(143, 0, 255, 0.3);
+  transition: all 1s;
+  color: #fff;
 }
 
 .info_class {
-    left: 0%;
-    transition: all 1s;
+  left: 0%;
+  transition: all 1s;
 }
 
 .info .ol {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-left: 25%;
-    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 25%;
 }
 
 .info .ol li {
-    font-size: clamp(12px, 3vw, 17px);
+  font-size: clamp(12px, 3vw, 17px);
+  transition: color 0.3s ease;
 }
 
 .info .ol li:hover {
-    cursor: pointer;
-    color: blue;
+  cursor: pointer;
+  color: #8f00ff;
 }
 
 .info h2 {
-    margin-bottom: 20px;
-    color: brown;
-    background-color: white;
-    text-decoration: underline;
+  margin-bottom: 20px;
+  color: #8f00ff;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 .info button {
-    position: absolute;
-    bottom: 20vw;
-    padding: 5px;
-    width: fit-content;
-    border: 2px solid gray;
+  position: absolute;
+  bottom: 20vw;
+  padding: 5px 10px;
+  border: 1px solid #8f00ff;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
 }
 
 .info button:hover {
-    box-shadow: 1px 1px 2px 2px black;
+  box-shadow: 0 0 10px #8f00ff;
+  background-color: #8f00ff;
+  color: white;
 }
 
 .information {
-    background-color: aliceblue;
-    height: 100vh;
-    padding: clamp(2px, 2vh, 10px);
+  background-color: #181818;
+  height: 100vh;
+  padding: clamp(2px, 2vh, 10px);
+  color: white;
 }
 
 .paragraph {
-    width: clamp(80px, 80vw, 650px);
-    height: clamp(200px, 80vh, 400px);
-    margin: auto;
-    padding: 5px;
-    font-weight: 700;
-    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
-    background-color: aliceblue;
-    overflow: auto;
-    border: 2px solid #16161a;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 15px;
-    box-shadow: 1px 2px 8px 3px gray;
-    position: relative;
+  width: clamp(80px, 80vw, 650px);
+  height: clamp(200px, 80vh, 400px);
+  margin: auto;
+  padding: 10px;
+  background-color: #1f1f1f;
+  overflow: auto;
+  border: 2px solid #8f00ff;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 15px;
+  box-shadow: 0 0 10px rgba(143, 0, 255, 0.3);
+  position: relative;
 }
 
 .paragraph p {
-    background-color: aliceblue;
+  background-color: transparent;
 }
 
 .paragraph h2 {
-    color: brown;
+  color: #ff4081;
 }
 
 .information button {
-    margin-top: 4%;
-    margin-left: 40%;
-    padding: 5px;
-    background-color: blanchedalmond;
-    font-size: clamp(6px, 5vw, 15px);
-    border: 2px solid black;
-    border-radius: 4px;
-    position: relative;
+  margin-top: 4%;
+  margin-left: 40%;
+  padding: 5px 10px;
+  background-color: #8f00ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: box-shadow 0.3s;
 }
 
 .information button:hover {
-    box-shadow: 1px 2px 3px 3px gray;
+  box-shadow: 0 0 12px #8f00ff;
 }
