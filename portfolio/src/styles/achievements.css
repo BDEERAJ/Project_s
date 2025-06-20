@@ -5,7 +5,7 @@
   background: #0b0b0b;
   color: #fff;
   width: 100vw;
-  height:  250vh;
+  height: fit-content;
   font-family: 'Segoe UI', sans-serif;
 border-bottom: 16px solid #0d0200;
 transform: translateY(-110vh);
@@ -13,7 +13,6 @@ overflow: hidden;
 scrollbar-color: black;
 }
 .adder {
-height: 100vh;
   transform: translateY(0px);
   transition: all 1s ease-in-out;
 }

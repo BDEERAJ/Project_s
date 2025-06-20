@@ -31,6 +31,7 @@ document.querySelector('.achievements-section').classList.add('adder');
   },10)
   return (
     <>
+        <div className=" h-150" style={{backgroundColor:'black',height:'fit-content' } }>
     <section className="achievements-section" id="achievements">
       <h2 className="achievements-title">Achievements</h2>
       <div className="achievements-container">
@@ -45,6 +46,7 @@ document.querySelector('.achievements-section').classList.add('adder');
         ))}
       </div>
         </section>
+      </div>
     </>
   );
 };

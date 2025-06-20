@@ -8,6 +8,7 @@
 .Projects-main_project_skill {
   width: 100vw;
   min-height: 100vh;
+  height: fit-content;
   position: relative;
   overflow: hidden;
   transform: translateY(-1500px);
