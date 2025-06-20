@@ -189,3 +189,43 @@ app.get('/quiz/:slug', async (req, res) => {
 
 // Start Server
 app.listen(3000);
+// A seperte server for portfolio iused this for ruuses 
+
+const MessageFromPortfolio = mongoose.model('MessageFromPortfolio', new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  message: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+})
+);
+app.put('/contact/sendmessage', async (req, res) => {
+  const { email, name, message } = req.body;
+
+  if (!email || !name || !message) {
+    return res.status(400).json({ success: false, error: 'All fields are required.' });
+  }
+
+  try {
+    const data = new messgaefromportdolio({ name, email, message });
+    await data.save();
+    res.status(200).json({ success: true, message: 'Message sent successfully!' });
+  } catch (err) {
+    res.status(500).json({ success: false, error: 'Server error. Please try again later.' });
+  }
+});
+
