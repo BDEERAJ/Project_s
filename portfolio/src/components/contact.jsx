@@ -83,18 +83,30 @@ const Contact = () => {
       <div className="contact-links">
         <ul>
           <li>
-            <a href="https://github.com/BDEERAJ" target="_blank" rel="noreferrer">
-              <i className="devicon-github-original contact-icon">https://github.com/BDEERAJ</i>
+            <a href="/files/deeraj_resume.pdf" target="_blank" rel="noreferrer" download>
+              <i className="devicon-markdown-original contact-icon"></i> Download Resume
             </a>
           </li>
+
           <li>
-            <a href="https://deerajportfolio12.netlify.app/" target="_blank" rel="noreferrer">
-              <i className="devicon-chrome-plain contact-icon">https://deerajportfolio12.netlify.app/</i>
+            <a href="https://github.com/BDEERAJ" target="_blank" rel="noreferrer">
+              <i className="devicon-github-original contact-icon"></i>https://github.com/BDEERAJ
             </a>
           </li>
+  
           <li>
             <a href="https://www.linkedin.com/in/deeraj-bandi-d12345123" target="_blank" rel="noreferrer">
-              <i className="devicon-linkedin-plain contact-icon">https://www.linkedin.com/in/deeraj-bandi-d12345123</i>
+              <i className="devicon-linkedin-plain contact-icon"></i>https://www.linkedin.com/in/deeraj-bandi-d12345123
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=bdeeraj082@gmail.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="fas fa-envelope contact-icon" style={{ marginRight: '8px' }}></i>
+              bdeeraj082@gmail.com
             </a>
           </li>
         </ul>
