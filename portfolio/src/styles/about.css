@@ -1,6 +1,7 @@
 .about-main {
   background: linear-gradient(135deg, #0a0a0a, #121212, #1c1c1c);
   max-height: 120vh;
+  height: fit-content;
   overflow: hidden;
   position: relative;
   font-family: 'Poppins', sans-serif;
@@ -14,7 +15,7 @@
   max-width: 1200px;
   cursor: pointer;
   margin: 1vw auto;
-  margin-bottom: -5vh;
+
   box-shadow: 0 0 12px rgba(136, 0, 255, 0.2); /* Soft neon glow */
 }
 
