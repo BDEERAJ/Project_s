@@ -38,6 +38,8 @@
   padding: 4px 6px;
   list-style-type: none;
   font-weight: bold;
+  margin: auto;
+  height: fit-content;
   border-radius: 6px;
   transition: all 0.3s;
 }

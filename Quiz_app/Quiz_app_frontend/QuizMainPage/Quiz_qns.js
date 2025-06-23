@@ -4,7 +4,7 @@ style.innerHTML = `
   * {
     background-color: rgb(12, 12, 12) !important;
     color: white !important;
-    border-color: orange !important;
+    border-color:#362e30 !important;
     box-shadow: 0px 0px 0px 0px black !important;
   }
 `;
