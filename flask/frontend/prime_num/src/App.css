@@ -1,0 +1,10 @@
+.nums::backdrop{
+background-color: blue !important;
+}
+.nums:hover{
+  transform: translateY(-10px) ;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f0f0f0;
+}
