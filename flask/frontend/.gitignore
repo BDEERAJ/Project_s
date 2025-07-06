@@ -29,10 +29,3 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-# optional if using macOS or Windows
-Thumbs.db
-desktop.ini
-
-# optional lock files (if you want to avoid committing them)
-package-lock.json
-yarn.lock
