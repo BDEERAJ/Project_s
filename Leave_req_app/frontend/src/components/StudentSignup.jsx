@@ -48,7 +48,7 @@ const StudentSignup = () => {
 
         try {
             // Use the correct backend endpoint with axios
-            const res = await axios.post("http://localhost:3000/auth/student/signup", formData);
+            const res = await axios.post("https://leave-tracker-czmf.onrender.com/auth/student/signup", formData);
 
             const { token } = res.data;
 

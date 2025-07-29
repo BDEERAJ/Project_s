@@ -25,7 +25,7 @@ export default function TeacherLogin() {
 
         try {
             // Use the correct backend endpoint for teacher login
-            const response = await axios.post('http://localhost:3000/auth/teacher/login', formData);
+            const response = await axios.post('https://leave-tracker-czmf.onrender.com/auth/teacher/login', formData);
 
             const { token } = response.data;
 

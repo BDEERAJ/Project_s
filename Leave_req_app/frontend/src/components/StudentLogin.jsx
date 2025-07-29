@@ -45,7 +45,7 @@ const StudentLogin = () => {
 
         try {
             // Make a POST request to your student login endpoint
-            const res = await axios.post("http://localhost:3000/auth/student/login", {
+            const res = await axios.post("https://leave-tracker-czmf.onrender.com/student/login", {
                 email,
                 password
             });

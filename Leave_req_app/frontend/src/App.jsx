@@ -1,9 +1,9 @@
 import './App.css'
-import  StudentSigin from './components/studentsignin';
+import  StudentSigin from './components/StudentSignup';
 import HomePage from './components/HomePage';
-import StudentLogin from './components/login';
-import TeachersignUp from './components/teachersignup'
-import Teacherlogin from './components/teacherlogin'
+import StudentLogin from './components/StudentLogin';
+import TeachersignUp from './components/Teachersignup'
+import Teacherlogin from './components/Teacherlogin'
 import TeacherDashboard from './components/TeacherDashboard'
 import Studentdashboad from './components/StudentDashboard'
 import {Route,BrowserRouter as Router,Routes} from 'react-router-dom';

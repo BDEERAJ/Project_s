@@ -29,7 +29,7 @@ export default function TeacherSignup() {
         setSuccess('');
 
         try {
-            const response = await axios.post('http://localhost:3000/auth/teacher/signup', formData);
+            const response = await axios.post('https://leave-tracker-czmf.onrender.com/auth/teacher/signup', formData);
             setSuccess('Registration successful! Redirecting to login...');
             setFormData({ name: '', uniqueId: '', passkey: '', email: '', password: '' });
             window.localStorage.setItem('Token',response.data.token)
