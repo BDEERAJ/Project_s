@@ -1,11 +1,11 @@
 import './App.css'
-import  StudentSigin from './components/StudentSignup';
-import HomePage from './components/HomePage';
-import StudentLogin from './components/StudentLogin';
-import TeachersignUp from './components/Teachersignup'
-import Teacherlogin from './components/Teacherlogin'
-import TeacherDashboard from './components/TeacherDashboard'
-import Studentdashboad from './components/StudentDashboard'
+import  StudentSigin from './components/StudentSignup.jsx';
+import HomePage from './components/HomePage.jsx';
+import StudentLogin from './components/StudentLogin.jsx';
+import TeachersignUp from './components/Teachersignup.jsx'
+import Teacherlogin from './components/Teacherlogin.jsx'
+import TeacherDashboard from './components/TeacherDashboard.jsx'
+import Studentdashboad from './components/StudentDashboard.jsx'
 import {Route,BrowserRouter as Router,Routes} from 'react-router-dom';
  const App=()=>{
 return(

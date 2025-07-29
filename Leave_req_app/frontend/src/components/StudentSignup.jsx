@@ -139,7 +139,7 @@ const StudentSignup = () => {
                         paddingLeft: "9%"
                     }}>
                     <h1 className='mb-1 text-white' style={{ width: '35vw', marginLeft: '15%', fontWeight: 'bolder' }}>Welcome to </h1>
-                    <h2 className='mb-3 text-white' style={{ width: '35vw', marginLeft: '15%' }}>the student portal</h2>
+                    <h2 className='mb-3 text-white' style={{ width: '35vw', marginLeft: '15%' }}>student portal</h2>
                     <img
                         src={pic}
                         alt="A visual representing the student portal"
