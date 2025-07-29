@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/AuthPage.css'; // Assuming you have a shared style for auth pages
+import '../styles/AuthPage.css'; 
 
 export default function TeacherSignup() {
     const navigate = useNavigate();
