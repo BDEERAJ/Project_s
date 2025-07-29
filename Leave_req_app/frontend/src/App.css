@@ -1,0 +1,19 @@
+a:hover{
+  cursor: pointer;
+}
+button {
+  color: white;
+  font-weight: bold;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb); /* reverse the gradient */
+  color: black !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}

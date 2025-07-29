@@ -1,0 +1,286 @@
+/* Create this file at src/Dashboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Light Theme Palette */
+    --primary-bg-light: #f9fafb;
+    --secondary-bg-light: #ffffff;
+    --border-color-light: #e5e7eb;
+    --text-primary-light: #111827;
+    --text-secondary-light: #6b7280;
+    --primary-accent-light: #0d6efd;
+    --primary-accent-text-light: #ffffff;
+
+    /* Dark Theme Palette */
+    --primary-bg-dark: #111827;
+    --secondary-bg-dark: #1f2937;
+    --border-color-dark: #374151;
+    --text-primary-dark: #f3f4f6;
+    --text-secondary-dark: #9ca3af;
+    --primary-accent-dark: #14b8a6;
+    --primary-accent-text-dark: #ffffff;
+    
+    /* Accent & Status Colors */
+    --accent-teal: #14b8a6;
+    --accent-teal-light: rgba(20, 184, 166, 0.1);
+    --status-success-bg: rgba(16, 185, 129, 0.1);
+    --status-success-text: #10b981;
+    --status-danger-bg: rgba(239, 68, 68, 0.1);
+    --status-danger-text: #ef4444;
+    --status-pending-bg: rgba(245, 158, 11, 0.1);
+    --status-pending-text: #f59e0b;
+}
+
+/* --- Base & Theme Body Styles --- */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--primary-bg-light);
+    color: var(--text-primary-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-theme {
+    background-color: var(--primary-bg-dark);
+    color: var(--text-primary-dark);
+}
+
+/* --- Layout --- */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background-color: var(--secondary-bg-light);
+    border-right: 1px solid var(--border-color-light);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+body.dark-theme .sidebar {
+    background-color: var(--secondary-bg-dark);
+    border-right-color: var(--border-color-dark);
+}
+
+.sidebar-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary-light);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+body.dark-theme .sidebar-header {
+    color: var(--text-primary-dark);
+    border-bottom-color: var(--border-color-dark);
+}
+
+.main-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* --- Navbar (Mobile) --- */
+.navbar {
+    background-color: var(--secondary-bg-light);
+    border-bottom: 1px solid var(--border-color-light);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+body.dark-theme .navbar {
+    background-color: var(--secondary-bg-dark);
+    border-bottom-color: var(--border-color-dark);
+}
+
+body.dark-theme .navbar-brand {
+    color: var(--text-primary-dark);
+}
+
+body.dark-theme .navbar-toggler {
+    filter: invert(1);
+}
+
+/* --- Navigation Links --- */
+.sidebar .nav-link, .navbar .nav-link {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary-light);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+}
+
+body.dark-theme .sidebar .nav-link, 
+body.dark-theme .navbar .nav-link {
+    color: var(--text-secondary-dark);
+}
+
+.sidebar .nav-link:hover, .navbar .nav-link:hover {
+    background-color: var(--accent-teal-light);
+    color: var(--accent-teal);
+}
+
+.sidebar .nav-link.active {
+    background-color: var(--primary-accent-light);
+    color: var(--primary-accent-text-light);
+    font-weight: 600;
+}
+
+body.dark-theme .sidebar .nav-link.active {
+    background-color: var(--primary-accent-dark);
+    color: var(--primary-accent-text-dark);
+}
+
+/* --- Content Cards --- */
+.content-card {
+    background-color: var(--secondary-bg-light);
+    border: 1px solid var(--border-color-light);
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+body.dark-theme .content-card {
+    background-color: var(--secondary-bg-dark);
+    border-color: var(--border-color-dark);
+    box-shadow: none;
+}
+
+.content-card-body {
+    padding: 1.5rem;
+}
+
+.content-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary-light);
+}
+
+body.dark-theme .content-card-title {
+    color: var(--text-primary-dark);
+}
+
+.content-card-text {
+    color: var(--text-secondary-light);
+}
+
+body.dark-theme .content-card-text {
+    color: var(--text-secondary-dark);
+}
+
+/* --- Tables --- */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th, .custom-table td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color-light);
+    transition: border-color 0.3s;
+}
+
+body.dark-theme .custom-table th, 
+body.dark-theme .custom-table td {
+    border-bottom-color: var(--border-color-dark);
+}
+
+.custom-table thead th {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-secondary-light);
+}
+
+body.dark-theme .custom-table thead th {
+    color: var(--text-secondary-dark);
+}
+
+.custom-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- Forms & Buttons --- */
+.form-label {
+    font-weight: 500;
+}
+
+.form-control, .form-select {
+    background-color: var(--primary-bg-light);
+    border-color: var(--border-color-light);
+    color: var(--text-primary-light);
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-teal-light);
+    border-color: var(--accent-teal);
+}
+
+body.dark-theme .form-control, 
+body.dark-theme .form-select {
+    background-color: #2b3748;
+    border-color: var(--border-color-dark);
+    color: var(--text-primary-dark);
+}
+
+body.dark-theme .form-control::placeholder {
+    color: var(--text-secondary-dark);
+}
+
+.btn-primary {
+    background-color: var(--primary-accent-light);
+    border-color: var(--primary-accent-light);
+}
+
+body.dark-theme .btn-primary {
+    background-color: var(--primary-accent-dark);
+    border-color: var(--primary-accent-dark);
+    color: var(--primary-accent-text-dark);
+}
+
+/* --- Status Badges --- */
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+.status-approved {
+    background-color: var(--status-success-bg);
+    color: var(--status-success-text);
+}
+
+.status-declined, .status-rejected {
+    background-color: var(--status-danger-bg);
+    color: var(--status-danger-text);
+}
+
+.status-pending {
+    background-color: var(--status-pending-bg);
+    color: var(--status-pending-text);
+}
+
+/* --- Theme Toggler --- */
+.form-check-label {
+    color: var(--text-secondary-light);
+}
+
+body.dark-theme .form-check-label {
+    color: var(--text-secondary-dark);
+}
