@@ -29,7 +29,15 @@ const projects = [
     technologies: 'React, Vite, JavaScript, CSS',
     link: 'https://github.com/BDEERAJ/Quiz_web/tree/e5861010094c364617312d203176ed9e0d3083ae/GymBuddy',
     weblink: 'https://gymbuddy12.netlify.app'
-  }
+  },
+  {
+  title: 'College Leave Request System',
+  description:
+    'A full-stack leave management web application built with the MERN stack. It enables students to submit leave requests and allows teachers to manage them using unique join codes. The system includes authentication, role-based access, and responsive UI for both student and teacher dashboards.',
+  technologies: 'MongoDB, Express.js, React, Node.js, JavaScript, CSS',
+  link: 'https://github.com/BDEERAJ',
+  weblink: 'https://collegeleaverequest.netlify.app'
+}
 ];
 
 const Projects = () => {
