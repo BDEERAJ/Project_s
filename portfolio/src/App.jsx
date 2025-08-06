@@ -52,15 +52,24 @@ const portfolioData = {
     }
   ],
   skills: [
-    { name: 'HTML', level: 'Intermediate', icon: 'devicon-html5-plain' },
-    { name: 'CSS', level: 'Intermediate', icon: 'devicon-css3-plain' },
-    { name: 'JavaScript', level: 'Beginner', icon: 'devicon-javascript-plain' },
-    { name: 'React', level: 'Beginner', icon: 'devicon-react-original' },
-    { name: 'MySQL', level: 'Beginner', icon: 'devicon-mysql-plain' },
-    { name: 'MongoDB', level: 'Beginner', icon: 'devicon-mongodb-plain' },
-    { name: 'Git', level: 'Beginner', icon: 'devicon-git-plain' },
-    { name: 'Python', level: 'Beginner', icon: 'devicon-python-plain' },
-    { name: 'Java', level: 'Intermediate', icon: 'devicon-java-plain' }
+    { name: 'HTML', icon: 'devicon-html5-plain' },
+    { name: 'CSS', icon: 'devicon-css3-plain' },
+    { name: 'Bootstrap', icon: 'devicon-bootstrap-plain' },
+    { name: 'JavaScript', icon: 'devicon-javascript-plain' },
+    { name: 'React', icon: 'devicon-react-original' },
+    { name: 'Redux', icon: 'devicon-redux-original' },
+    { name: 'Next.js', icon: 'devicon-nextjs-original' },
+    { name: 'Node.js', icon: 'devicon-nodejs-plain' },
+    { name: 'Express', icon: 'devicon-express-original' },
+    { name: 'MongoDB', icon: 'devicon-mongodb-plain' },
+    { name: 'MySQL', icon: 'devicon-mysql-plain' },
+    { name: 'Git', icon: 'devicon-git-plain' },
+    { name: 'Java', icon: 'devicon-java-plain' },
+    { name: 'Python', icon: 'devicon-python-plain' },
+    { name: 'Vercel', icon: 'devicon-vercel-original' },
+    { name: 'Netlify', icon: 'devicon-netlify-original' },
+    { name: 'Figma', icon: 'devicon-figma-plain' },
+    { name: 'Postman', icon: 'devicon-postman-plain' },
   ],
   certifications: [
     { title: 'Career Essentials in Software Development', issuer: 'LinkedIn Learning', link: 'https://www.linkedin.com/learning/certificates/de09902a27cb34af46333508f0ec0171c27f5e80799f01750e5913b50d271d14?trk=share_certificate' },
@@ -196,6 +205,42 @@ export default function App() {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
+  
+  const skillsContainerStyle = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: '20px',
+    padding: '20px 0'
+  };
+
+  const skillCardStyle = {
+    backgroundColor: '#112240', 
+    border: '1px solid #64ffda', 
+    borderRadius: '8px',
+    padding: '20px',
+    width: '120px',
+    height: '120px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+    cursor: 'default',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+  };
+  
+  const skillIconStyle = {
+    fontSize: '3rem',
+    color: '#ccd6f6' 
+  };
+  
+  const skillNameStyle = {
+    marginTop: '10px',
+    color: '#8892b0', 
+    fontWeight: '500',
+    fontSize: '0.9rem'
+  };
 
   return (
     <div className="portfolio-body">
@@ -203,7 +248,7 @@ export default function App() {
 
       <header className={`portfolio-header fixed-top ${headerVisible ? 'header-visible' : 'header-hidden'}`}>
         <nav className="container d-flex justify-content-center justify-content-md-end align-items-center">
-          {['About', 'Experience', 'Projects', 'Contact'].map((item, index) => (
+          {['About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item, index) => (
             <span key={item} className="nav-link" onClick={() => item === 'Contact' ? setIsModalOpen(true) : scrollTo(item.toLowerCase())}>
               <span className="accent-color">0{index + 1}.</span> {item}
             </span>
@@ -239,8 +284,29 @@ export default function App() {
             </div>
         </AnimatedSection>
         
+        <AnimatedSection id="skills">
+            <h3 className="section-h3"><span className="accent-color">02.</span> My Skills</h3>
+            <div style={skillsContainerStyle}>
+                {portfolioData.skills.map((skill, index) => (
+                    <div key={index} style={skillCardStyle} 
+                         onMouseOver={(e) => {
+                             e.currentTarget.style.transform = 'translateY(-5px)';
+                             e.currentTarget.style.borderColor = '#ffffff';
+                         }}
+                         onMouseOut={(e) => {
+                             e.currentTarget.style.transform = 'translateY(0px)';
+                             e.currentTarget.style.borderColor = '#64ffda';
+                         }}
+                    >
+                        <i className={`${skill.icon}`} style={skillIconStyle}></i>
+                        <p style={skillNameStyle}>{skill.name}</p>
+                    </div>
+                ))}
+            </div>
+        </AnimatedSection>
+
         <AnimatedSection id="experience">
-            <h3 className="section-h3"><span className="accent-color">02.</span> Where I’ve Worked</h3>
+            <h3 className="section-h3"><span className="accent-color">03.</span> Where I’ve Worked</h3>
             <div className="timeline">
                 {portfolioData.experience.map((job, index) => (
                     <div key={index} className="timeline-item">
@@ -258,7 +324,7 @@ export default function App() {
         </AnimatedSection>
 
         <AnimatedSection id="projects">
-            <h3 className="section-h3"><span className="accent-color">03.</span> Things I’ve Built</h3>
+            <h3 className="section-h3"><span className="accent-color">04.</span> Things I’ve Built</h3>
             <div className="row g-4">
                 {portfolioData.projects.map((project, index) => (
                     <div className="col-lg-4 col-md-6" key={index}>
@@ -282,7 +348,7 @@ export default function App() {
         </AnimatedSection>
 
         <AnimatedSection id="achievements">
-            <h3 className="section-h3"><span className="accent-color">04.</span> Achievements & Certifications</h3>
+            <h3 className="section-h3"><span className="accent-color">05.</span> Achievements & Certifications</h3>
             <h5 className="sub-heading">Achievements</h5>
             <div className="card-grid">
                 {portfolioData.achievements.map((item, index) => (
