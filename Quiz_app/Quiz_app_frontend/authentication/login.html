@@ -1,67 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login</title>
-  <link rel="stylesheet" href="auth.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Quiz Arena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0C0C1E;
+        }
+
+        .Login_main {
+            width: 100vw;
+            min-height: 100vh;
+            overflow-y: auto;
+            background-image: radial-gradient(circle, #2a2a57, #1a1a3b, #0c0c1e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .Login {
+            width: 100%;
+            max-width: 450px;
+            background-color: rgba(28, 28, 46, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+            padding: clamp(25px, 6vw, 40px);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .Login h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00FFFF;
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            text-shadow: 0 0 10px #00FFFF;
+            margin-bottom: 15px;
+        }
+
+        .Login label {
+            color: #F0F0F0;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .Login input {
+            width: 100%;
+            height: 50px;
+            background-color: rgba(12, 12, 30, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            border-radius: 8px;
+            padding: 0 15px;
+            font-size: 16px;
+            color: #F0F0F0;
+            transition: all 0.3s ease;
+        }
+
+        .Login input:focus {
+            outline: none;
+            border-color: #FF00FF;
+            box-shadow: 0 0 15px #FF00FF;
+        }
+
+        .Login input::placeholder {
+            color: #888;
+        }
+
+        .Login_Submit {
+            height: 50px;
+            padding: 0 30px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 2px solid #FF00FF;
+            background-image: linear-gradient(45deg, #FF00FF, #8A2BE2);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .Login_Submit:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #FF00FF;
+        }
+
+        .Login_Submit:disabled {
+            background-image: none;
+            background-color: #555;
+            border-color: #555;
+            cursor: not-allowed;
+        }
+
+        .form-link {
+            text-align: center;
+            margin-top: 15px;
+            color: #ccc;
+        }
+
+        .form-link a {
+            color: #00FFFF;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .form-link a:hover {
+            text-decoration: underline;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        
+        #form-message {
+            text-align: center;
+            min-height: 24px;
+            font-weight: 600;
+        }
+        #form-message.success {
+            color: #00FF00;
+        }
+        #form-message.error {
+            color: #FF4500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-  
-  <div class="Login_main">
-    <div class="Login">
-      <h1>Login</h1>
-      <label for="Email">Email ID:</label>
-      <input type="text" id="Email" placeholder="Enter your Email" />
-      <label for="pswd">Password:</label>
-      <input type="text" id="pswd" placeholder="Enter your Password" />
-      <button class="Login_Submit" id="submitBtn">Submit</button>
-      <div id="spinner" class="spinner" style="display: none;"></div>
+    <div class="Login_main">
+        <form class="Login">
+            <h1>Login</h1>
+            <label for="Email">Email ID:</label>
+            <input type="email" id="Email" placeholder="Enter your Email" required />
+            <label for="pswd">Password:</label>
+            <input type="password" id="pswd" placeholder="Enter your Password" required />
+            <button type="submit" class="Login_Submit" id="submitBtn">
+                <span class="btn-text">Submit</span>
+                <div id="spinner" class="spinner" style="display: none;"></div>
+            </button>
+            <p id="form-message"></p>
+            <p class="form-link">No account? <a href="sign-in.html">Sign Up</a></p>
+        </form>
     </div>
-  </div>
 
-  <script>
-    const submitBtn = document.getElementById('submitBtn');
-    const spinner = document.getElementById('spinner');
+    <script>
+        const loginForm = document.querySelector('.Login');
+        const submitBtn = document.getElementById('submitBtn');
+        const spinner = document.getElementById('spinner');
+        const btnText = document.querySelector('.btn-text');
+        const message = document.getElementById('form-message');
 
-    submitBtn.addEventListener('click', () => {
-      const emailValue = document.getElementById('Email').value;
-      const pswdValue = document.getElementById('pswd').value;
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = document.getElementById('Email').value;
+            const password = document.getElementById('pswd').value;
 
-      if (emailValue && pswdValue) {
-        spinner.style.display = 'block';
-        submitBtn.disabled = true;
+            if (!email || !password) {
+                message.textContent = "Please fill in all fields.";
+                message.className = 'error';
+                return;
+            }
 
-        fetch('https://quiz-web-ujwh.onrender.com/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email: emailValue,
-            password: pswdValue
-          })
-        })
-        .then(res => res.json())
-        .then(data => {
-          alert(data.message || 'Login successful!');
-          if (data.token && data.token !== '') {
-            localStorage.setItem('token', data.token);
-            window.location.href='../TopicSelectionPage/startPage1.html';
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          alert('Login failed.');
-        })
-        .finally(() => {
-          spinner.style.display = 'none';
-          submitBtn.disabled = false;
+            spinner.style.display = 'block';
+            btnText.style.display = 'none';
+            submitBtn.disabled = true;
+            message.textContent = '';
+
+            fetch('https://quiz-web-ujwh.onrender.com/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email, password: password })
+            })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(err => { throw new Error(err.message || 'Login failed') });
+                }
+                return res.json();
+            })
+            .then(data => {
+                if (data.token) {
+                    message.textContent = 'Login successful! Redirecting...';
+                    message.className = 'success';
+                    localStorage.setItem('token', data.token);
+                    setTimeout(() => {
+                        window.location.href = '../TopicSelectionPage/startPage1.html';
+                    }, 1000);
+                } else {
+                    throw new Error(data.message || 'Login failed: No token received.');
+                }
+            })
+            .catch(err => {
+                message.textContent = err.message;
+                message.className = 'error';
+            })
+            .finally(() => {
+                // Only re-enable the button if there wasn't a successful redirect
+                if (!localStorage.getItem('token')) {
+                    spinner.style.display = 'none';
+                    btnText.style.display = 'block';
+                    submitBtn.disabled = false;
+                }
+            });
         });
-      } else {
-        alert("Please fill all fields");
-      }
-    });
-  </script>
+    </script>
 </body>
 </html>

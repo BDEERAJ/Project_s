@@ -1,43 +1,51 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quiz Arena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Quiz_qns.css">
 </head>
 <body>
+    <div id="loader">
+        <div class="spinner"></div>
+        <h2>Loading Questions...</h2>
+    </div>
+
     <div class="main_head">
-    <div class="timer">
-        <h1 class="time">15:00</h1>
-    <span style="color:rgb(107, 65, 107); font-weight:bold;font-size: clamp(10px, 4vw, 33px);
-">QUIZ_PLAY</span>
-    <span class="more_info" onclick="window.location.href='../MoreInfoPage/moreinfo.html'" >learn_more</span>
-</div>
-    <div class="main">
-        <div class="main2">
-            <div class="qns">
-                <h2 id="question"></h2>
-            </div>
-            <div class="answr">
-                <ol>
-                <li class="ans ans1"></li>
-                <li class="ans ans2"></li>
-                <li class="ans ans3"></li>
-                <li class="ans ans4"></li> 
-               <ul class="selans"> 
-                <h3>YOUR SELECTED OPTION:</h3>  
-                <li class="selansbox"> Answer</li>   
-                </ul>    
-                </ol>
-            </div>
-            <div class="btns">
-                <button id="submit" onclick="submit()">SUBMIT</button>
-                <button id="skip" onclick="updater()">SKIP</button>
-                <button onclick="exiter(1)">EXIT</button>
+        <div class="timer">
+            <h1 class="time">15:00</h1>
+            <span>QUIZ ARENA</span>
+            <span class="more_info">Learn More</span>
+        </div>
+        <div class="main">
+            <div class="main2">
+                <div class="qns">
+                    <h2 id="question">Loading first question...</h2>
+                </div>
+                <div class="answr">
+                    <ol>
+                        <li class="ans ans1"></li>
+                        <li class="ans ans2"></li>
+                        <li class="ans ans3"></li>
+                        <li class="ans ans4"></li> 
+                    </ol>
+                    <div class="selans"> 
+                        <h3>YOUR SELECTION:</h3>  
+                        <div class="selansbox">None</div>   
+                    </div>
+                </div>
+                <div class="btns">
+                    <button id="submit">Submit</button>
+                    <button id="skip">Skip</button>
+                    <button id="exit">Exit</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script src="Quiz_qns.js"></script>
+    <script src="Quiz_qns.js"></script>
 </body>
 </html>

@@ -1,126 +1,145 @@
-if(window.localStorage.getItem('darkmode')=='on'){
-const style = document.createElement('style');
-style.innerHTML = `
-  * {
-    background-color: rgb(12, 12, 12) !important;
-    color: white !important;
-    border-color:#362e30 !important;
-    box-shadow: 0px 0px 0px 0px black !important;
-  }
-`;
-document.head.insertAdjacentElement('beforeend', style);
+let question = [];
+let answer = [];
+let attemptedqns = 0;
+let totpoints = 0;
+let currentanswer;
+let timerInterval;
+
+function selans(selectedText, selectedElement) {
+    document.querySelector(".selansbox").innerHTML = selectedText;
+    document.querySelectorAll(".ans").forEach(el => el.classList.remove('selected'));
+    selectedElement.classList.add('selected');
 }
-let question=[];
-let answer=[];
-let attemptedqns=0;
-let totpoints=0;
-function selans(s){
-    document.querySelector(".selansbox").innerHTML=`-->${s}`;
-}
-document.querySelectorAll(".ans").forEach(e=>{
-    e.addEventListener("click",()=>{
-  selans(`${e.textContent}`)
-})});
-const topic=window.localStorage.getItem('topic');
-console.log(topic);
-setTimeout(async () => {
-    await fetch(`https://quiz-web-ujwh.onrender.com/quiz/${topic}Questions`,
-        {method:'GET',
-             headers:{
-            'content-type':'application/json'
-        },
-        }).then((e)=>{
-        return e.json();
-    }).then((e)=>{
-        e.forEach((ele)=>{
-         question.push(ele.question);
-         answer.push(ele.answer)
+
+function fetchQuestions() {
+    const topic = window.localStorage.getItem('topic');
+    const loader = document.getElementById('loader');
+    
+    if (!topic) {
+        document.getElementById('question').textContent = "No topic found. Please go back.";
+        loader.style.display = "none";
+        return;
+    }
+
+    fetch(`https://quiz-web-ujwh.onrender.com/quiz/${topic}Questions`)
+        .then(response => {
+            if (!response.ok) throw new Error('Network error');
+            return response.json();
         })
-        updater()
-    }).catch((e)=>{
-    })
-}, 0);
-function exiter(a = 0) {
+        .then(data => {
+            if (data.length === 0) throw new Error('No questions found for this topic.');
+            data.forEach(item => {
+                question.push(item.question);
+                answer.push(item.answer);
+            });
+            updater();
+            loader.style.display = 'none';
+        })
+        .catch(error => {
+            console.error(error);
+            document.getElementById('question').textContent = "Failed to load questions. Please try again.";
+            loader.innerHTML = "<h2>Error</h2>";
+        });
+}
+
+function exiter(manual = 0) {
+    clearInterval(timerInterval);
     window.localStorage.setItem('points', totpoints);
 
-    // Parse the stored values and handle NaN properly
-    let storedTotalQns = parseInt(window.localStorage.getItem('totalqns'));
-    let storedTotalCrt = parseInt(window.localStorage.getItem('totalcrt'));
+    let storedTotalQns = parseInt(window.localStorage.getItem('totalqns')) || 0;
+    let storedTotalCrt = parseInt(window.localStorage.getItem('totalcrt')) || 0;
 
-    if (isNaN(storedTotalQns)) {
-        storedTotalQns = 0;
-    }
-    if (isNaN(storedTotalCrt)) {
-        storedTotalCrt = 0;
-    }
+    window.localStorage.setItem('totalqns', storedTotalQns + attemptedqns);
+    window.localStorage.setItem('totalcrt', storedTotalCrt + totpoints);
 
-    let tpt = storedTotalQns + attemptedqns;
-    let totcrt = storedTotalCrt + totpoints;
-
-    window.localStorage.setItem('totalqns', tpt);
-    window.localStorage.setItem('totalcrt', totcrt);
-
-    console.log(window.localStorage.getItem('totalqns') + " / " + window.localStorage.getItem('totalcrt'));
-
-    if (a == 1) {
+    if (manual === 1) {
         window.location.href = '../TopicSelectionPage/startPage1.html';
     } else {
         window.location.href = '../ResultPage/result.html';
     }
-
-    alert('stop the game');
 }
 
-const timer=()=>{
-    let s=0
-    let m=15;
-    let itvl=setInterval(() => {
-        if(m==0 && s<=0){
-exiter();
-      }
-        if(s<0){
-            m--;
-            s=59;
-           }
-        let sec=s;
-        let min=m;
-        (s<10)?sec='0'+s:sec=s;
-        (m<10)?min='0'+m:min=m;
-      document.querySelector(".time").innerHTML=`${min}:${sec}`
-        s--;
+function timer() {
+    let duration = 15 * 60; // 15 minutes in seconds
+    const timerDisplay = document.querySelector(".time");
+
+    timerInterval = setInterval(() => {
+        if (duration <= 0) {
+            clearInterval(timerInterval);
+            exiter();
+        }
+
+        let minutes = Math.floor(duration / 60);
+        let seconds = duration % 60;
+
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        timerDisplay.innerHTML = `${minutes}:${seconds}`;
+        duration--;
     }, 1000);
 }
-timer();
 
-let currentanswer;
-let currentquestion;
-function submit(){
-    let helper=document.querySelector(".selansbox").textContent;;
-    if(helper==currentanswer){
-     totpoints++;
+function submit() {
+    const selected = document.querySelector(".selansbox").textContent;
+    if (selected === currentanswer) {
+        totpoints++;
     }
     updater();
 }
 
-function updater(){
-    console.log(attemptedqns);
-    if(attemptedqns>=10){
-exiter();
+function updater() {
+    if (attemptedqns >= 10 || question.length === 0) {
+        exiter();
+        return;
     }
-    let questionNumber=Math.floor((Math.random()*29)+1);
-    let answerArray=[];
-    currentquestion=question[questionNumber];
-    currentanswer=answer[questionNumber];
-    answerArray.push(answer[questionNumber]);
-    let num=0;
-    while(answerArray.length<4){
-    let arrayans=Math.floor((Math.random()*25)+1)
-     answerArray.push(answer[arrayans])
-    }
-    document.querySelector('#question').innerHTML=`${currentquestion}`;
-    document.querySelectorAll('.ans').forEach((e)=>{        
-        e.innerHTML=`${answerArray[num++]}`;
-    },num)
-    document.querySelector(".selansbox").innerHTML=`Selected Answer`;
+
     attemptedqns++;
+    
+    // Create a set of unique random indices for incorrect answers
+    const incorrectIndices = new Set();
+    while (incorrectIndices.size < 3) {
+        const randomIndex = Math.floor(Math.random() * answer.length);
+        if (answer[randomIndex] !== answer[question.length - 1]) { // Ensure not the correct answer
+            incorrectIndices.add(randomIndex);
+        }
+    }
+
+    const options = [answer[question.length - 1], ...Array.from(incorrectIndices).map(i => answer[i])];
+    
+    // Shuffle the options array
+    for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+    }
+
+    currentquestion = question.pop();
+    currentanswer = answer.pop();
+
+    document.querySelector('#question').innerHTML = currentquestion;
+    const ansElements = document.querySelectorAll('.ans');
+    ansElements.forEach((el, index) => {
+        el.innerHTML = options[index];
+        el.classList.remove('selected');
+    });
+
+    document.querySelector(".selansbox").innerHTML = "None";
 }
+
+// --- Initialize Page ---
+fetchQuestions();
+timer();
+
+// --- Event Listeners ---
+document.querySelectorAll(".ans").forEach(e => {
+    e.addEventListener("click", () => {
+        selans(e.textContent, e);
+    });
+});
+
+document.getElementById("submit").addEventListener('click', submit);
+document.getElementById("skip").addEventListener('click', updater);
+document.getElementById("exit").addEventListener('click', () => exiter(1));
+document.querySelector(".more_info").addEventListener('click', () => {
+    window.location.href = '../MoreInfoPage/moreinfo.html';
+});

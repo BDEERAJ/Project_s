@@ -1,36 +1,41 @@
 function submit() {
-    const a = document.querySelector('#rev').value;
+    const rev = document.querySelector('#rev').value;
+    const submitBtn = document.querySelector('.submit-btn');
     
-    if (a !== null && a.trim() !== "") {
-      fetch('https://quiz-web-ujwh.onrender.com/feedback', {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ rev: a })
-      })
-      .then(response => response.json())
-      .then(data => {
-       
-      })
-      .catch(error => {
-        alert("Something went wrong while submitting feedback.");
-      });
+    if (rev && rev.trim() !== "") {
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+
+        fetch('https://quiz-web-ujwh.onrender.com/feedback', {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ rev: rev })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert("Feedback submitted successfully!");
+            window.location.reload();
+        })
+        .catch(error => {
+            alert("Something went wrong while submitting feedback.");
+            console.error("Fetch Error:", error);
+            submitBtn.textContent = 'Submit';
+            submitBtn.disabled = false;
+        });
     } else {
-      alert("Please enter some feedback before submitting.");
+        alert("Please enter some feedback before submitting.");
     }
-    alert("Feedback submitted successfully!");
-    window.location.reload;
-  }
-  if(window.localStorage.getItem('darkmode')=='on'){
-const style = document.createElement('style');
-style.innerHTML = `
-  * {
-    background-color: rgb(12, 12, 12) !important;
-    color: white !important;
-    border-color:#362e30 !important;
-    box-shadow: 0px 0px 0px 0px black !important;
-  }
-`;
-document.head.insertAdjacentElement('beforeend', style);
 }
+
+document.querySelector('.submit-btn').addEventListener('click', submit);
+
+document.querySelector('.back-btn').addEventListener('click', () => {
+    window.location.href = '../TopicSelectionPage/startPage1.html';
+});

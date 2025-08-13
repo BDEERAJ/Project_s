@@ -1,185 +1,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@600&family=Rubik:wght@500&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Select a Topic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="startPage1.css">
 </head>
-
 <body>
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
     <div id="main">
-        <div class="Topic">
-            <div class="menubar">
-                <div class="menu_list">
-                    <div>
-                        <h2>menu:</h2>
-                        <ul>
-                            <li onclick="window.location.href='../index.html'">Home</li>
-                            <li> <a href="#topicspage" onclick="menuHider()"> Topics</a></li>
-                            <li onclick="window.location.href='../authentication/login.html'">login</li>
-                            <li onclick="window.location.href='../authentication/sign-in.html'">sign in</li>
-                            <li onclick="window.location.href='../FeedbackPage/feedback.html'">Feedback</li>
-                            <li onclick="logout()">Logout</li>
-                            <li onclick="darkmode()">Dark_Mode</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <button onclick="menuHider()" class="menu_closer">Back</button>
-                        <footer>
-                            Thanks For Visiting
-                        </footer>
-                    </div>
+        <div class="menubar">
+            <div class="menu_list">
+                <div>
+                    <h2>Menu</h2>
+                    <ul>
+                        <li>Home</li>
+                        <li>Topics</li>
+                        <li>Login</li>
+                        <li>Sign In</li>
+                        <li>Feedback</li>
+                        <li>Logout</li>
+                    </ul>
+                </div>
+                <div>
+                    <button class="menu_closer">Back</button>
+                    <footer>Thanks For Visiting</footer>
                 </div>
             </div>
-            <div onclick="menuHider()" class="menu">☰</div>
-
-            <h1>Topic</h1>
+        </div>
+        
+        <div class="topic">
+            <div class="menu">☰</div>
+            <h1>Select a Topic</h1>
         </div>
 
         <div class="status">
-            <h2>StatusBoard:</h2>
-            <h3 class="name">Unknown user</h3>
+            <h2>StatusBoard</h2>
+            <h3 class="name">Unknown User</h3>
             <div class="stats">
-                <div class="statsnames">
-                    <div class="per">
-                        <div class="bar">
-                            <p >TOTALQNS:</p>
-                            <p style="color: black;" class="totalqns">0</p>
-                        </div>
-                        <div class="bar">
-                            <p >CorrectAns</p>
-                            <p style="color: black;" class="totalqnscrt">0</p>
-                        </div>
-                        <div class="bar">
-                            <p>Average%:</p>
-                            <p style="color: black;" class="totalqnswarg">0</p>
-                        </div>
-                    </div>
-    
+                <div class="bar">
+                    <p>Total Qns:</p>
+                    <p class="totalqns">0</p>
                 </div>
-
+                <div class="bar">
+                    <p>Correct Ans:</p>
+                    <p class="totalqnscrt">0</p>
+                </div>
+                <div class="bar">
+                    <p>Average:</p>
+                    <p class="totalqnswarg">0%</p>
+                </div>
             </div>
         </div>
+
         <div class="topics_maindiv" id="topicspage">
             <div class="Topic_all">
-                <div onclick="infoFetcher('science')" class="Topic_1 Topics">
+                <div class="topics" data-topic="science">
                     <div class="img_t1 science"></div>
                     <div class="Topic_info">
                         <h3>Science</h3>
                         <p>Explore facts about physics, biology, chemistry, and the universe.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('health')" class="Topic_1 Topics">
+                <div class="topics" data-topic="health">
                     <div class="img_t1 health"></div>
                     <div class="Topic_info">
                         <h3>Health</h3>
-                        <p>Learn about the human body, diseases, nutrition, and well-being.</p>
+                        <p>Learn about the human body, nutrition, and well-being.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('geography')" class="Topic_1 Topics">
+                <div class="topics" data-topic="geography">
                     <div class="img_t1 geography"></div>
                     <div class="Topic_info">
                         <h3>Geography</h3>
                         <p>Test your knowledge of continents, countries, rivers, and landscapes.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('coding')" class="Topic_1 Topics">
+                <div class="topics" data-topic="coding">
                     <div class="img_t1 coding"></div>
                     <div class="Topic_info">
                         <h3>Coding</h3>
                         <p>Answer questions about programming languages, logic, and syntax.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('history')" class="Topic_1 Topics">
+                <div class="topics" data-topic="history">
                     <div class="img_t1 history"></div>
                     <div class="Topic_info">
                         <h3>History</h3>
                         <p>Dive into world history, ancient civilizations, and key events.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('technology')" class="Topic_1 Topics">
+                <div class="topics" data-topic="technology">
                     <div class="img_t1 technology"></div>
                     <div class="Topic_info">
                         <h3>Technology</h3>
                         <p>Stay sharp with tech trivia from gadgets to innovations.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('sports')" class="Topic_1 Topics">
+                <div class="topics" data-topic="sports">
                     <div class="img_t1 sports"></div>
                     <div class="Topic_info">
                         <h3>Sports</h3>
                         <p>Quiz yourself on sports, athletes, rules, and records.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('english')" class="Topic_1 Topics">
+                <div class="topics" data-topic="english">
                     <div class="img_t1 english"></div>
                     <div class="Topic_info">
                         <h3>English</h3>
                         <p>Grammar, vocabulary, idioms, and more to boost your language skills.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('math')" class="Topic_1 Topics">
+                <div class="topics" data-topic="math">
                     <div class="img_t1 math"></div>
                     <div class="Topic_info">
                         <h3>Math</h3>
                         <p>Challenge yourself with numbers, formulas, and calculations.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('music')" class="Topic_1 Topics">
+                <div class="topics" data-topic="music">
                     <div class="img_t1 music"></div>
                     <div class="Topic_info">
                         <h3>Music</h3>
                         <p>Identify notes, instruments, genres, and famous artists.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('space')" class="Topic_1 Topics">
+                <div class="topics" data-topic="space">
                     <div class="img_t1 space"></div>
                     <div class="Topic_info">
                         <h3>Space</h3>
                         <p>Explore the solar system, stars, planets, and space missions.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('currentaffairs')" class="Topic_1 Topics">
+                <div class="topics" data-topic="current_affairs">
                     <div class="img_t1 current_affairs"></div>
                     <div class="Topic_info">
                         <h3>Current Affairs</h3>
                         <p>Stay updated with recent news, global events, and happenings.</p>
                     </div>
                 </div>
-                
-                <div onclick="infoFetcher('environment')" class="Topic_1 Topics">
-                    <div class="img_t1 environment"></div>
-                    <div class="Topic_info">
-                        <h3>Environment</h3>
-                        <p>Test your awareness about nature, climate, and conservation.</p>
-                    </div>
-                </div>
-                
-                <div onclick="infoFetcher('computers')" class="Topic_1 Topics">
-                    <div class="img_t1 computers"></div>
-                    <div class="Topic_info">
-                        <h3>Computers</h3>
-                        <p>Understand computer basics, hardware, software, and networks.</p>
-                    </div>
-                </div>
-                
             </div>
         </div>
+        <footer id="endfooter">THANKS FOR VISITING OUR WEBSITE</footer>
     </div>
-    <footer id="endfooter">THANKS FOR VISTING OUR WEBSITE</footer>
+    
     <script src="startPage1.js"></script>
 </body>
-
 </html>

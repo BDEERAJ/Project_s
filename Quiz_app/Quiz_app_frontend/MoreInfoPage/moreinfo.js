@@ -1,42 +1,41 @@
-  let topic = window.localStorage.getItem('topic');
-  if (!topic) {
-    topic='technology'
-  }
-   
-   document.querySelector('.header').innerHTML=`Topic :${topic}`;
-  function data() {
-    fetch(`https://quiz-web-ujwh.onrender.com/content:${topic}`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-    .then((e) => e.json())
-    .then((e) => {
-      if (e.content) {
-        document.querySelector('#content').innerHTML = e.content;
-      } else {
-        document.querySelector('#content').innerHTML = "No content found.";
-      }
-    })
-    .catch(err => {
-      document.querySelector('#content').innerHTML = "Failed to load content.";
-      console.error(err);
-    });
-  }
+function data() {
+    const preloader = document.getElementById('preloader');
+    const main = document.querySelector('.main');
+    const content = document.querySelector('#content');
+    
+    let topic = window.localStorage.getItem('topic');
+    if (!topic) {
+        topic = 'technology';
+    }
+    
+    document.querySelector('.header').innerHTML = `Topic: ${topic}`;
 
-  document.addEventListener('DOMContentLoaded', () => {
-    data();
-  });
-if(window.localStorage.getItem('darkmode')=='on'){
-const style = document.createElement('style');
-style.innerHTML = `
-  * {
-    background-color: rgb(12, 12, 12) !important;
-    color: white !important;
-    border-color:#362e30 !important;
-    box-shadow: 0px 0px 0px 0px black !important;
-  }
-`;
-document.head.insertAdjacentElement('beforeend', style);
+    fetch(`https://quiz-web-ujwh.onrender.com/content:${topic}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.content) {
+            content.innerHTML = data.content;
+        } else {
+            content.innerHTML = "No content found for this topic.";
+        }
+        preloader.style.display = 'none';
+        main.style.display = 'flex';
+    })
+    .catch(error => {
+        content.innerHTML = "Failed to load content. Please check your connection and try again.";
+        console.error('Fetch error:', error);
+        preloader.style.display = 'none';
+        main.style.display = 'flex';
+    });
 }
+
+document.querySelector('.back').addEventListener('click', () => {
+    window.location.href = '../QuizMainPage/Quiz_qns.html';
+});
+
+data();

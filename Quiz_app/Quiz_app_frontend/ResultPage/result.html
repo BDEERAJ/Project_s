@@ -1,20 +1,26 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinalResult</title>
+    <title>Quiz Result</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="result.css">
 </head>
 <body>
     <div class="main">
         <div class="contents">
-            <div class="marks">
-                <h2>Correct Answers:</h2>
-                <h1 class="points"></h1>
-            </div>
             <div class="info">
+                <h2>Congratulations!</h2>
+                <p>You have completed the quiz. Here is your score for the last round.</p>
             </div>
-            <button onclick="window.location.href='../TopicSelectionPage/startPage1.html'">BACK</button>
+            <div class="marks">
+                <h2>Correct Answers</h2>
+                <h1 class="points">0</h1>
+            </div>
+            <button>Play Again</button>
         </div>
     </div>
     <script src="result.js"></script>

@@ -1,68 +1,90 @@
-*{
- margin: 0px;
- padding: 0px;
+@keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff; }
+    50% { text-shadow: 0 0 25px #ff00ff, 0 0 50px #ff00ff; }
 }
-.main{
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #0C0C1E;
+}
+
+.main {
     width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     overflow: hidden;
+    background-image: radial-gradient(circle, #2a2a57, #1a1a3b, #0c0c1e);
+    padding: 20px;
 }
-.contents{
-        border: 2px solid black;
-    border-radius: 30px;
-    width: 80vw;
-    height: 80vh;
-    background-color: aliceblue;
+
+.contents {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(28, 28, 46, 0.7);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    box-shadow: 0px 0px 12px 7px darkseagreen;
-    gap: 11%;
-}
-.marks{
-    padding: 20px;
-    width: 50%;
-    max-width: 220px;
-    max-height: 158px;
-    height: fit-content;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border-radius: 30px;
-    background-color: aqua;
-    box-shadow: 0px 0px 12px 7px darkseagreen;
-}
-h2{
-    text-decoration: underline rgb(17, 38, 226);
-    font-size: clamp(18px, 20%, 25px);
-    color: blue;
-    max-height: 15px;
-}
-h1{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: clamp(55px, 6vw, 68px);
+    padding: clamp(20px, 6vw, 50px);
+    gap: 30px;
     text-align: center;
-    border: 2px solid black;
-    border-radius: 300px;
-    padding: 2vw;
-    margin: 10px;
 }
-.info{
-    width: 90%;
-    max-width: 600px;
-    height: 40%; 
+
+.info h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00FFFF;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 10px;
 }
-button{
-    padding: 2px 10px 1px 10px;
-    border: 1px solid black;
-    border-radius: 5px;
+
+.info p {
+    font-size: 1rem;
+    color: #ccc;
+    max-width: 400px;
 }
-button:after{
-    background-color: rgb(23, 105, 105);
+
+.marks h2 {
+    color: #F0F0F0;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 15px;
 }
-button:hover{
-    background-color: aquamarine;
+
+.points {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(4rem, 15vw, 6rem);
+    color: #FF00FF;
+    animation: pulse-glow 3s infinite ease-in-out;
+    line-height: 1;
+}
+
+button {
+    padding: 15px 45px;
+    border: 2px solid #FF00FF;
+    border-radius: 10px;
+    background-image: linear-gradient(45deg, #FF00FF, #8A2BE2);
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #FF00FF, 0 0 40px #FF00FF;
 }

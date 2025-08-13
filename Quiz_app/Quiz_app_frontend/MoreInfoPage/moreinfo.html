@@ -1,24 +1,29 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>More Information</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="moreinfo.css">
 </head>
 <body>
-<div class="main">
-    <h2 class="header"></h2>
-    <div class="content">
-        <div class="paracontent">
-        <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <ul>
-     <p id="content"></p>
-     <ul>
-        </p>
+    <div id="preloader">
+        <div class="loader"></div>
+        <h2>Loading Content...</h2>
     </div>
-        <button onclick="window.location.href='../QuizMainPage/Quiz_qns.html'" class="back">Back</button>
+
+    <div class="main">
+        <div class="content">
+            <h2 class="header"></h2>
+            <div class="paracontent">
+                <p id="content">Loading...</p>
+            </div>
+            <button class="back">Back to Quiz</button>
+        </div>
     </div>
-</div>
-<script src="moreinfo.js"></script>
+    <script src="moreinfo.js"></script>
 </body>
 </html>

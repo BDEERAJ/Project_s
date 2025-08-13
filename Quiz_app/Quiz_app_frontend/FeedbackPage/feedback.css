@@ -1,28 +1,107 @@
-*{
-    padding: 0px;
-    margin: 0px;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
-#rev{
-    width: 80vw;
-    border: 2px solid black;
-    display: block;
-    margin: auto;
-    padding: 10px;
-    height: 50vh;
-    font-size: 20px;
-    text-transform: capitalize;
-    font-family: 'Courier New', Courier, monospace , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-h2{
-    color: blue;
-    margin:2vw;
-    text-decoration: underline;
 
+body {
+    background-color: #0C0C1E;
+    color: #F0F0F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
-button{
-    background-color: aqua;
-    padding: 2px 10px 2px 10px;
-    margin: auto;
-    display: block;
-    margin-top: 10px;
+
+.main {
+    width: 100%;
+    max-width: 700px;
+    background-color: rgba(28, 28, 46, 0.7);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+    padding: clamp(20px, 5vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00FFFF;
+    text-align: center;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    text-shadow: 0 0 10px #00FFFF;
+}
+
+#rev {
+    width: 100%;
+    height: 30vh;
+    min-height: 200px;
+    background-color: rgba(12, 12, 30, 0.8);
+    border: 1px solid rgba(0, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 16px;
+    color: #F0F0F0;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+#rev:focus {
+    outline: none;
+    border-color: #FF00FF;
+    box-shadow: 0 0 15px #FF00FF;
+}
+
+#rev::placeholder {
+    color: #888;
+}
+
+.button-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.button-container button {
+    flex-grow: 1;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    min-width: 150px;
+}
+
+.submit-btn {
+    background-color: #FF00FF;
+    border-color: #FF00FF;
+    color: #fff;
+}
+
+.submit-btn:hover {
+    box-shadow: 0 0 15px #FF00FF;
+}
+
+.submit-btn:disabled {
+    background-color: #555;
+    border-color: #555;
+    cursor: not-allowed;
+}
+
+.back-btn {
+    background-color: transparent;
+    border-color: #00FFFF;
+    color: #00FFFF;
+}
+
+.back-btn:hover {
+    background-color: #00FFFF;
+    color: #0C0C1E;
 }

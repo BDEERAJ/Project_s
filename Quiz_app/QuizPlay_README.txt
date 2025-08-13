@@ -1,66 +1,52 @@
-🎯 QuizPlay - Web-Based Quiz Application
+🚀 Quiz Arena - Full-Stack Gaming Platform
+Quiz Arena is a dynamic, full-stack quiz application featuring a futuristic "Cosmic Cyberpunk" theme. Built with Node.js, Express, and MongoDB on the backend, and powered by vanilla JavaScript on the frontend, it offers a complete, interactive experience. The platform includes secure user authentication, persistent scoring, and a variety of quiz topics fetched from a live API.
 
-QuizPlay is a fully functional quiz application built using HTML, CSS, and vanilla JavaScript. It provides a simple, interactive interface for users to test their knowledge across various topics in a clean and engaging way.
+✨ Features
+User Authentication: Secure Sign-Up and Login functionality using JSON Web Tokens (JWT).
 
-🚀 Features
+Persistent Profiles: User scores and progress are saved to a MongoDB database.
 
-- Multiple quiz topics (Literature, Tech, Coding, etc.)
-- Randomized questions for each play
-- Real-time answer validation
-- Score calculation and summary
-- Clean UI with custom styling
-- Replay option to try again
+Dynamic Content: All quiz questions and topic information are fetched from a live backend API.
+
+Multiple Quiz Topics: A wide range of categories including Science, History, Coding, and more.
+
+Real-time Countdown Timer: An engaging 15-minute timer for each quiz session.
+
+Fully Responsive Design: A sleek, modern UI that works perfectly on desktops, tablets, and mobile devices.
+
+Interactive UI/UX: Smooth animations, loading states, and a visually appealing "glassmorphism" design.
 
 🛠️ Tech Stack
+Backend
+Node.js
 
-Frontend:  
-- HTML5  
-- CSS3  
-- JavaScript (ES6)
+Express.js
 
-Folder Structure:
-Quiz_app_frontend/
-├── index.html
-├── MainPage/
-│   └── main.html / main.css / main.js
-├── QuizBeginPage/
-│   └── Quiz_entry_page.html / .css / .js
-├── ResultPage/
-│   └── result.html / .css / .js
-└── ... (other feature folders)
+MongoDB (with Mongoose)
+
+JSON Web Tokens (JWT) for authentication
+
+bcrypt for password hashing
+
+Frontend
+HTML5
+
+CSS3 (Flexbox, Grid, Animations)
+
+Vanilla JavaScript (ES6+)
 
 📂 Project Structure
+The project is divided into two main parts:
 
-- Frontend: Contains multiple subfolders, each with its own HTML, CSS, and JS files for modular design.
-- Backend (optional): Can be integrated separately for dynamic features like user login or saving results.
-
-🧪 How to Run Locally
-
-1. Clone the repo:
-   git clone https://github.com/BDEERAJ/Quiz_web.git
-2. Navigate to the frontend folder:
-   cd Quiz_web/Quiz_app/Quiz_app_frontend
-3. Open index.html in your browser.
-   OR use a local server (like Live Server in VS Code) for best results.
-
-🌐 Deployment
-
-You can host this static site easily on platforms like:
-- Netlify
-- GitHub Pages
-- Vercel
-
-✨ Demo
-
-Live Site: Coming Soon  
-GitHub: https://github.com/BDEERAJ/Quiz_web/tree/9f8a66a2719cd634e7c1ab6741b64c064fa3afbb/Quiz_app
-
-👨‍💻 Author
-
-Made with ❤️ by Deeraj B  
-🏅 2nd Place Winner - Cynosure SQL Event  
-💻 Solved 100+ Leetcode DSA problems
-
-📜 License
-
-This project is open-source under the MIT License.
+Quiz_Arena/
+├── backend/
+│   ├── server.js         // Main server file
+│   ├── auth.js           // Authentication routes
+│   └── data.js           // Data and quiz routes
+├── frontend/
+│   ├── index.html
+│   ├── TopicSelectionPage/
+│   │   └── startPage1.html / .css / .js
+│   ├── QuizMainPage/
+│   │   └── Quiz_qns.html / .css / .js
+│   └── ... (other feature folders)

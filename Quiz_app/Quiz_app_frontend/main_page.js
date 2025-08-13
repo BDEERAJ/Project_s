@@ -1,24 +1,67 @@
 const a = document.querySelector(".menu");
+const panel = document.querySelector(".info");
+const main = document.querySelector(".main");
+
+const infoback = document.querySelector(".info button");
+const links = document.querySelectorAll(".info .ol li");
+const play = links[0];
+const info = links[1];
+
+const aboutpage = document.querySelector(".information.about");
+const rulespage = document.querySelector(".information.rules");
+
+const aboutback = aboutpage.querySelector("button");
+const rulesback = rulespage.querySelector("button");
+
+
 a.addEventListener('click', (e) => {
     e.stopPropagation();
-    document.querySelector(".info").classList.add("info_class");
-})
+    panel.classList.add("info_class");
+});
+
 function hide_menu() {
-    document.querySelector(".info").classList.remove("info_class");
+    panel.classList.remove("info_class");
 }
+
 function menuhides() {
-    document.querySelector(".main").addEventListener('click', () => {
-        let a = document.querySelector(".info").classList.contains("info_class");
-        if (a) {
-            document.querySelector(".info").classList.remove("info_class");
+    main.addEventListener('click', () => {
+        let open = panel.classList.contains("info_class");
+        if (open) {
+            hide_menu();
         }
-    })
-
-}
-function pageChanger(attribute_from,attribute_to){
-    document.querySelector(`.${attribute_from}`).classList.remove("active");
-    document.querySelector(`.${attribute_from}`).classList.add("inactive");
-    document.querySelector(`.${attribute_to}`).classList.remove("inactive");
-    document.querySelector(`.${attribute_to}`).classList.add("active");
+    });
 }
 
+function pageChanger(from, to) {
+    const fromEl = document.querySelector(`.${from}`);
+    const toEl = document.querySelector(`.${to}`);
+
+    if (fromEl && toEl) {
+        fromEl.classList.remove("active");
+        fromEl.classList.add("inactive");
+        toEl.classList.remove("inactive");
+        toEl.classList.add("active");
+    }
+}
+
+infoback.addEventListener('click', hide_menu);
+
+play.addEventListener('click', () => {
+    pageChanger('main', 'rules');
+    hide_menu();
+});
+
+info.addEventListener('click', () => {
+    pageChanger('main', 'about');
+    hide_menu();
+});
+
+aboutback.addEventListener('click', () => {
+    pageChanger('about', 'main');
+});
+
+rulesback.addEventListener('click', () => {
+    pageChanger('rules', 'main');
+});
+
+menuhides();

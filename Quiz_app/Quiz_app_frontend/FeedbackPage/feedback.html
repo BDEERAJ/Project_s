@@ -1,17 +1,23 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feedback</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="feedback.css">
 </head>
 <body>
     <div class="main">
-        <h2>Enter your review:</h2>
-    <textarea name="review" id="rev" placeholder="FEEDBACK HERE"></textarea>
-    <button onclick="submit()">SUBMIT</button>
-    <button onclick="window.location.href='../TopicSelectionPage/startPage1.html'">BACK</button>
-</div>
-<script src="feedback.js"></script>
+        <h2>Submit Your Feedback</h2>
+        <textarea name="review" id="rev" placeholder="Tell us what you think..."></textarea>
+        <div class="button-container">
+            <button class="submit-btn">Submit</button>
+            <button class="back-btn">Back</button>
+        </div>
+    </div>
+    <script src="feedback.js"></script>
 </body>
 </html>
