@@ -49,18 +49,47 @@ function exiter(manual = 0) {
     let storedTotalQns = parseInt(window.localStorage.getItem('totalqns')) || 0;
     let storedTotalCrt = parseInt(window.localStorage.getItem('totalcrt')) || 0;
 
-    window.localStorage.setItem('totalqns', storedTotalQns + attemptedqns);
-    window.localStorage.setItem('totalcrt', storedTotalCrt + totpoints);
+    const newTotalQns = storedTotalQns + attemptedqns;
+    const newTotalCrt = storedTotalCrt + totpoints;
 
-    if (manual === 1) {
-        window.location.href = '../TopicSelectionPage/startPage1.html';
+    window.localStorage.setItem('totalqns', newTotalQns);
+    window.localStorage.setItem('totalcrt', newTotalCrt);
+    
+    const token = window.localStorage.getItem('token');
+    const email = window.localStorage.getItem('email');
+
+    const redirectUser = () => {
+        if (manual === 1) {
+            window.location.href = '../TopicSelectionPage/startPage1.html';
+        } else {
+            window.location.href = '../ResultPage/result.html';
+        }
+    };
+
+    if (token && email) {
+        fetch('https://quiz-web-ujwh.onrender.com/api/score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': token
+            },
+            body: JSON.stringify({
+                email: email,
+                total: newTotalQns,
+                correct: newTotalCrt
+            })
+        }).then(() => {
+            redirectUser();
+        }).catch(() => {
+            redirectUser();
+        });
     } else {
-        window.location.href = '../ResultPage/result.html';
+        redirectUser();
     }
 }
 
 function timer() {
-    let duration = 15 * 60; // 15 minutes in seconds
+    let duration = 15 * 60;
     const timerDisplay = document.querySelector(".time");
 
     timerInterval = setInterval(() => {
@@ -81,6 +110,7 @@ function timer() {
 }
 
 function submit() {
+    attemptedqns++;
     const selected = document.querySelector(".selansbox").textContent;
     if (selected === currentanswer) {
         totpoints++;
@@ -93,21 +123,17 @@ function updater() {
         exiter();
         return;
     }
-
-    attemptedqns++;
     
-    // Create a set of unique random indices for incorrect answers
     const incorrectIndices = new Set();
     while (incorrectIndices.size < 3) {
         const randomIndex = Math.floor(Math.random() * answer.length);
-        if (answer[randomIndex] !== answer[question.length - 1]) { // Ensure not the correct answer
+        if (answer[randomIndex] !== answer[question.length - 1]) { 
             incorrectIndices.add(randomIndex);
         }
     }
 
     const options = [answer[question.length - 1], ...Array.from(incorrectIndices).map(i => answer[i])];
     
-    // Shuffle the options array
     for (let i = options.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [options[i], options[j]] = [options[j], options[i]];
@@ -126,11 +152,9 @@ function updater() {
     document.querySelector(".selansbox").innerHTML = "None";
 }
 
-// --- Initialize Page ---
 fetchQuestions();
 timer();
 
-// --- Event Listeners ---
 document.querySelectorAll(".ans").forEach(e => {
     e.addEventListener("click", () => {
         selans(e.textContent, e);
@@ -138,7 +162,12 @@ document.querySelectorAll(".ans").forEach(e => {
 });
 
 document.getElementById("submit").addEventListener('click', submit);
-document.getElementById("skip").addEventListener('click', updater);
+
+document.getElementById("skip").addEventListener('click', () => {
+    attemptedqns++;
+    updater();
+});
+
 document.getElementById("exit").addEventListener('click', () => exiter(1));
 document.querySelector(".more_info").addEventListener('click', () => {
     window.location.href = '../MoreInfoPage/moreinfo.html';
