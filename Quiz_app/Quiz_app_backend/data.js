@@ -2,17 +2,16 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-const points = mongoose.models.points || mongoose.model('points', new mongoose.Schema({ email: String, total: Number, correct: Number }));
-const db = mongoose.models.db || mongoose.model('db', { topic: String, content: String }, 'content_dbs');
-const moreinfos = mongoose.models.moreinfos || mongoose.model('moreinfos', { topic: String, content: String }, 'moreinfos');
-const fd = mongoose.models.fd || mongoose.model('fd', { rev: String }, 'feedback');
-const MessageFromPortfolio = mongoose.models.MessageFromPortfolio || mongoose.model('MessageFromPortfolio', new mongoose.Schema({
-    name: { type: String, required: true, trim: true },
-    email: { type: String, required: true, trim: true },
-    message: { type: String, required: true, trim: true },
-    createdAt: { type: Date, default: Date.now },
-}));
+// Import all models from your models.js file
+const {
+    Points,
+    ContentDB,
+    MoreInfo,
+    Feedback,
+    MessageFromPortfolio
+} = require('./models');
 
+// Route to update or create user points
 router.put('/result/points', async (req, res) => {
     try {
         const { email, tot, crt } = req.body;
@@ -21,65 +20,77 @@ router.put('/result/points', async (req, res) => {
             return res.status(400).json({ message: 'Missing required fields' });
         }
 
-        let user = await points.findOne({ email });
-
-        if (user) {
-            await points.updateOne(
-                { email },
-                { $set: { total: parseInt(user.total) + parseInt(tot), correct: parseInt(user.correct) + parseInt(crt) } }
-            );
-        } else {
-            await points.create({ email, total: tot, correct: crt });
-        }
+        await Points.findOneAndUpdate(
+            { email },
+            { $inc: { total: parseInt(tot), correct: parseInt(crt) } },
+            { upsert: true, new: true } // upsert: true creates the doc if it doesn't exist
+        );
 
         res.status(200).json({ message: "Points updated successfully" });
-    } catch {
+    } catch (error) {
+        console.error('Error updating points:', error);
         res.status(500).json({ error: "Server Error" });
     }
 });
 
+// Route to save user feedback
 router.put('/feedback', async (req, res) => {
     const { rev } = req.body;
+    if (!rev) {
+        return res.status(400).send({ error: 'Feedback content is required.' });
+    }
     try {
-        const newFeedback = new fd({ rev });
+        const newFeedback = new Feedback({ rev });
         await newFeedback.save();
         res.status(200).send({ message: 'Feedback saved' });
-    } catch {
+    } catch (error) {
+        console.error('Error saving feedback:', error);
         res.status(500).send({ error: 'Failed to save feedback' });
     }
 });
 
+// Route to get content based on a slug
 router.get('/:slug', async (req, res) => {
     const tpc = req.params.slug;
-    let arr = tpc.split(':');
+    const arr = tpc.split(':');
 
     try {
+        let obj;
         if (arr[0] === 'content' && arr.length > 1) {
-            const obj = await moreinfos.findOne({ topic: arr[1] });
-            if (obj) return res.send(obj);
-            else return res.status(404).send({ message: 'Moreinfo not found' });
+            obj = await MoreInfo.findOne({ topic: arr[1] });
+            if (!obj) return res.status(404).send({ message: 'Moreinfo not found' });
         } else {
-            const obj = await db.findOne({ topic: tpc });
-            if (obj) return res.send(obj);
-            else return res.status(404).send({ message: 'Content not found' });
+            obj = await ContentDB.findOne({ topic: tpc });
+            if (!obj) return res.status(404).send({ message: 'Content not found' });
         }
-    } catch {
+        return res.send(obj);
+    } catch (error) {
+        console.error('Error retrieving content:', error);
         res.status(500).send({ error: 'Error retrieving content' });
     }
 });
 
+// Route to get quiz data from a dynamic collection name
 router.get('/quiz/:slug', async (req, res) => {
     const collectionName = req.params.slug;
     try {
-        const QuizModel = mongoose.models[collectionName] || mongoose.model(collectionName, {
+        // A basic schema for dynamic quiz models
+        const quizSchema = new mongoose.Schema({
             question: String,
             answer: String
-        }, collectionName);
+        });
+
+        // Dynamically create a model if it doesn't already exist
+        const QuizModel = mongoose.models[collectionName] || mongoose.model(collectionName, quizSchema, collectionName);
 
         const data = await QuizModel.find({});
-        if (data) res.json(data);
-        else res.status(404).send({ message: 'No quiz data found' });
-    } catch {
+        if (data && data.length > 0) {
+            res.json(data);
+        } else {
+            res.status(404).send({ message: 'No quiz data found' });
+        }
+    } catch (error) {
+        console.error('Error fetching quiz data:', error);
         res.status(500).send({ error: 'Error fetching quiz data' });
     }
 });
@@ -96,6 +107,7 @@ router.put('/contact/sendmessage', async (req, res) => {
         await data.save();
         res.status(200).json({ success: true, message: 'Message sent successfully!' });
     } catch (err) {
+        console.error('Error sending message:', err);
         res.status(500).json({ success: false, error: 'Server error. Please try again later.' });
     }
 });

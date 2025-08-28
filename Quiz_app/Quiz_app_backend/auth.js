@@ -3,13 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
-const User = mongoose.models.User || mongoose.model('User', new mongoose.Schema({
-    username: String,
-    email: { type: String, unique: true },
-    password: String
-}));
-const points = mongoose.models.points || mongoose.model('points', new mongoose.Schema({ email: String, total: Number, correct: Number }));
+const { User, Points2 } = require('./models'); 
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET || 'secret', { expiresIn: '1d' });
@@ -72,7 +66,7 @@ router.get('/api/profile', authMiddleware, async (req, res) => {
         if (!u) return res.status(404).json({ message: 'User not found' });
 
         const email = u.email;
-        let user = await points.findOne({ email });
+        let user = await Points2.findOne({ email });
 
         if (user) {
             return res.json({
@@ -83,7 +77,7 @@ router.get('/api/profile', authMiddleware, async (req, res) => {
                 correct: parseInt(user.correct)
             });
         } else {
-            await points.create({ email, total: 0, correct: 0 });
+            await Points2.create({ email, total: 0, correct: 0 });
             return res.json({
                 message: `Welcome user ${req.userId}`,
                 username: u.username,
