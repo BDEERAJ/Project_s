@@ -1,185 +1,394 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-.home-page {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #1f1c2c, #928dab);
-    color: #f0f0f0;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
+:root {
+    --color-bg: #111111;
+    --color-bg-light: #1c1c1c;
+    --color-bg-lighter: #282828;
+    --color-text: #cccccc;
+    --color-text-dim: #888888;
+    --color-text-white: #ffffff;
+    --color-text-black: #111111;
+    --color-accent: #ffffff;
+    --color-accent-hover: #f0f0f0;
+    --color-border: #333333;
 }
 
-.welcome-card {
-    padding: 3rem;
-    border-radius: 2rem;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    max-width: 700px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.welcome-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-}
-
-.welcome-heading {
-    font-size: 2.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.welcome-paragraph {
-    font-size: 1.15rem;
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Inter', sans-serif;
     line-height: 1.7;
-    color: #e0e0e0;
+    letter-spacing: 0.02em;
 }
 
-.role-button {
-    padding: 0.9rem 2.2rem;
-    font-size: 1.15rem;
-    font-weight: 500;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    color: #fff;
-    background-color: #2980b9;
+html {
+    scroll-behavior: smooth;
 }
 
-.role-button:hover {
-    transform: translateY(-3px);
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
-.btn-student {
-    background: linear-gradient(135deg, #2980b9, #6dd5fa);
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
 }
 
-.btn-student:hover {
-    background: #fff;
-    color: #2980b9;
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
 }
 
-.btn-teacher {
-    background: linear-gradient(135deg, #11998e, #38ef7d);
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
 }
 
-.btn-teacher:hover {
-    background: #fff;
-    color: #11998e;
+.text-center {
+    text-align: center;
 }
 
-.btn-how-to-use {
-    background: transparent;
-    border: 1px solid #aaa;
-    color: #ccc;
-    padding: 0.6rem 1.6rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-how-to-use:hover {
-    background: #fff;
-    color: #333;
-    border-color: #fff;
-}
-
-.modal-overlay {
+.app-header {
+    background-color: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(5px);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    color: white;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: 1rem;
+    z-index: 50;
+    border-bottom: 1px solid var(--color-border);
 }
 
-.modal-content {
-    background: #2a2a2a;
-    color: #f0f0f0;
-    padding: 30px;
-    border-radius: 15px;
-    max-width: 600px;
-    max-height: 80vh;
-    width: 90%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    pointer-events: auto;
-    overflow-y: auto;
-}
-
-.modal-header {
+.app-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #555;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-.modal-title {
-    margin: 0;
-    font-size: 1.6rem;
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-white);
+    text-decoration: none;
 }
 
-.modal-close-btn {
+.logo span {
+    color: var(--color-text-white);
+}
+
+.desktop-menu {
+    display: none;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .desktop-menu {
+        display: flex;
+    }
+}
+
+.nav-link {
+    color: var(--color-text-dim);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: var(--color-text-white);
+}
+
+.mobile-menu-button {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .mobile-menu-button {
+        display: none;
+    }
+}
+
+.mobile-menu-button button {
     background: none;
     border: none;
-    font-size: 2rem;
-    line-height: 1;
-    color: #aaa;
+    color: var(--color-text-white);
     cursor: pointer;
 }
 
-.modal-close-btn:hover {
-    color: #fff;
+.hamburger-icon {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
-.modal-body {
-    padding-top: 10px;
-    padding-bottom: 10px;
+.mobile-menu {
+    background-color: var(--color-bg-light);
+    border-bottom: 1px solid var(--color-border);
 }
 
-.modal-body hr {
-    border-color: #555;
+@media (min-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
 }
 
-.modal-footer {
-    padding-top: 20px;
-    text-align: right;
+.nav-link-mobile {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    text-decoration: none;
+    color: var(--color-text-dim);
 }
 
-@media (max-width: 768px) {
-    .welcome-card {
-        padding: 2rem;
-    }
+.nav-link-mobile:hover {
+    background-color: var(--color-bg-lighter);
+    color: var(--color-text-white);
+}
 
-    .welcome-heading {
-        font-size: 2.2rem;
-    }
+.hero-section {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+}
 
-    .welcome-paragraph {
-        font-size: 1rem;
+@media (min-width: 768px) {
+    .hero-section {
+        padding-top: 10rem;
     }
+}
 
-    .role-button {
-        padding: 0.75rem 1.8rem;
-        font-size: 1rem;
-    }
+.hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 800;
+    color: var(--color-text-white);
+    margin-bottom: 1rem;
+}
 
-    .modal-title {
-        font-size: 1.35rem;
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 3.5rem;
     }
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-dim);
+    max-width: 48rem;
+    margin: 0 auto 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+@media (min-width: 640px) {
+    .hero-buttons {
+        flex-direction: row;
+    }
+}
+
+.role-button {
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    border: 2px solid transparent;
+}
+
+.role-button:hover {
+    transform: translateY(-2px);
+}
+
+.student-button {
+    color: var(--color-text-white);
+    border-color: var(--color-text-white);
+    background-color: transparent;
+}
+
+.student-button:hover {
+    background-color: var(--color-text-white);
+    color: var(--color-text-black);
+}
+
+.teacher-button {
+    background-color: var(--color-accent);
+    color: var(--color-text-black);
+}
+
+.teacher-button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+.features-section,
+.how-it-works-section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-text-white);
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .section-title {
+        font-size: 2.25rem;
+    }
+}
+
+.section-subtitle {
+    color: var(--color-text-dim);
+    margin: 0 auto 3rem;
+    max-width: 42rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
+
+.feature-card {
+    background-color: var(--color-bg-light);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-text-white);
+}
+
+.feature-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--color-text-white);
+    margin: 0 auto;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-white);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    color: var(--color-text-dim);
+    font-size: 0.95rem;
+}
+
+.how-it-works-section {
+    background-color: var(--color-bg-light);
+}
+
+.how-it-works-section .section-title {
+    margin-bottom: 3rem;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .steps-container {
+        flex-direction: row;
+        align-items: stretch;
+    }
+}
+
+.step-card {
+    background-color: var(--color-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .step-card {
+        width: 50%;
+    }
+}
+
+.step-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-text-white);
+}
+
+.steps-list {
+    list-style-position: inside;
+    list-style-type: decimal;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    color: var(--color-text);
+}
+
+.app-footer {
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 0;
+    color: var(--color-text-dim);
+    font-size: 0.9rem;
+}
+
+.footer-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-white);
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.social-link {
+    color: var(--color-text-dim);
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--color-text-white);
+}
+
+.linkedin-icon {
+    width: 1.5rem;
+    height: 1.5rem;
 }
