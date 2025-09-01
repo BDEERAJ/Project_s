@@ -32,7 +32,7 @@ export default function App() {
         <div className="app-container">
             <header className="app-header">
                 <nav className="app-nav container">
-                    <a href="#" className="logo">Leave<span>Tracker</span></a>
+                    <a href="#" className="logo">Leave<span className='text-primary'>Tracker</span></a>
                     <div className="desktop-menu">
                         <a href="#features" onClick={(e) => handleScroll(e, 'features')} className="nav-link">Features</a>
                         <a href="#how-it-works" onClick={(e) => handleScroll(e, 'how-it-works')} className="nav-link">How It Works</a>
@@ -40,7 +40,7 @@ export default function App() {
                     </div>
                     <div className="mobile-menu-button">
                         <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                            <svg className="hamburger-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="hamburger-icon text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"  width="24" height="24 ">
                                 {isMenuOpen ? (
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                 ) : (
