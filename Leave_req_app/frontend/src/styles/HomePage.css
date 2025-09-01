@@ -1,14 +1,15 @@
+/* Light theme variables */
 :root {
-    --color-bg: #111111;
-    --color-bg-light: #1c1c1c;
-    --color-bg-lighter: #282828;
-    --color-text: #cccccc;
-    --color-text-dim: #888888;
+    --color-bg: #ffffff;
+    --color-bg-light: #f7f7f7;
+    --color-bg-lighter: #ededed;
+    --color-text: #222222;
+    --color-text-dim: #555555;
     --color-text-white: #ffffff;
     --color-text-black: #111111;
-    --color-accent: #ffffff;
-    --color-accent-hover: #f0f0f0;
-    --color-border: #333333;
+    --color-accent: #007bff;
+    --color-accent-hover: #0056b3;
+    --color-border: #dddddd;
 }
 
 body {
@@ -54,14 +55,14 @@ html {
 }
 
 .app-header {
-    background-color: rgba(17, 17, 17, 0.85);
+    background-color: rgba(255,255,255,0.95);
     backdrop-filter: blur(5px);
+    border-bottom: 1px solid var(--color-border);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 50;
-    border-bottom: 1px solid var(--color-border);
 }
 
 .app-nav {
@@ -75,7 +76,7 @@ html {
 .logo {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--color-text-white);
+    color: var(--color-accent);
     text-decoration: none;
 }
 
@@ -96,14 +97,15 @@ html {
 }
 
 .nav-link {
-    color: var(--color-text-dim);
+    color: var(--color-text);
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
 }
 
 .nav-link:hover {
-    color: var(--color-text-white);
+    color: var(--color-accent);
+    background-color: var(--color-bg-lighter);
 }
 
 .mobile-menu-button {
@@ -144,15 +146,16 @@ html {
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
     text-decoration: none;
-    color: var(--color-text-dim);
+    color: var(--color-text);
 }
 
 .nav-link-mobile:hover {
     background-color: var(--color-bg-lighter);
-    color: var(--color-text-white);
+    color: var(--color-text-black);
 }
 
 .hero-section {
+    background: linear-gradient(90deg, #f7f7f7 0%, #ededed 100%);
     padding-top: 8rem;
     padding-bottom: 4rem;
 }
@@ -167,7 +170,7 @@ html {
     font-size: 2.5rem;
     line-height: 1.2;
     font-weight: 800;
-    color: var(--color-text-white);
+    color: var(--color-text-black);
     margin-bottom: 1rem;
 }
 
@@ -198,37 +201,39 @@ html {
 }
 
 .role-button {
+    border-radius: 8px;
     font-weight: 600;
     padding: 0.75rem 2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
     font-size: 1.1rem;
-    border: 2px solid transparent;
+    border: 2px solid var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-text-white);
+    transition: background 0.3s, color 0.3s;
 }
 
 .role-button:hover {
-    transform: translateY(-2px);
+    background: var(--color-accent-hover);
+    color: var(--color-text-white);
 }
 
 .student-button {
-    color: var(--color-text-white);
-    border-color: var(--color-text-white);
-    background-color: transparent;
+    background: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
 }
 
 .student-button:hover {
-    background-color: var(--color-text-white);
-    color: var(--color-text-black);
+    background: var(--color-accent);
+    color: var(--color-text-white);
 }
 
 .teacher-button {
-    background-color: var(--color-accent);
-    color: var(--color-text-black);
+    background: var(--color-accent);
+    color: var(--color-text-white);
 }
 
 .teacher-button:hover {
-    background-color: var(--color-accent-hover);
+    background: var(--color-accent-hover);
 }
 
 .features-section,
@@ -239,7 +244,7 @@ html {
 .section-title {
     font-size: 1.875rem;
     font-weight: 700;
-    color: var(--color-text-white);
+    color: var(--color-text-black);
     margin-bottom: 0.5rem;
 }
 
@@ -292,7 +297,7 @@ html {
 .feature-title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--color-text-white);
+    color: var(--color-text-black);
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }
@@ -345,7 +350,7 @@ html {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: var(--color-text-white);
+    color: var(--color-text-black);
 }
 
 .steps-list {
@@ -358,6 +363,7 @@ html {
 }
 
 .app-footer {
+    background: var(--color-bg-lighter);
     border-top: 1px solid var(--color-border);
     padding: 2rem 0;
     color: var(--color-text-dim);
@@ -367,7 +373,7 @@ html {
 .footer-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--color-text-white);
+    color: var(--color-text-black);
     margin-bottom: 1rem;
 }
 
@@ -380,12 +386,12 @@ html {
 }
 
 .social-link {
-    color: var(--color-text-dim);
+    color: var(--color-accent);
     transition: color 0.3s ease;
 }
 
 .social-link:hover {
-    color: var(--color-text-white);
+    color: var(--color-accent-hover);
 }
 
 .linkedin-icon {
