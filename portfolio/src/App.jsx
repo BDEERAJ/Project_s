@@ -80,7 +80,7 @@ const portfolioData = {
   ],
   achievements: [
     { title: "Cynosure SQL Event", description: "Stood 2nd in SQL-based tech event 'Cynosure'.", iconClass: "devicon-mysql-plain" },
-    { title: "130+ Java DSA on LeetCode", description: "Solved over 150 DSA problems on LeetCode.", iconClass: "devicon-java-plain" },
+    { title: "200+ Java DSA on LeetCode", description: "Solved over 200 DSA problems on LeetCode.", iconClass: "devicon-java-plain" },
     { title: "BringBackEdu Workshop", description: "Participated in the Data Science Workshop organized by BringBackEdu.", iconClass: "devicon-google-plain" },
   ]
 };
@@ -96,7 +96,7 @@ const AnimatedSection = ({ children, id, className }) => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, {  threshold: 0.1});
 
     if (domRef.current) {
         observer.observe(domRef.current);
