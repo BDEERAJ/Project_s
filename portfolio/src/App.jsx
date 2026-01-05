@@ -20,7 +20,7 @@ const portfolioData = {
     {
       title: "Frontend UI Developer Intern",
       company: "AnantWave",
-      date: "July 2024 - Present",
+      date: "July 2024 - September 2024",
       description: [
         "Engineered and maintained responsive, accessible frontend pages for the JunkyNow project using HTML, CSS, and JavaScript, improving user engagement.",
         "Developed reusable UI components for critical user flows, including authentication, cart management, and checkout, leading to a more consistent user experience.",
@@ -80,7 +80,7 @@ const portfolioData = {
   ],
   achievements: [
     { title: "Cynosure SQL Event", description: "Stood 2nd in SQL-based tech event 'Cynosure'.", iconClass: "devicon-mysql-plain" },
-    { title: "200+ Java DSA on LeetCode", description: "Solved over 200 DSA problems on LeetCode.", iconClass: "devicon-java-plain" },
+    { title: "300+ Java DSA on LeetCode", description: "Solved over 300 DSA problems on LeetCode.", iconClass: "devicon-java-plain" },
     { title: "BringBackEdu Workshop", description: "Participated in the Data Science Workshop organized by BringBackEdu.", iconClass: "devicon-google-plain" },
   ]
 };
