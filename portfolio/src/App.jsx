@@ -22,9 +22,9 @@ const portfolioData = {
       company: "AnantWave",
       date: "July 2024 - September 2024",
       description: [
-        "Engineered and maintained responsive, accessible frontend pages for the JunkyNow project using HTML, CSS, and JavaScript, improving user engagement.",
-        "Developed reusable UI components for critical user flows, including authentication, cart management, and checkout, leading to a more consistent user experience.",
-        "Gained hands-on experience implementing Stripe for payment processing and managing real-time Ul updates."
+       "Developed an interactive stock management dashboard enabling real-time stock selection and multi-layered financial analysis.",
+      "Architected seamless integration between React and FastAPI to deliver asynchronous results, reducing application latency by 20%.",
+      "Built dynamic, reusable UI components for data visualization, significantly improving user engagement and interface intuitiveness."
       ]
     }
   ],
