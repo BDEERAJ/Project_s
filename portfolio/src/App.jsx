@@ -30,6 +30,13 @@ const portfolioData = {
   ],
   projects: [
     {
+  title: 'Moviflex',
+  description: 'A full-stack movie platform featuring movie listings with filtering and pagination, dedicated detail pages, user reviews, watchlist management, and admin functions.',
+  technologies: 'MongoDB, Express, React, Node.js, REST API',
+  github: 'https://github.com/BDEERAJ/movieratingapp',
+  weblink: 'https://movieratingapp7.netlify.app/'
+    },
+    {
       title: 'College Leave Request System',
       description: 'A full-stack leave management web application built with the MERN stack. It enables students to submit leave requests and allows teachers to manage them using unique join codes.',
       technologies: 'MongoDB, Express.js, React, Node.js',
