@@ -39,6 +39,7 @@ if (token) {
             }
         });
     } catch (error) {
+
         console.error('Server error:', error);
     }
 } else {

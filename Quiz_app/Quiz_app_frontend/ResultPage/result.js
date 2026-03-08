@@ -6,6 +6,11 @@ const payload = {
     crt: window.localStorage.getItem('totalcrt')
 };
 
+// 1. Grab the button and disable it immediately so the user can't leave yet
+const backButton = document.querySelector('button');
+backButton.disabled = true;
+backButton.innerHTML = "Saving Score..."; // Optional: Give the user visual feedback
+
 fetch('https://quiz-web-ujwh.onrender.com/result/points', {
     method: 'PUT',
     headers: {
@@ -17,11 +22,18 @@ fetch('https://quiz-web-ujwh.onrender.com/result/points', {
     if (!response.ok) {
         console.error('Failed to update score on the server.');
     }
+    // 2. The server finished! Re-enable the button and fix the text.
+    backButton.disabled = false;
+    backButton.innerHTML = "Back to Start"; 
 })
 .catch(error => {
     console.error('Server error:', error);
+    // Re-enable the button even if there's an error so the user isn't trapped
+    backButton.disabled = false; 
+    backButton.innerHTML = "Back to Start";
 });
 
-document.querySelector('button').addEventListener('click', () => {
+// 3. Keep your event listener the same
+backButton.addEventListener('click', () => {
     window.location.href = '../TopicSelectionPage/startPage1.html';
 });
