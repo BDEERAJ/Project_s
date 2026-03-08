@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+mongoose.connect(process.env.MONGO_URL,)
 const Points = mongoose.model('Points', new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     total: { type: Number, default: 0 },
@@ -27,13 +27,6 @@ const MessageFromPortfolio = mongoose.model('MessageFromPortfolio', new mongoose
     createdAt: { type: Date, default: Date.now },
 }));
 
-module.exports = {
-    Points,
-    ContentDB,
-    MoreInfo,
-    Feedback,
-    MessageFromPortfolio
-};
 const userSchema = new mongoose.Schema({
     username: String,
     email: { type: String, unique: true },
@@ -47,4 +40,12 @@ const pointsSchema = new mongoose.Schema({
 });
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);
-module.exports = { User, Points };
+module.exports = {
+    Points,
+    ContentDB,
+    MoreInfo,
+    Feedback,
+    MessageFromPortfolio,
+     User, 
+     Points
+};

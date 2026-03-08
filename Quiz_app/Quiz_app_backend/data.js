@@ -25,7 +25,7 @@ router.put('/result/points', async (req, res) => {
             { $inc: { total: parseInt(tot), correct: parseInt(crt) } },
             { upsert: true, new: true } // upsert: true creates the doc if it doesn't exist
         );
-
+       
         res.status(200).json({ message: "Points updated successfully" });
     } catch (error) {
         console.error('Error updating points:', error);
@@ -53,14 +53,16 @@ router.put('/feedback', async (req, res) => {
 router.get('/:slug', async (req, res) => {
     const tpc = req.params.slug;
     const arr = tpc.split(':');
-
+    console.log('Received slug:', tpc);
     try {
         let obj;
         if (arr[0] === 'content' && arr.length > 1) {
             obj = await MoreInfo.findOne({ topic: arr[1] });
+            console.log('Retrieved object:', obj);
             if (!obj) return res.status(404).send({ message: 'Moreinfo not found' });
         } else {
-            obj = await ContentDB.findOne({ topic: tpc });
+            obj = await ContentDB.findOne({topic: tpc});
+            console.log('Retrieved object:', obj);
             if (!obj) return res.status(404).send({ message: 'Content not found' });
         }
         return res.send(obj);
