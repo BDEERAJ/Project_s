@@ -19,7 +19,7 @@ const token = window.localStorage.getItem('token');
 
 if (token) {
     try {
-        fetch('http://localhost:3000/api/profile', {
+        fetch('https://quiz-web-ujwh.onrender.com/api/profile', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
