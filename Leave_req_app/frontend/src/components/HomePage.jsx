@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/HomePage.css';
 
 const CalendarIcon = () => (
@@ -6,7 +7,6 @@ const CalendarIcon = () => (
         <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
     </svg>
 );
-
 const UserGroupIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="feature-icon text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -21,6 +21,7 @@ const LinkedinIcon = () => (
 
 export default function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const handleScroll = (e, targetId) => {
         e.preventDefault();
@@ -49,6 +50,7 @@ export default function App() {
                             </svg>
                         </button>
                     </div>
+
                 </nav>
                 {isMenuOpen && (
                     <div className="mobile-menu">
@@ -67,8 +69,8 @@ export default function App() {
                             A seamless platform for students and teachers to handle leave requests with unparalleled efficiency. Focus on what matters, not the paperwork.
                         </p>
                         <div className="hero-buttons">
-                            <button className="role-button student-button">I'm a Student</button>
-                            <button className="role-button teacher-button">I'm a Teacher</button>
+                            <button className="role-button student-button" onClick={() => navigate('/Student/login')}>I'm a Student</button>
+                            <button className="role-button teacher-button" onClick={() => navigate('/Teacher/login')}>I'm a Teacher</button>
                         </div>
                     </div>
                 </section>
