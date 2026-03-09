@@ -3,18 +3,19 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User, Points2 } = require('./models'); 
+const { User, Points } = require('./models'); 
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET || 'secret', { expiresIn: '1d' });
 };
 
 const authMiddleware = (req, res, next) => {
-    const token = req.headers['authorization'];
+    const token = req.headers['authorization']; 
     if (!token) return res.status(401).json({ message: 'No token provided' });
-
-    jwt.verify(token, process.env.JWT_SECRET || 'secret', (err, decoded) => {
-        if (err) return res.status(401).json({ message: 'Invalid token' });
+    jwt.verify(token, process.env.JWT_SECRET || 'secret', (err, decoded) => {        
+        if (err) {
+            return res.status(401).json({ message: 'Invalid token' });
+        }
         req.userId = decoded.id;
         next();
     });
@@ -61,13 +62,12 @@ router.post('/api/login', async (req, res) => {
 });
 
 router.get('/api/profile', authMiddleware, async (req, res) => {
+    console.log('Received request for user profile with userId:', req.userId);
     try {
         const u = await User.findById(req.userId);
-        if (!u) return res.status(404).json({ message: 'User not found' });
-
+        if (!u) return res.status(404).json({ message: 'User not found' });        
         const email = u.email;
-        let user = await Points2.findOne({ email });
-
+        let user = await Points.findOne({ email });
         if (user) {
             return res.json({
                 message: `Welcome user ${req.userId}`,
@@ -77,7 +77,7 @@ router.get('/api/profile', authMiddleware, async (req, res) => {
                 correct: parseInt(user.correct)
             });
         } else {
-            await Points2.create({ email, total: 0, correct: 0 });
+            await Points.create({ email, total: 0, correct: 0 });
             return res.json({
                 message: `Welcome user ${req.userId}`,
                 username: u.username,

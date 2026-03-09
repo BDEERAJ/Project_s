@@ -19,7 +19,7 @@ const token = window.localStorage.getItem('token');
 
 if (token) {
     try {
-        fetch('https://quiz-web-ujwh.onrender.com/api/profile', {
+        fetch('http://localhost:3000/api/profile', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -27,6 +27,7 @@ if (token) {
             }
         }).then(res => res.json()).then(data => {
             if (data.username) {
+                console.log('User data retrieved:', data);
                 document.querySelector('.name').innerHTML = data.username;
                 window.localStorage.setItem('email', data.email);
                 window.localStorage.setItem('totalqns', data.total);

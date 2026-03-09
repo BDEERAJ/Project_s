@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URL,)
+mongoose.connect(process.env.MONGO_URL)
 const Points = mongoose.model('Points', new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     total: { type: Number, default: 0 },
@@ -39,7 +39,7 @@ const pointsSchema = new mongoose.Schema({
     correct: Number
 });
 
-const User = mongoose.models.User || mongoose.model('User', userSchema);
+const User =mongoose.model('users', userSchema);
 module.exports = {
     Points,
     ContentDB,
