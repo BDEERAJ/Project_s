@@ -58,9 +58,16 @@ export const PastRequests = ({ requests }) => (
     </div>
 );
 
-export const StudentInfo = ({ students }) => (
+export const StudentInfo = ({ students, onBack, isFiltered }) => (
     <div>
-        <h2 className="mb-4">Student Information</h2>
+        <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2>Student Information {isFiltered && <span className="badge bg-info">Filtered</span>}</h2>
+            {isFiltered && (
+                <button className="btn btn-sm btn-outline-secondary" onClick={onBack}>
+                    Show All Students
+                </button>
+            )}
+        </div>
         <div className="content-card">
             <div className="table-responsive">
                 <table className="custom-table">

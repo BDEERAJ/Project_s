@@ -20,6 +20,7 @@ function App() {
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedStudentId, setSelectedStudentId] = useState(null);
 
     const fetchDashboardData = async () => {
         const token = window.localStorage.getItem('Token');
@@ -61,6 +62,11 @@ function App() {
             alert(`Error: ${err.response?.data?.message || 'Could not update status.'}`);
         }
     };
+
+    const handleViewInfo = (studentId) => {
+        setSelectedStudentId(studentId._id);
+        setActivePage('students');
+    };
     
     const toggleTheme = () => setIsDarkMode(prevMode => !prevMode);
 
@@ -78,12 +84,17 @@ function App() {
             }
         });
         const uniqueStudents = Array.from(studentMap.values());
+        
+        // Filter students if a specific student is selected
+        const displayStudents = selectedStudentId 
+            ? uniqueStudents.filter(student => student._id === selectedStudentId)
+            : uniqueStudents;
 
         switch (activePage) {
-            case 'current': return <CurrentRequests requests={pendingRequests} onUpdateRequest={handleUpdateRequestStatus} onViewInfo={() => {}} />;
+            case 'current': return <CurrentRequests requests={pendingRequests} onUpdateRequest={handleUpdateRequestStatus} onViewInfo={handleViewInfo} />;
             case 'past': return <PastRequests requests={pastRequests} />;
-            case 'students': return <StudentInfo students={uniqueStudents} />;
-            default: return <CurrentRequests requests={pendingRequests} onUpdateRequest={handleUpdateRequestStatus} onViewInfo={() => {}} />;
+            case 'students': return <StudentInfo students={displayStudents} onBack={() => setSelectedStudentId(null)} isFiltered={selectedStudentId !== null} />;
+            default: return <CurrentRequests requests={pendingRequests} onUpdateRequest={handleUpdateRequestStatus} onViewInfo={handleViewInfo} />;
         }
     };
 
