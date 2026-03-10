@@ -23,36 +23,27 @@ const authMiddleware = (req, res, next) => {
 
 router.post('/api/register', async (req, res) => {
     const { username, email, password } = req.body;
-    console.log('Signup attempt for:', email);
 
     if (!username || !email || !password) {
-        console.log('Missing required fields');
         return res.status(400).json({ message: 'All fields are required' });
     }
 
     if (!/@gmail\.com$/.test(email)) {
-        console.log('Invalid email format:', email);
         return res.status(400).json({ message: 'Email must be a valid Gmail address' });
     }
 
     try {
-        console.log('Checking for existing user...');
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            console.log('User already exists:', email);
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        console.log('Hashing password...');
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        console.log('Creating new user...');
         const newUser = await User.create({ username, email, password: hashedPassword });
 
-        console.log('Generating token...');
         const token = generateToken(newUser._id);
 
-        console.log('User registered successfully:', newUser._id);
         res.status(201).json({ message: 'User registered successfully', token, userId: newUser._id });
     } catch (error) {
         console.error('Signup error:', error);
@@ -78,31 +69,32 @@ router.post('/api/login', async (req, res) => {
 });
 
 router.get('/api/profile', authMiddleware, async (req, res) => {
-    console.log('Received request for user profile with userId:', req.userId);
     try {
         const u = await User.findById(req.userId);
         if (!u) return res.status(404).json({ message: 'User not found' });        
         const email = u.email;
-        let user = await Points.findOne({ email });
-        if (user) {
-            return res.json({
-                message: `Welcome user ${req.userId}`,
-                email: email,
-                username: u.username,
-                total: parseInt(user.total),
-                correct: parseInt(user.correct)
-            });
-        } else {
-            await Points.create({ email, total: 0, correct: 0 });
-            return res.json({
-                message: `Welcome user ${req.userId}`,
-                username: u.username,
-                total: 0,
-                correct: 0
-            });
-        }
-    } catch {
-        res.status(500).json({ message: 'Server error' });
+        
+        // Use findOneAndUpdate with upsert to atomically create or update the points record
+        const user = await Points.findOneAndUpdate(
+            { email },
+            { $setOnInsert: { total: 0, correct: 0 } },
+            { 
+                upsert: true, 
+                new: true,
+                setDefaultsOnInsert: true
+            }
+        );
+        
+        return res.json({
+            message: `Welcome user ${req.userId}`,
+            email: email,
+            username: u.username,
+            total: parseInt(user.total),
+            correct: parseInt(user.correct)
+        });
+    } catch (error) {
+        console.error('Profile error:', error);
+        res.status(500).json({ message: 'Server error', error: error.message });
     }
 });
 

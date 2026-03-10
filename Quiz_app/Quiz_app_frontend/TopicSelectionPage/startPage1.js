@@ -27,7 +27,6 @@ if (token) {
             }
         }).then(res => res.json()).then(data => {
             if (data.username) {
-                console.log('User data retrieved:', data);
                 document.querySelector('.name').innerHTML = data.username;
                 window.localStorage.setItem('email', data.email);
                 window.localStorage.setItem('totalqns', data.total);

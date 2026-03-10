@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Connect to MongoDB with error handling
 mongoose.connect(process.env.MONGO_URL)
-    .then(() => console.log('Connected to MongoDB'))
+    .then(() => {})
     .catch(err => console.error('MongoDB connection error:', err));
 
 const Points = mongoose.model('Points', new mongoose.Schema({
