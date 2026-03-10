@@ -73,16 +73,14 @@ router.get('/api/profile', authMiddleware, async (req, res) => {
         const u = await User.findById(req.userId);
         if (!u) return res.status(404).json({ message: 'User not found' });        
         const email = u.email;
-        const user = await Points.findOneAndUpdate(
-            { email },
-            { $setOnInsert: { total: 0, correct: 0 } },
-            { 
-                upsert: true, 
-                new: true,
-                setDefaultsOnInsert: true
-            }
+        let user = await Points.findOne(
+            { email }
         );
-        
+        if (!user) {
+            let val= new Points({ email, total: 0, correct: 0 });
+            await val.save();
+            user = val;
+        }
         return res.json({
             message: `Welcome user ${req.userId}`,
             email: email,

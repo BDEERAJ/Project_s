@@ -9,7 +9,7 @@ const Points = mongoose.model('Points', new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     total: { type: Number, default: 0 },
     correct: { type: Number, default: 0 }
-}));
+}), 'points');
 
 const ContentDB = mongoose.model('ContentDB', new mongoose.Schema({
     topic: String,
