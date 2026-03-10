@@ -73,27 +73,19 @@ router.get('/api/profile', authMiddleware, async (req, res) => {
         const u = await User.findById(req.userId);
         if (!u) return res.status(404).json({ message: 'User not found' });        
         const email = u.email;
-        
-        // Use findOneAndUpdate with upsert to atomically create or update the points record
         const user = await Points.findOneAndUpdate(
             { email },
-            { $setOnInsert: { total: 0, correct: 0 } },
-            { 
-                upsert: true, 
-                new: true,
-                setDefaultsOnInsert: true
-            }
+            { $setOnInsert: { total: 0, correct: 0 } }
         );
         
         return res.json({
             message: `Welcome user ${req.userId}`,
             email: email,
             username: u.username,
-            total: parseInt(user.total),
-            correct: parseInt(user.correct)
+            total: parseInt(user.total) || 0,
+            correct: parseInt(user.correct) || 0
         });
     } catch (error) {
-        console.error('Profile error:', error);
         res.status(500).json({ message: 'Server error', error: error.message });
     }
 });
