@@ -75,7 +75,12 @@ router.get('/api/profile', authMiddleware, async (req, res) => {
         const email = u.email;
         const user = await Points.findOneAndUpdate(
             { email },
-            { $setOnInsert: { total: 0, correct: 0 } }
+            { $setOnInsert: { total: 0, correct: 0 } },
+            { 
+                upsert: true, 
+                new: true,
+                setDefaultsOnInsert: true
+            }
         );
         
         return res.json({
