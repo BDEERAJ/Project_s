@@ -49,22 +49,11 @@ router.post('/api/register', async (req, res) => {
         console.log('Creating new user...');
         const newUser = await User.create({ username, email, password: hashedPassword });
 
-        console.log('Creating points record...');
-        await Points.create({ email, total: 0, correct: 0 });
-
         console.log('Generating token...');
         const token = generateToken(newUser._id);
 
         console.log('User registered successfully:', newUser._id);
-        res.status(201).json({ 
-            message: 'User registered successfully', 
-            token, 
-            userId: newUser._id,
-            email: newUser.email,
-            username: newUser.username,
-            total: 0,
-            correct: 0
-        });
+        res.status(201).json({ message: 'User registered successfully', token, userId: newUser._id });
     } catch (error) {
         console.error('Signup error:', error);
         res.status(500).json({ message: 'Server error', error: error.message });
