@@ -23,24 +23,51 @@ const authMiddleware = (req, res, next) => {
 
 router.post('/api/register', async (req, res) => {
     const { username, email, password } = req.body;
-    if (!username || !email || !password)
-        return res.status(400).json({ message: 'All fields are required' });
+    console.log('Signup attempt for:', email);
 
-    if (!/@gmail\.com$/.test(email))
+    if (!username || !email || !password) {
+        console.log('Missing required fields');
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    if (!/@gmail\.com$/.test(email)) {
+        console.log('Invalid email format:', email);
         return res.status(400).json({ message: 'Email must be a valid Gmail address' });
+    }
 
     try {
+        console.log('Checking for existing user...');
         const existingUser = await User.findOne({ email });
-        if (existingUser)
+        if (existingUser) {
+            console.log('User already exists:', email);
             return res.status(400).json({ message: 'User already exists' });
+        }
 
+        console.log('Hashing password...');
         const hashedPassword = await bcrypt.hash(password, 10);
+
+        console.log('Creating new user...');
         const newUser = await User.create({ username, email, password: hashedPassword });
+
+        console.log('Creating points record...');
+        await Points.create({ email, total: 0, correct: 0 });
+
+        console.log('Generating token...');
         const token = generateToken(newUser._id);
 
-        res.status(201).json({ message: 'User registered successfully', token, userId: newUser._id });
-    } catch {
-        res.status(500).json({ message: 'Server error' });
+        console.log('User registered successfully:', newUser._id);
+        res.status(201).json({ 
+            message: 'User registered successfully', 
+            token, 
+            userId: newUser._id,
+            email: newUser.email,
+            username: newUser.username,
+            total: 0,
+            correct: 0
+        });
+    } catch (error) {
+        console.error('Signup error:', error);
+        res.status(500).json({ message: 'Server error', error: error.message });
     }
 });
 

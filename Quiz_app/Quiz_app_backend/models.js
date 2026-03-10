@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
+
+// Connect to MongoDB with error handling
 mongoose.connect(process.env.MONGO_URL)
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('MongoDB connection error:', err));
+
 const Points = mongoose.model('Points', new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     total: { type: Number, default: 0 },
@@ -28,24 +33,18 @@ const MessageFromPortfolio = mongoose.model('MessageFromPortfolio', new mongoose
 }));
 
 const userSchema = new mongoose.Schema({
-    username: String,
-    email: { type: String, unique: true },
-    password: String
+    username: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true }
 });
 
-const pointsSchema = new mongoose.Schema({
-    email: String,
-    total: Number,
-    correct: Number
-});
+const User = mongoose.model('users', userSchema);
 
-const User =mongoose.model('users', userSchema);
 module.exports = {
     Points,
     ContentDB,
     MoreInfo,
     Feedback,
     MessageFromPortfolio,
-     User, 
-     Points
+    User
 };
