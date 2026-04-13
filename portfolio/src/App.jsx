@@ -23,12 +23,19 @@ const portfolioData = {
       date: "July 2024 - September 2024",
       description: [
        "Developed an interactive stock management dashboard enabling real-time stock selection and multi-layered financial analysis.",
-      "Architected seamless integration between React and FastAPI to deliver asynchronous results, reducing application latency by 20%.",
+      "Architected seamless integration between React and FastAPI to deliver asynchronous results",
       "Built dynamic, reusable UI components for data visualization, significantly improving user engagement and interface intuitiveness."
       ]
     }
   ],
   projects: [
+    {
+    title: 'CivicConnect',
+    description: 'An AI-driven community platform empowering citizens to report local infrastructure issues using image uploads, featuring AI categorization, real-time messaging, and spatial filtering.',
+    technologies: 'MongoDB, Express, React, Node.js, FastAPI, Socket.io',
+    github: 'https://github.com/BDEERAJ/CivicConnect',
+    weblink: 'https://civicconnect123.netlify.app/'
+  },
     {
   title: 'Moviflex',
   description: 'A full-stack movie platform featuring movie listings with filtering and pagination, dedicated detail pages, user reviews, watchlist management, and admin functions.',
