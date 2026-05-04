@@ -94,7 +94,7 @@ const portfolioData = {
   ],
   achievements: [
     { title: "Cynosure SQL Event", description: "Stood 2nd in SQL-based tech event 'Cynosure'.", iconClass: "devicon-mysql-plain" },
-    { title: "300+ Java DSA on LeetCode", description: "Solved over 300 DSA problems on LeetCode.", iconClass: "devicon-java-plain" },
+    { title: "400+ DSA on LeetCode", description: "Solved over 400 DSA problems on LeetCode.", iconClass: "devicon-java-plain" },
     { title: "BringBackEdu Workshop", description: "Participated in the Data Science Workshop organized by BringBackEdu.", iconClass: "devicon-google-plain" },
   ]
 };
